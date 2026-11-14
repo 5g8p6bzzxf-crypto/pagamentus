@@ -41,11 +41,11 @@ Estabelecer o esquema inicial do banco de dados relacional e as regras de integr
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.3-modelo-dados-integridade` a partir da `main`
-- [ ] Criar arquivo de migração/esquema inicial definindo tabelas base com PK, FK e restrições UNIQUE/NOT NULL
-- [ ] Implementar mecanismo/helper de execução sob transação atômica com rollback automático em caso de erro
-- [ ] Implementar testes automatizados para validação de unicidade e integridade referencial (CA-1 e CA-3)
-- [ ] Implementar testes automatizados de rollback transacional em caso de falha no meio da operação (CA-2)
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar arquivo de migração/esquema inicial definindo tabelas base com PK, FK e restrições UNIQUE/NOT NULL
+- [x] Implementar mecanismo/helper de execução sob transação atômica com rollback automático em caso de erro
+- [x] Implementar testes automatizados para validação de unicidade e integridade referencial (CA-1 e CA-3)
+- [x] Implementar testes automatizados de rollback transacional em caso de falha no meio da operação (CA-2)
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
