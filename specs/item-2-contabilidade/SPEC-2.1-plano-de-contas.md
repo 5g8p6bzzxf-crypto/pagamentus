@@ -54,11 +54,11 @@ Permitir a estruturação e manutenção do plano de contas contábil configurá
   - `DELETE /api/empresas/{empresa_id}/plano-contas/{id}`: Inativação lógica da conta.
 
 ## 7. Tarefas de implementação
-- [ ] Criar migração do banco de dados com a tabela de contas contábeis configurável por empresa (`empresa_id`, `codigo`, `nome`, `nivel`, `tipo`, `natureza`, `classificacao`, `ativo`).
-- [ ] Implementar modelo de dados e restrição de unicidade por empresa e código.
-- [ ] Implementar regra de negócio/serviço que valida se a conta é analítica antes de permitir lançamento.
-- [ ] Implementar rotas e controladores para CRUD/manutenção do plano de contas por empresa.
-- [ ] Escrever testes unitários e de integração validando os critérios de aceite CA-1, CA-2, CA-3 e CA-4.
+- [x] Criar migração do banco de dados com a tabela de contas contábeis configurável por empresa (`empresa_id`, `codigo`, `nome`, `nivel`, `tipo`, `natureza`, `classificacao`, `ativo`).
+- [x] Implementar modelo de dados e restrição de unicidade por empresa e código.
+- [x] Implementar regra de negócio/serviço que valida se a conta é analítica antes de permitir lançamento.
+- [x] Implementar rotas e controladores para CRUD/manutenção do plano de contas por empresa.
+- [x] Escrever testes unitários e de integração validando os critérios de aceite CA-1, CA-2, CA-3 e CA-4.
 
 ## 8. Dependências
 - Estrutura de empresa/organização cadastrada (módulo base/plataforma).
@@ -71,7 +71,11 @@ Permitir a estruturação e manutenção do plano de contas contábil configurá
 5. Tentar cadastrar uma conta com código já existente na mesma empresa e validar mensagem de erro de duplicidade.
 
 ## 10. Evidências (preencher ao concluir)
-*(A preencher após implementação: links de PR, prints e saída de execução dos testes).*
+- **CA-1:** Validado no teste `tests/planoContas.test.ts` ("deve registrar com sucesso uma conta sintética/analítica vinculada à empresa"). Status HTTP 201 com payload contendo `codigo`, `nivel`, `tipo`, `natureza`, `classificacao` e `empresaId`.
+- **CA-2:** Validado no teste `tests/planoContas.test.ts` ("deve rejeitar tentativa de validar conta sintética para lançamento contábil"). Bloqueado com status HTTP 422 e mensagem `Apenas contas analíticas recebem lançamentos`.
+- **CA-3:** Validado no teste `tests/planoContas.test.ts` ("deve autorizar com sucesso conta analítica ativa para receber lançamento"). Retorno status HTTP 200 com mensagem `Conta analítica válida para receber lançamento.`
+- **CA-4:** Validado no teste `tests/planoContas.test.ts` ("deve bloquear cadastro com mesmo código na mesma empresa" e permitir mesmo código em empresas distintas). Retorno de erro HTTP 400 com mensagem de duplicidade.
+- **Execução dos Testes Automatizados:** 8 testes passaram em `tests/planoContas.test.ts` com 100% de sucesso via Jest.
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*
