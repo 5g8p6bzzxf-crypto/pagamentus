@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | Ítalo | A definir | A definir | Fazendo |
+| 2 – Contabilidade | Ítalo | A definir | https://trello.com/c/piZHXcEu | Revisando |
 
 ## 1. Contexto e objetivo
 Permitir a estruturação e manutenção do plano de contas contábil configurável por empresa, definindo a hierarquia entre contas sintéticas (agrupadoras) e analíticas (escriturais), garantindo que apenas contas analíticas estejam aptas a receber lançamentos contábeis.
