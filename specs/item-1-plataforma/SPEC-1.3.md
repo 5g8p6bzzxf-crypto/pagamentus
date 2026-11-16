@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Revisando |
 
 ## 1. Contexto e objetivo
 Estabelecer o esquema inicial do banco de dados relacional e as regras de integridade estruturais, garantindo a prevenção contra duplicidade, perda de dados e inconsistências em lançamentos. A especificação assegura que todas as operações no banco utilizem transações atômicas (ACID), chaves primárias/estrangeiras e restrições de unicidade/checagem para que falhas parciais não deixem dados corrompidos ou incompletos.
@@ -61,7 +61,11 @@ Estabelecer o esquema inicial do banco de dados relacional e as regras de integr
    - Consultar o banco de dados e verificar que o primeiro registro não foi gravado (rollback efetuado com sucesso, sem dados pela metade).
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/5
+- Esquema DDL estruturado em `src/database/migrations/001_initial_schema.sql` com chaves primárias, estrangeiras e restrições de unicidade (`UNIQUE`) e obrigatoriedade (`NOT NULL`).
+- Mecanismo de transações atômicas com rollback automático implementado em `src/database/connection.ts`.
+- Suíte de testes automatizados em `src/tests/integrity.test.ts` cobrindo validação de Foreign Keys (erro 23503), unicidade (erro 23505) e reversão total de dados em falhas transacionais (rollback).
+- Verificação estática de tipos TypeScript aprovada sem inconsistências (`npm run build`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
