@@ -6,9 +6,9 @@
 
 ## 1. Contexto e objetivo
 
-Esta especificação define os requisitos de usabilidade, acessibilidade, responsividade e compatibilidade da interface do sistema Pagamentus. O objetivo é permitir que as telas sejam utilizadas em computadores, tablets e celulares, com linguagem clara, navegação consistente e funcionamento nos navegadores modernos definidos para validação.
+Esta especificação define os requisitos de usabilidade, acessibilidade, responsividade e compatibilidade da interface do sistema Pagamentus, incluindo as condições para disponibilização de exportações em formatos abertos e o registro dos requisitos de integração relacionados. O objetivo é permitir que as telas sejam utilizadas em computadores, tablets e celulares, com linguagem clara, navegação consistente e funcionamento nos navegadores modernos definidos para validação.
 
-Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela não determina, por si só, uma tecnologia, biblioteca visual ou redesign completo do sistema.
+Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela não determina, por si só, uma tecnologia, biblioteca visual ou redesign completo do sistema. Os formatos de exportação específicos deverão ser definidos e aprovados pelo grupo, conforme os dados e funcionalidades efetivamente disponíveis.
 
 ## 2. Requisitos relacionados
 
@@ -27,13 +27,16 @@ Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela nã
 - Utilizar linguagem clara em títulos, rótulos, instruções, mensagens de validação e mensagens de erro.
 - Aplicar boas práticas de acessibilidade compatíveis com a interface, incluindo uso por teclado, foco visível, identificação de campos e alternativas textuais para conteúdo não textual quando aplicável.
 - Verificar o funcionamento da interface nos navegadores modernos selecionados para homologação e registrar os navegadores e versões testados.
-- Registrar limitações conhecidas de compatibilidade e requisitos necessários para integrações relacionadas à interface, quando existirem.
+- Definir, com aprovação do grupo, os formatos abertos aplicáveis às exportações previstas pelo sistema, sem presumir formatos ou funcionalidades ainda não definidos.
+- Verificar se as exportações disponibilizadas preservam os dados e sua organização de forma utilizável no formato aprovado.
+- Registrar requisitos, dependências, dados necessários e comportamento esperado das integrações relacionadas às telas e exportações contempladas.
 
 ### Fora do escopo
 
 - Criar novos módulos ou funcionalidades de negócio não previstos nos requisitos relacionados.
 - Alterar regras contábeis, fiscais, trabalhistas ou de Imposto de Renda.
 - Implementar ou alterar APIs, autenticação ou integrações de terceiros, exceto ajustes de apresentação necessários para exibir seus estados e mensagens na interface.
+- Criar formatos proprietários de exportação como substitutos dos formatos abertos exigidos.
 - Garantir compatibilidade com navegadores obsoletos ou sem suporte, salvo decisão posterior do grupo.
 - Declarar conformidade formal com uma norma de acessibilidade sem avaliação específica e evidências apropriadas.
 - Redesenhar integralmente a identidade visual do produto sem aprovação do grupo.
@@ -69,12 +72,25 @@ Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela nã
 - Cores não são o único meio de comunicar status, erro ou informação importante.
 - Textos, instruções e mensagens utilizam linguagem direta e compreensível.
 
-### 4.5 Compatibilidade
+### 4.5 Compatibilidade com navegadores
 
 - As telas e suas ações essenciais funcionam nos navegadores modernos selecionados para homologação.
 - Diferenças visuais entre navegadores não podem impedir a leitura, a navegação ou a conclusão dos fluxos essenciais.
 - A equipe registra os navegadores, versões, dispositivos ou emuladores e limitações encontrados durante a validação.
-- Requisitos de integração necessários ao funcionamento da interface são documentados, sem presumir disponibilidade de serviços externos não confirmados.
+
+### 4.6 Exportações em formatos abertos
+
+- As funcionalidades de exportação previstas no sistema devem disponibilizar os dados nos formatos abertos aprovados pelo grupo.
+- Os formatos aplicáveis a cada tipo de dado ou relatório devem ser definidos e registrados antes da implementação da exportação correspondente.
+- O arquivo exportado deve manter os campos, valores e a organização necessários para que os dados possam ser consultados e reutilizados em ferramentas compatíveis com o formato escolhido.
+- A exportação deve apresentar identificação compreensível do arquivo e, quando aplicável, informar ao usuário que a geração foi concluída ou apresentar uma mensagem clara em caso de falha.
+- Não se deve considerar um formato específico como aprovado até que ele seja acordado e documentado pelo grupo.
+
+### 4.7 Requisitos de integração
+
+- As integrações necessárias ao funcionamento das telas ou exportações devem ter suas dependências e requisitos conhecidos documentados.
+- A documentação deve registrar, quando aplicável, finalidade da integração, dados de entrada e saída, formato esperado, dependências externas e comportamento esperado em caso de indisponibilidade.
+- Não se deve presumir disponibilidade de serviços externos, credenciais ou endpoints que ainda não tenham sido definidos pelo projeto.
 
 ## 5. Critérios de aceite
 
@@ -88,8 +104,10 @@ Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela nã
 - **CA-8 — Informação não dependente apenas de cor:** Dado que a interface apresente estados, alertas ou erros, quando a informação for comunicada visualmente, então deve existir também identificação textual, ícone acompanhado de texto ou outro recurso que não dependa exclusivamente da cor.
 - **CA-9 — Compatibilidade com navegadores modernos:** Dado que a pessoa usuária acesse o sistema por cada navegador moderno incluído na matriz de homologação, quando executar os fluxos essenciais selecionados, então as telas e ações devem funcionar sem falhas que impeçam sua utilização.
 - **CA-10 — Registro de compatibilidade:** Dado que a validação de navegadores seja concluída, quando as evidências forem registradas, então o documento deve informar navegadores e versões testados, ambiente utilizado, resultado e limitações encontradas.
-- **CA-11 — Requisitos de integração documentados:** Dado que uma tela dependa de serviço ou integração externa para apresentar informações ou executar uma ação, quando essa dependência fizer parte do escopo validado, então seus requisitos conhecidos, dados necessários, comportamento esperado em caso de indisponibilidade e limitações devem estar documentados.
-- **CA-12 — Critério principal do Trello:** Dado que as telas previstas para validação sejam acessadas em computador, tablet e celular, quando os fluxos essenciais forem executados nos navegadores modernos selecionados, então as telas devem permanecer usáveis nos três tipos de dispositivo e nos navegadores testados.
+- **CA-11 — Requisitos de integração documentados:** Dado que uma tela ou exportação dependa de serviço ou integração externa, quando essa dependência fizer parte do escopo definido, então seus requisitos conhecidos, dados necessários, dependências e comportamento esperado em caso de indisponibilidade devem estar documentados.
+- **CA-12 — Exportação em formato aberto:** Dado que exista uma funcionalidade de exportação prevista e implementada, quando a pessoa usuária gerar um arquivo, então o arquivo deve utilizar um formato aberto previamente aprovado e documentado pelo grupo, preservar os campos e valores necessários e poder ser aberto por ferramenta compatível com esse formato.
+- **CA-13 — Definição dos formatos de exportação:** Dado que o grupo defina os tipos de dados e relatórios que poderão ser exportados, quando a especificação for aprovada para implementação, então os formatos abertos correspondentes deverão estar identificados e documentados, sem deixar a escolha do formato indefinida para a etapa de desenvolvimento.
+- **CA-14 — Critério principal do Trello:** Dado que as telas previstas para validação sejam acessadas em computador, tablet e celular, quando os fluxos essenciais forem executados nos navegadores modernos selecionados, então as telas devem permanecer usáveis nos três tipos de dispositivo e nos navegadores testados.
 
 ## 6. Plano técnico
 
@@ -98,6 +116,9 @@ Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela nã
 - Priorizar layouts fluidos e adaptação dos componentes ao espaço disponível, evitando dimensões rígidas que provoquem cortes.
 - Revisar menus, formulários, tabelas, botões, mensagens, estados de foco e elementos não textuais.
 - Definir, junto ao grupo, a matriz de navegadores modernos e os fluxos essenciais usados na homologação.
+- Identificar as funcionalidades de exportação previstas e registrar, com aprovação do grupo, os formatos abertos aplicáveis a cada uma.
+- Verificar a integridade dos dados exportados, incluindo nomes de campos, valores e organização do conteúdo.
+- Documentar requisitos e dependências das integrações relacionadas às telas e exportações contempladas.
 - Registrar os resultados em uma matriz de testes com dispositivo ou viewport, navegador e versão, cenário, resultado e evidência.
 - Não introduzir dependências ou bibliotecas novas sem justificativa e alinhamento com a arquitetura do projeto.
 
@@ -110,44 +131,54 @@ Esta SPEC descreve o comportamento esperado e como ele será verificado. Ela nã
 - [ ] Revisar navegação por teclado, foco visível e identificação de campos.
 - [ ] Revisar mensagens de validação, erro e status para que não dependam apenas de cor.
 - [ ] Definir com o grupo a matriz de navegadores e versões para homologação.
+- [ ] Identificar as funcionalidades de exportação previstas no escopo do sistema.
+- [ ] Definir e documentar com o grupo os formatos abertos aplicáveis a cada exportação.
+- [ ] Implementar ou adequar as exportações que forem atribuídas a esta entrega, respeitando os formatos aprovados.
+- [ ] Documentar requisitos e dependências das integrações relacionadas.
 - [ ] Executar os testes previstos para os três tipos de dispositivo.
 - [ ] Executar os testes nos navegadores selecionados.
+- [ ] Validar os arquivos exportados com ferramentas compatíveis e conferir os dados gerados.
 - [ ] Registrar resultados, limitações e evidências por critério de aceite.
-- [ ] Atualizar a documentação de compatibilidade e requisitos de integração aplicáveis.
 
 ## 8. Dependências
 
 - **SPEC-1.2 — Decisão de arquitetura, stack e ambientes:** necessária para orientar as soluções técnicas e evitar adoção de tecnologias incompatíveis com o projeto.
 - **SPEC-1.4 — Usuários, perfis e permissões:** necessária para validar a navegação e os elementos exibidos conforme os perfis, quando essas telas estiverem disponíveis.
-- Telas e componentes dos módulos que serão incluídos na homologação.
+- Telas, componentes e funcionalidades de exportação dos módulos que serão incluídos na homologação.
 - Definição, pelo grupo ou pelo revisor, da lista de navegadores modernos e versões que serão considerados no aceite.
+- Definição e aprovação dos formatos abertos para cada tipo de exportação previsto.
 - Disponibilidade de ambiente de teste e dados fictícios para executar os fluxos.
+- Documentação das integrações e disponibilidade de ambientes ou dados de teste, quando aplicável.
 
 ## 9. Como validar
 
 1. Preparar ambiente de teste com dados exclusivamente fictícios.
-2. Selecionar as telas e os fluxos essenciais que serão avaliados.
+2. Selecionar as telas, funcionalidades de exportação e fluxos essenciais que serão avaliados.
 3. Registrar a matriz de dispositivos ou larguras de viewport utilizada, contemplando computador, tablet e celular.
 4. Abrir cada tela nas larguras selecionadas e verificar cortes, sobreposições, legibilidade, rolagem e acesso às ações.
 5. Repetir os fluxos essenciais nos navegadores e versões definidos na matriz de homologação.
 6. Navegar pelos elementos interativos usando teclado, verificando sequência, operação e foco visível.
 7. Preencher formulários com dados válidos e inválidos para verificar rótulos e mensagens de validação.
 8. Verificar se alertas e estados possuem identificação que não dependa exclusivamente de cor.
-9. Conferir se os requisitos conhecidos de integração e as limitações de compatibilidade estão documentados.
-10. Registrar o resultado de cada critério como aprovado, reprovado ou bloqueado, anexando evidência e descrição do ambiente utilizado.
-11. Corrigir os problemas identificados e repetir os testes relacionados antes de solicitar aprovação.
+9. Gerar arquivos de exportação de teste nos formatos abertos aprovados e verificar se podem ser abertos por ferramentas compatíveis.
+10. Conferir se os arquivos exportados preservam os campos, valores e a organização esperada, sem perda ou alteração indevida dos dados.
+11. Conferir se os requisitos conhecidos de integração e as limitações de compatibilidade estão documentados.
+12. Registrar o resultado de cada critério como aprovado, reprovado ou bloqueado, anexando evidência e descrição do ambiente utilizado.
+13. Corrigir os problemas identificados e repetir os testes relacionados antes de solicitar aprovação.
 
 ### Matriz mínima de validação
 
-| Ambiente | Verificações principais |
+| Ambiente ou recurso | Verificações principais |
 |---|---|
 | Computador | Layout, menus, formulários, tabelas, navegação e ações |
 | Tablet | Reorganização dos componentes, legibilidade e operação |
 | Celular | Adaptação à largura, acesso às ações e formulários |
 | Navegadores homologados | Abertura das telas e execução dos fluxos essenciais |
 | Teclado | Ordem de navegação, operação dos controles e foco visível |
+| Exportações | Formato aberto aprovado, abertura do arquivo e integridade dos dados |
+| Integrações | Requisitos documentados e comportamento esperado em caso de indisponibilidade |
 
-As larguras exatas de viewport e a lista de navegadores e versões devem ser registradas na execução dos testes, após alinhamento com o grupo. Esta especificação não presume uma lista de versões já aprovada.
+As larguras exatas de viewport, a lista de navegadores e versões e os formatos abertos aplicáveis devem ser registrados após alinhamento com o grupo. Esta especificação não presume uma lista de versões ou formatos já aprovada.
 
 ## 10. Evidências (preencher ao concluir)
 
@@ -156,14 +187,16 @@ As larguras exatas de viewport e a lista de navegadores e versões devem ser reg
 - Matriz preenchida com navegadores, versões, ambientes e resultados.
 - Evidências de navegação por teclado e foco visível.
 - Evidências de formulários e mensagens de validação.
-- Registro de limitações encontradas e respectivas correções.
+- Amostras fictícias dos arquivos exportados nos formatos aprovados e evidências de abertura e integridade dos dados, quando as exportações estiverem implementadas.
+- Registro dos requisitos de integração, limitações encontradas e respectivas correções.
 - Resultado dos testes relacionado a cada critério de aceite.
 
-Nenhum critério deve ser marcado como aprovado antes da execução e do registro da respectiva validação.
+Nenhum critério deve ser marcado como aprovado antes da execução e do registro da respectiva validação. Critérios dependentes de funcionalidades ainda não implementadas devem permanecer pendentes ou bloqueados, com a dependência registrada.
 
 ## 11. Histórico de revisão
 
 | Revisão | Responsável | Observação | Situação |
 |---|---|---|---|
 | 0.1 | Pablo | Elaboração inicial da especificação com base nos RNF-009 e RNF-010 e no critério principal informado no Trello. | Em revisão |
+| 0.2 | Pablo | Detalhamento dos requisitos de exportação em formatos abertos, integração e respectivos critérios de validação, sem presumir formatos ainda não aprovados pelo grupo. | Em revisão |
 | — | Revisor do 4º período | A preencher após análise. | Pendente |
