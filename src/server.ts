@@ -5,6 +5,7 @@ import { roleMiddleware } from './services/maskingService';
 import { initDatabase } from './db/database';
 import employeeRoutes from './routes/employeeRoutes';
 import eventRoutes from './routes/eventRoutes';
+import timeRecordRoutes from './routes/timeRecordRoutes';
 import payrollRoutes from './routes/payrollRoutes';
 import esocialRoutes from './routes/esocialRoutes';
 import parameterRoutes from './routes/parameterRoutes';
@@ -23,6 +24,7 @@ app.use('/api', roleMiddleware);
 // Rotas da API RESTful
 app.use('/api/employees', employeeRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/time-records', timeRecordRoutes);
 app.use('/api/payroll', payrollRoutes);
 app.use('/api/esocial', esocialRoutes);
 app.use('/api/parameters', parameterRoutes);
