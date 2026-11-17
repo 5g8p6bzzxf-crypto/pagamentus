@@ -98,6 +98,7 @@ export class LancamentoContabilService {
       valorTotal: Number(totalDebitos.toFixed(2)),
       tipoLancamento: dto.tipoLancamento || 'NORMAL',
       lancamentoOrigemId: dto.lancamentoOrigemId,
+      loteId: dto.loteId,
       partidas: partidasFormatadas.map((p) => ({ ...p, lancamentoId })),
     });
 

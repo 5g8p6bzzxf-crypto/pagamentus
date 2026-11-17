@@ -8,6 +8,8 @@ export interface ILancamentoContabilRepository {
   buscarPorId(id: string): Promise<LancamentoContabil | null>;
   buscarEstornoPorOrigemId(lancamentoOrigemId: string): Promise<LancamentoContabil | null>;
   listarPorEmpresa(empresaId: string): Promise<LancamentoContabil[]>;
+  listarPorLoteId(loteId: string): Promise<LancamentoContabil[]>;
+  removerPorLoteId(loteId: string): Promise<number>;
   limpar(): Promise<void>;
 }
 
@@ -45,6 +47,27 @@ export class InMemoryLancamentoContabilRepository implements ILancamentoContabil
     }
     // Ordena decrescente por data e ID
     return lista.sort((a, b) => b.dataLancamento.localeCompare(a.dataLancamento));
+  }
+
+  async listarPorLoteId(loteId: string): Promise<LancamentoContabil[]> {
+    const lista: LancamentoContabil[] = [];
+    for (const item of this.lancamentos.values()) {
+      if (item.loteId === loteId) {
+        lista.push(item);
+      }
+    }
+    return lista;
+  }
+
+  async removerPorLoteId(loteId: string): Promise<number> {
+    let removidos = 0;
+    for (const [id, item] of this.lancamentos.entries()) {
+      if (item.loteId === loteId) {
+        this.lancamentos.delete(id);
+        removidos++;
+      }
+    }
+    return removidos;
   }
 
   async limpar(): Promise<void> {

@@ -56,12 +56,12 @@ Permitir a importação em lote de lançamentos contábeis a partir de arquivos/
   - `POST /api/empresas/{empresaId}/importacoes/{loteId}/desfazer`: Desfaz todos os lançamentos do lote.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos e interfaces para `LoteImportacao` e DTOs de importação/relatório de erros.
-- [ ] Implementar parser para processamento de arquivos CSV/estruturados de lançamentos.
-- [ ] Implementar serviço de pré-validação com relatório detalhado de erros por linha.
-- [ ] Implementar serviço de persistência de lote e desfazimento (rollback/exclusão de lançamentos por `loteId`).
-- [ ] Criar controladores e rotas REST para pré-validação, importação e desfazimento.
-- [ ] Escrever suíte de testes automatizados com Jest cobrindo CA-1 a CA-4.
+- [x] Criar modelos e interfaces para `LoteImportacao` e DTOs de importação/relatório de erros.
+- [x] Implementar parser para processamento de arquivos CSV/estruturados de lançamentos.
+- [x] Implementar serviço de pré-validação com relatório detalhado de erros por linha.
+- [x] Implementar serviço de persistência de lote e desfazimento (rollback/exclusão de lançamentos por `loteId`).
+- [x] Criar controladores e rotas REST para pré-validação, importação e desfazimento.
+- [x] Escrever suíte de testes automatizados com Jest cobrindo CA-1 a CA-4.
 
 ## 8. Dependências
 - `SPEC-2.1` (Plano de contas: validação de contas).
@@ -74,7 +74,11 @@ Permitir a importação em lote de lançamentos contábeis a partir de arquivos/
 4. **Desfazer lote (CA-4):** Chamar rota de desfazimento e comprovar que nenhum lançamento daquele `loteId` permaneceu na listagem da empresa.
 
 ## 10. Evidências (preencher ao concluir)
-*(A preencher após implementação: links de PR, prints e saída de execução dos testes).*
+- **CA-1:** Validado no teste `tests/importacaoLancamentos.test.ts` ("deve pré-validar lote sem erros e retornar totalizadores"). Retorno HTTP 200, `valido: true`, 0 erros e totalizadores corretos.
+- **CA-2:** Validado no teste `tests/importacaoLancamentos.test.ts` ("deve apontar erros por linha ao encontrar conta inexistente, sintética e desbalanceamento"). Retorno HTTP 422 discriminando as linhas com falhas e mensagens detalhadas de cada inconsistência.
+- **CA-3:** Validado no teste `tests/importacaoLancamentos.test.ts` ("deve importar e persistir lançamentos associados ao lote_id"). Retorno HTTP 201 com criação de lote de importação com status `PROCESSADO` e todos os lançamentos persistidos vinculados ao respectivo `loteId`.
+- **CA-4:** Validado no teste `tests/importacaoLancamentos.test.ts` ("deve remover todos os lançamentos atrelados ao lote desfeito"). Retorno HTTP 200 com status do lote atualizado para `DESFEITO` e exclusão integral dos lançamentos do lote.
+- **Execução dos Testes Automatizados:** 24 testes passando (4 da SPEC-2.4 + 4 da SPEC-2.3 + 8 da SPEC-2.2 + 8 da SPEC-2.1) com 100% de sucesso via Jest.
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*

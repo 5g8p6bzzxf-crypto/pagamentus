@@ -15,6 +15,11 @@ import { ModeloLancamentoService } from './services/ModeloLancamentoService';
 import { ModeloLancamentoController } from './controllers/ModeloLancamentoController';
 import { criarModeloLancamentoRouter } from './routes/modeloLancamentoRoutes';
 
+import { InMemoryLoteImportacaoRepository } from './repositories/LoteImportacaoRepository';
+import { ImportacaoLancamentosService } from './services/ImportacaoLancamentosService';
+import { ImportacaoLancamentosController } from './controllers/ImportacaoLancamentosController';
+import { criarImportacaoLancamentosRouter } from './routes/importacaoLancamentosRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis
  */
@@ -27,6 +32,8 @@ export function criarApp(): {
   lancamentoService: LancamentoContabilService;
   modeloRepo: InMemoryModeloLancamentoRepository;
   modeloService: ModeloLancamentoService;
+  loteRepo: InMemoryLoteImportacaoRepository;
+  importacaoService: ImportacaoLancamentosService;
 } {
   const app = express();
 
@@ -49,10 +56,22 @@ export function criarApp(): {
   const modeloService = new ModeloLancamentoService(modeloRepo, lancamentoService, planoContasService);
   const modeloController = new ModeloLancamentoController(modeloService);
 
+  // 4. Módulo Importação de Lançamentos em Lote (SPEC-2.4)
+  const loteRepo = new InMemoryLoteImportacaoRepository();
+  const importacaoService = new ImportacaoLancamentosService(
+    loteRepo,
+    lancamentoRepo,
+    lancamentoService,
+    planoContasService,
+    periodoRepo
+  );
+  const importacaoController = new ImportacaoLancamentosController(importacaoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
   app.use('/api', criarModeloLancamentoRouter(modeloController));
+  app.use('/api', criarImportacaoLancamentosRouter(importacaoController));
 
   return {
     app,
@@ -63,6 +82,8 @@ export function criarApp(): {
     lancamentoService,
     modeloRepo,
     modeloService,
+    loteRepo,
+    importacaoService,
   };
 }
 

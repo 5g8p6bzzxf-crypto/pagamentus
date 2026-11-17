@@ -1,9 +1,9 @@
 /**
- * Modelos de Domínio para Lançamentos Contábeis (RF-007, RF-008, RF-009, RB-001 / SPEC-2.2 / SPEC-2.3)
+ * Modelos de Domínio para Lançamentos Contábeis (RF-007, RF-008, RF-009, RF-010, RB-001 / SPEC-2.2 / SPEC-2.3 / SPEC-2.4)
  */
 
 export type TipoPartida = 'DEBITO' | 'CREDITO';
-export type TipoLancamento = 'NORMAL' | 'ESTORNO' | 'RECORRENTE';
+export type TipoLancamento = 'NORMAL' | 'ESTORNO' | 'RECORRENTE' | 'IMPORTADO';
 
 export interface IPartidaContabil {
   id: string;
@@ -25,6 +25,7 @@ export interface ILancamentoContabil {
   valorTotal: number;
   tipoLancamento?: TipoLancamento;
   lancamentoOrigemId?: string; // Vínculo ao lançamento original no caso de estorno (RF-009 / CA-2)
+  loteId?: string;             // Identificador do lote de importação (RF-010 / SPEC-2.4)
   partidas: IPartidaContabil[];
 }
 
@@ -53,6 +54,7 @@ export interface CriarLancamentoDTO {
   centroCustoId?: string;
   tipoLancamento?: TipoLancamento;
   lancamentoOrigemId?: string;
+  loteId?: string;
   partidas: CriarPartidaDTO[];
 }
 
@@ -67,6 +69,7 @@ export class LancamentoContabil implements ILancamentoContabil {
   public valorTotal: number;
   public tipoLancamento: TipoLancamento;
   public lancamentoOrigemId?: string;
+  public loteId?: string;
   public partidas: IPartidaContabil[];
 
   constructor(dados: ILancamentoContabil) {
@@ -80,6 +83,7 @@ export class LancamentoContabil implements ILancamentoContabil {
     this.valorTotal = dados.valorTotal;
     this.tipoLancamento = dados.tipoLancamento || 'NORMAL';
     this.lancamentoOrigemId = dados.lancamentoOrigemId;
+    this.loteId = dados.loteId;
     this.partidas = dados.partidas;
   }
 }
