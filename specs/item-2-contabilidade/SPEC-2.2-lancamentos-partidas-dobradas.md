@@ -72,11 +72,11 @@ Permitir o registro de lançamentos contábeis manuais estruturados pelo método
   - `GET /api/empresas/{empresaId}/lancamentos/{id}`: Detalhamento do lançamento e suas partidas.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos de dados e interfaces para `LancamentoContabil`, `PartidaContabil` e `PeriodoContabil`.
-- [ ] Implementar repositórios de persistência para lançamentos e controle de status de períodos contábeis.
-- [ ] Implementar serviço de validação das regras essenciais: partidas dobradas balanceadas (RB-001), período aberto (RF-008), contas analíticas ativas (RF-008 e SPEC-2.1) e valores positivos.
-- [ ] Criar controladores e endpoints da API REST para lançamentos manuais.
-- [ ] Implementar suíte de testes automatizados cobrindo os critérios de aceite CA-1 a CA-5.
+- [x] Criar modelos de dados e interfaces para `LancamentoContabil`, `PartidaContabil` e `PeriodoContabil`.
+- [x] Implementar repositórios de persistência para lançamentos e controle de status de períodos contábeis.
+- [x] Implementar serviço de validação das regras essenciais: partidas dobradas balanceadas (RB-001), período aberto (RF-008), contas analíticas ativas (RF-008 e SPEC-2.1) e valores positivos.
+- [x] Criar controladores e endpoints da API REST para lançamentos manuais.
+- [x] Implementar suíte de testes automatizados cobrindo os critérios de aceite CA-1 a CA-5.
 
 ## 8. Dependências
 - `SPEC-2.1` (Plano de contas: validação de contas sintéticas/analíticas e ativas).
@@ -90,7 +90,12 @@ Permitir o registro de lançamentos contábeis manuais estruturados pelo método
 5. **Valor inconsistente (CA-5):** Enviar partida com valor 0 ou negativo. Verificar recusa por inconsistência de valores.
 
 ## 10. Evidências (preencher ao concluir)
-*(A preencher após implementação: links de PR, prints e saída de execução dos testes).*
+- **CA-1:** Validado no teste `tests/lancamentosContabeis.test.ts` ("deve registrar com sucesso um lançamento contábil balanceado"). Status HTTP 201 com payload consolidado, IDs vinculados e valor total igual a R$ 5000,00.
+- **CA-2:** Validado no teste `tests/lancamentosContabeis.test.ts` ("deve rejeitar lançamento onde débitos são diferentes de créditos"). Bloqueado com status HTTP 400 informando a diferença de R$ 500,00, sem persistir nenhuma partida no banco.
+- **CA-3:** Validado no teste `tests/lancamentosContabeis.test.ts` ("deve rejeitar lançamento quando o período contábil estiver encerrado"). Retorno HTTP 400 com mensagem explicativa de período encerrado.
+- **CA-4:** Validado no teste `tests/lancamentosContabeis.test.ts` ("deve rejeitar lançamento com conta sintética" e "deve rejeitar lançamento com conta inativa"). Bloqueio com erro explicativo de validação contábil.
+- **CA-5:** Validado no teste `tests/lancamentosContabeis.test.ts` ("deve rejeitar lançamento com partida de valor zero" e "deve rejeitar lançamento com partida de valor negativo"). Retorno HTTP 400 por inconsistência de valores.
+- **Execução dos Testes Automatizados:** 16 testes passando (8 de lançamentos contábeis + 8 de plano de contas) com 100% de sucesso via Jest.
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*

@@ -9,7 +9,7 @@ describe('SPEC-2.1: Plano de Contas Contábil (RF-006)', () => {
   beforeEach(async () => {
     const instancia = criarApp();
     app = instancia.app;
-    repository = instancia.repository;
+    repository = instancia.planoContasRepo;
     await repository.limpar();
   });
 
