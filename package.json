@@ -7,20 +7,31 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
-    "test": "jest"
+    "migrate": "ts-node src/database/migrate.ts",
+    "test:integrity": "ts-node src/tests/integrity.test.ts",
+    "test:unit": "jest",
+    "test": "npm run test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovitor-webdev/pagamentus.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^18.0.10",
+    "express": "^4.21.2",
+    "pg": "^8.23.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
+    "@types/pg": "^8.23.1",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
+    "jest-util": "^29.7.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
