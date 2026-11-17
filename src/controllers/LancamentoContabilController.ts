@@ -40,6 +40,35 @@ export class LancamentoContabilController {
   };
 
   /**
+   * POST /api/empresas/:empresaId/lancamentos/:id/estornar
+   * Estorna um lançamento existente vinculado ao original (RF-009 / CA-2 / CA-4)
+   */
+  estornarLancamento = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const empresaId = req.params.empresaId as string;
+      const id = req.params.id as string;
+      const { dataEstorno, competencia, motivoEstorno } = req.body;
+
+      const lancamentoEstorno = await this.lancamentoService.estornarLancamento(empresaId, id, {
+        dataEstorno,
+        competencia,
+        motivoEstorno,
+      });
+
+      res.status(201).json({
+        sucesso: true,
+        mensagem: 'Lançamento estornado com sucesso.',
+        dados: lancamentoEstorno,
+      });
+    } catch (error: any) {
+      res.status(400).json({
+        sucesso: false,
+        mensagem: error.message,
+      });
+    }
+  };
+
+  /**
    * GET /api/empresas/:empresaId/lancamentos
    * Lista lançamentos contábeis da empresa
    */

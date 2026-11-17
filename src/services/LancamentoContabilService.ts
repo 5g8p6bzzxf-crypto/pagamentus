@@ -3,9 +3,15 @@ import { ILancamentoContabilRepository } from '../repositories/LancamentoContabi
 import { IPeriodoContabilRepository } from '../repositories/PeriodoContabilRepository';
 import { PlanoContasService } from './PlanoContasService';
 
+export interface EstornarLancamentoDTO {
+  dataEstorno: string;
+  competencia: string;
+  motivoEstorno: string;
+}
+
 /**
- * Serviço responsável pelo registro e validação de Lançamentos Contábeis (SPEC-2.2)
- * Atende aos requisitos RF-007, RF-008 e RB-001.
+ * Serviço responsável pelo registro, validação e estorno de Lançamentos Contábeis (SPEC-2.2 / SPEC-2.3)
+ * Atende aos requisitos RF-007, RF-008, RF-009 e RB-001.
  */
 export class LancamentoContabilService {
   constructor(
@@ -61,6 +67,7 @@ export class LancamentoContabilService {
         contaId: partida.contaId,
         tipo: partida.tipo,
         valor: Number(partida.valor.toFixed(2)),
+        centroCustoId: partida.centroCustoId,
       });
 
       if (partida.tipo === 'DEBITO') {
@@ -89,10 +96,60 @@ export class LancamentoContabilService {
       documentoOrigem: dto.documentoOrigem.trim(),
       centroCustoId: dto.centroCustoId,
       valorTotal: Number(totalDebitos.toFixed(2)),
+      tipoLancamento: dto.tipoLancamento || 'NORMAL',
+      lancamentoOrigemId: dto.lancamentoOrigemId,
       partidas: partidasFormatadas.map((p) => ({ ...p, lancamentoId })),
     });
 
     return await this.lancamentoRepo.criar(novoLancamento);
+  }
+
+  /**
+   * Estorna um lançamento contábil existente invertendo as partidas e vinculando ao original (RF-009 / CA-2 e CA-4)
+   */
+  async estornarLancamento(
+    empresaId: string,
+    lancamentoId: string,
+    dadosEstorno: EstornarLancamentoDTO
+  ): Promise<LancamentoContabil> {
+    // 1. Busca o lançamento original
+    const lancamentoOriginal = await this.buscarPorId(lancamentoId);
+
+    if (lancamentoOriginal.empresaId !== empresaId) {
+      throw new Error('Lançamento não pertence à empresa informada.');
+    }
+
+    if (lancamentoOriginal.tipoLancamento === 'ESTORNO') {
+      throw new Error('Não é permitido estornar um lançamento que já é do tipo estorno.');
+    }
+
+    // 2. Validação se já foi estornado anteriormente (CA-4 da SPEC-2.3)
+    const estornoExistente = await this.lancamentoRepo.buscarEstornoPorOrigemId(lancamentoId);
+    if (estornoExistente) {
+      throw new Error(`O lançamento ${lancamentoId} já foi estornado anteriormente pelo lançamento ${estornoExistente.id}.`);
+    }
+
+    // 3. Inversão estrita das partidas: DEBITO vira CREDITO e CREDITO vira DEBITO (CA-2)
+    const partidasInvertidas: IPartidaContabil[] = lancamentoOriginal.partidas.map((p) => ({
+      id: `partida_estorno_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
+      contaId: p.contaId,
+      tipo: p.tipo === 'DEBITO' ? 'CREDITO' : 'DEBITO',
+      valor: p.valor,
+      centroCustoId: p.centroCustoId,
+    }));
+
+    // 4. Criação do lançamento de estorno vinculado (CA-2)
+    return await this.criarLancamento({
+      empresaId,
+      dataLancamento: dadosEstorno.dataEstorno,
+      competencia: dadosEstorno.competencia,
+      historico: `Estorno de lançamento ref. ${lancamentoOriginal.documentoOrigem}: ${dadosEstorno.motivoEstorno || lancamentoOriginal.historico}`,
+      documentoOrigem: `ESTORNO-${lancamentoOriginal.documentoOrigem}`,
+      centroCustoId: lancamentoOriginal.centroCustoId,
+      tipoLancamento: 'ESTORNO',
+      lancamentoOrigemId: lancamentoOriginal.id,
+      partidas: partidasInvertidas,
+    });
   }
 
   /**

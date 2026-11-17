@@ -1,8 +1,9 @@
 /**
- * Modelos de Domínio para Lançamentos Contábeis (RF-007, RF-008, RB-001 / SPEC-2.2)
+ * Modelos de Domínio para Lançamentos Contábeis (RF-007, RF-008, RF-009, RB-001 / SPEC-2.2 / SPEC-2.3)
  */
 
 export type TipoPartida = 'DEBITO' | 'CREDITO';
+export type TipoLancamento = 'NORMAL' | 'ESTORNO' | 'RECORRENTE';
 
 export interface IPartidaContabil {
   id: string;
@@ -10,6 +11,7 @@ export interface IPartidaContabil {
   contaId: string;
   tipo: TipoPartida;
   valor: number;
+  centroCustoId?: string;
 }
 
 export interface ILancamentoContabil {
@@ -21,6 +23,8 @@ export interface ILancamentoContabil {
   documentoOrigem: string;
   centroCustoId?: string;
   valorTotal: number;
+  tipoLancamento?: TipoLancamento;
+  lancamentoOrigemId?: string; // Vínculo ao lançamento original no caso de estorno (RF-009 / CA-2)
   partidas: IPartidaContabil[];
 }
 
@@ -37,6 +41,7 @@ export interface CriarPartidaDTO {
   contaId: string;
   tipo: TipoPartida;
   valor: number;
+  centroCustoId?: string;
 }
 
 export interface CriarLancamentoDTO {
@@ -46,6 +51,8 @@ export interface CriarLancamentoDTO {
   historico: string;
   documentoOrigem: string;
   centroCustoId?: string;
+  tipoLancamento?: TipoLancamento;
+  lancamentoOrigemId?: string;
   partidas: CriarPartidaDTO[];
 }
 
@@ -58,6 +65,8 @@ export class LancamentoContabil implements ILancamentoContabil {
   public documentoOrigem: string;
   public centroCustoId?: string;
   public valorTotal: number;
+  public tipoLancamento: TipoLancamento;
+  public lancamentoOrigemId?: string;
   public partidas: IPartidaContabil[];
 
   constructor(dados: ILancamentoContabil) {
@@ -69,6 +78,8 @@ export class LancamentoContabil implements ILancamentoContabil {
     this.documentoOrigem = dados.documentoOrigem;
     this.centroCustoId = dados.centroCustoId;
     this.valorTotal = dados.valorTotal;
+    this.tipoLancamento = dados.tipoLancamento || 'NORMAL';
+    this.lancamentoOrigemId = dados.lancamentoOrigemId;
     this.partidas = dados.partidas;
   }
 }

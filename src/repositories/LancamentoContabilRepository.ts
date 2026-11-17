@@ -6,6 +6,7 @@ import { LancamentoContabil } from '../models/LancamentoContabil';
 export interface ILancamentoContabilRepository {
   criar(lancamento: LancamentoContabil): Promise<LancamentoContabil>;
   buscarPorId(id: string): Promise<LancamentoContabil | null>;
+  buscarEstornoPorOrigemId(lancamentoOrigemId: string): Promise<LancamentoContabil | null>;
   listarPorEmpresa(empresaId: string): Promise<LancamentoContabil[]>;
   limpar(): Promise<void>;
 }
@@ -24,6 +25,15 @@ export class InMemoryLancamentoContabilRepository implements ILancamentoContabil
   async buscarPorId(id: string): Promise<LancamentoContabil | null> {
     const item = this.lancamentos.get(id);
     return item || null;
+  }
+
+  async buscarEstornoPorOrigemId(lancamentoOrigemId: string): Promise<LancamentoContabil | null> {
+    for (const item of this.lancamentos.values()) {
+      if (item.tipoLancamento === 'ESTORNO' && item.lancamentoOrigemId === lancamentoOrigemId) {
+        return item;
+      }
+    }
+    return null;
   }
 
   async listarPorEmpresa(empresaId: string): Promise<LancamentoContabil[]> {

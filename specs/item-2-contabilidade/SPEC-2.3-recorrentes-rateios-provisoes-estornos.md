@@ -61,12 +61,12 @@ Permitir a criação e utilização de modelos de lançamentos contábeis recorr
   - `POST /api/empresas/{empresaId}/lancamentos/{id}/estornar`: Criação de lançamento de estorno vinculado ao original.
 
 ## 7. Tarefas de implementação
-- [ ] Criar entidades e interfaces para `ModeloLancamento`, `ModeloPartida` e atualizar `LancamentoContabil` com campo de vínculo `lancamentoOrigemId`.
-- [ ] Implementar repositório e serviços para cadastro de modelos recorrentes/rateios e provisões.
-- [ ] Implementar lógica de geração de lançamentos a partir de modelos.
-- [ ] Implementar lógica de estorno contábil com partidas invertidas e rastreabilidade ao lançamento de origem.
-- [ ] Implementar controladores e rotas REST para modelos, geração e estornos.
-- [ ] Criar testes automatizados com Jest validando os critérios de aceite CA-1, CA-2, CA-3 e CA-4.
+- [x] Criar entidades e interfaces para `ModeloLancamento`, `ModeloPartida` e atualizar `LancamentoContabil` com campo de vínculo `lancamentoOrigemId`.
+- [x] Implementar repositório e serviços para cadastro de modelos recorrentes/rateios e provisões.
+- [x] Implementar lógica de geração de lançamentos a partir de modelos.
+- [x] Implementar lógica de estorno contábil com partidas invertidas e rastreabilidade ao lançamento de origem.
+- [x] Implementar controladores e rotas REST para modelos, geração e estornos.
+- [x] Criar testes automatizados com Jest validando os critérios de aceite CA-1, CA-2, CA-3 e CA-4.
 
 ## 8. Dependências
 - `SPEC-2.1` (Plano de contas e validação de contas analíticas).
@@ -79,7 +79,11 @@ Permitir a criação e utilização de modelos de lançamentos contábeis recorr
 4. **Bloqueio de reestorno (CA-4):** Tentar estornar o mesmo lançamento original uma segunda vez e validar rejeição com mensagem de erro.
 
 ## 10. Evidências (preencher ao concluir)
-*(A preencher após implementação: links de PR, prints e saída de execução dos testes).*
+- **CA-1:** Validado no teste `tests/recorrentesRateiosEstornos.test.ts` ("deve cadastrar modelo recorrente e gerar lançamento contábil efetivo"). Status HTTP 201 com lançamento gerado com valor total de R$ 3500,00 e tipo `RECORRENTE`.
+- **CA-2:** Validado no teste `tests/recorrentesRateiosEstornos.test.ts` ("deve gerar lançamento de estorno invertendo débitos/créditos e com lancamentoOrigemId"). Status HTTP 201, `lancamentoOrigemId` apontando para o original e contas com partidas invertidas (débito original virou crédito e vice-versa).
+- **CA-3:** Validado no teste `tests/recorrentesRateiosEstornos.test.ts` ("deve gerar lançamento com rateio em múltiplos centros de custo mantendo partidas dobradas"). Status HTTP 201 gerando 2 débitos rateados (R$ 6.000,00 e R$ 4.000,00 em centros de custo `CC-COM` e `CC-FAB`) contra crédito de R$ 10.000,00 balanceado.
+- **CA-4:** Validado no teste `tests/recorrentesRateiosEstornos.test.ts` ("deve bloquear nova tentativa de estorno para lançamento já estornado"). Retorno HTTP 400 informando que o lançamento já foi estornado anteriormente.
+- **Execução dos Testes Automatizados:** 20 testes passando (4 da SPEC-2.3 + 8 da SPEC-2.2 + 8 da SPEC-2.1) com 100% de sucesso via Jest.
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*
