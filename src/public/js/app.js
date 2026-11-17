@@ -927,11 +927,12 @@ function formatCurrency(val) {
 
 function formatDate(isoStr) {
   if (!isoStr) return '--';
-  const parts = isoStr.split('-');
+  const clean = String(isoStr).split('T')[0];
+  const parts = clean.split('-');
   if (parts.length === 3) {
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
   }
-  return isoStr;
+  return String(isoStr);
 }
 
 function escapeHtml(str) {

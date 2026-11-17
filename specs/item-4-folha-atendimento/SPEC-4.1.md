@@ -119,20 +119,22 @@ O objetivo é fornecer um módulo robusto, autônomo e de alta confiabilidade pa
 
 ## 6. Plano técnico
 
-### 6.1 Arquitetura e Stack
-- **Ambiente de Execução**: Node.js v26+ com Express 5.
-- **Banco de Dados**: SQLite embarcado via `better-sqlite3` (rápido, síncrono, persistente e sem dependências externas).
+### 6.1 Arquitetura e Stack (Conforme SPEC-1.2)
+- **Ambiente de Execução**: Node.js v20+ / v26+ com TypeScript e Express 5.
+- **Banco de Dados**: PostgreSQL com isolamento por esquema (`schema pagamentus`) e multi-inquilino (`organization_id`).
+- **Ambientes**: Separação de instâncias/bancos para produção (`pagamentus_prod`) e testes automatizados (`pagamentus_test`).
+- **Conteinerização**: `Dockerfile` multi-stage e `docker-compose.yml` para orquestração de banco e aplicação.
 - **Frontend**: Single Page Application (SPA) em HTML5, JavaScript Vanilla modular, Tailwind CSS via CDN e Heroicons.
-- **Configuração**: Carregamento de variáveis via `.env` (`PORT`, `DATABASE_PATH`).
+- **Configuração**: Carregamento de variáveis via `.env` (`PORT`, `DATABASE_URL`, `DATABASE_URL_TEST`, `NODE_ENV`).
 
-### 6.2 Modelo de Dados (SQLite)
-- `employees`: `id, nome, cpf, cargo, salario_base, jornada, data_admissao, status, dependentes, created_at, updated_at`.
-- `contract_changes`: `id, employee_id, tipo_alteracao, descricao, salario_anterior, novo_salario, cargo_anterior, novo_cargo, data_alteracao, created_at`.
-- `leaves`: `id, employee_id, tipo, data_inicio, data_fim, motivo, created_at`.
-- `variable_events`: `id, employee_id, competencia, tipo, descricao, quantidade, percentual, valor, created_at`.
-- `payroll_runs`: `id, competencia, tipo, status, total_proventos, total_descontos, total_liquido, total_encargos, created_at, updated_at`.
-- `payroll_items`: `id, payroll_run_id, employee_id, salario_base, horas_extras_total, adicionais_total, faltas_total, desconto_inss, desconto_irrf, outros_descontos, total_proventos, total_descontos, salario_liquido, base_inss, base_fgts, valor_fgts, inss_patronal, detalhes_json, created_at`.
-- `payroll_approval_logs`: `id, payroll_run_id, competencia, usuario, perfil, acao, detalhes, data_hora`.
+### 6.2 Modelo de Dados (PostgreSQL / Multi-inquilino)
+- `employees`: `id, organization_id, nome, cpf, cargo, salario_base, jornada, data_admissao, status, dependentes, created_at, updated_at`.
+- `contract_changes`: `id, organization_id, employee_id, tipo_alteracao, descricao, salario_anterior, novo_salario, cargo_anterior, novo_cargo, data_alteracao, created_at`.
+- `leaves`: `id, organization_id, employee_id, tipo, data_inicio, data_fim, motivo, created_at`.
+- `variable_events`: `id, organization_id, employee_id, competencia, tipo, descricao, quantidade, percentual, valor, created_at`.
+- `payroll_runs`: `id, organization_id, competencia, tipo, status, total_proventos, total_descontos, total_liquido, total_encargos, total_provisoes, created_at, updated_at`.
+- `payroll_items`: `id, organization_id, payroll_run_id, employee_id, salario_base, horas_extras_total, adicionais_total, faltas_total, desconto_inss, desconto_irrf, outros_descontos, total_proventos, total_descontos, salario_liquido, base_inss, base_fgts, valor_fgts, inss_patronal, provisao_13, provisao_ferias, detalhes_json, created_at`.
+- `payroll_approval_logs`: `id, organization_id, payroll_run_id, competencia, usuario, perfil, acao, detalhes, data_hora`.
 - `system_parameters`: `chave, valor, descricao` (tabelas e parâmetros legais fictícios).
 
 ### 6.3 Endpoints da API REST

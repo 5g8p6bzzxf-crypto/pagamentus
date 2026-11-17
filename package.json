@@ -1,18 +1,32 @@
 {
   "name": "item-4-folha-atendimento",
-  "version": "1.0.0",
-  "description": "Item 4 - Módulo de Folha de Pagamento, Empregados e Atendimento (SPEC-4.1)",
-  "main": "server.js",
+  "version": "2.0.0",
+  "description": "Item 4 - Módulo de Folha de Pagamento, Empregados e Atendimento (SPEC-4.1) [TypeScript + PostgreSQL]",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "node test/test_endpoints.js"
+    "dev": "tsx src/server.ts",
+    "build": "tsc && cp -r src/public dist/public",
+    "start": "node dist/server.js",
+    "test": "NODE_ENV=test tsx test/test_endpoints.ts"
   },
-  "keywords": ["folha", "rh", "esocial", "sdd", "sqlite"],
+  "keywords": [
+    "folha",
+    "rh",
+    "esocial",
+    "sdd",
+    "postgresql",
+    "typescript"
+  ],
   "author": "Douglas",
   "license": "ISC",
   "dependencies": {
-    "better-sqlite3": "^13.1.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
     "dotenv": "^18.0.10",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   }
 }
