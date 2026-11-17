@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Revisando |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/gKDxt3kn | Revisando |
 
 ## 1. Contexto e objetivo
 Estabelecer o esquema inicial do banco de dados relacional e as regras de integridade estruturais, garantindo a prevenção contra duplicidade, perda de dados e inconsistências em lançamentos. A especificação assegura que todas as operações no banco utilizem transações atômicas (ACID), chaves primárias/estrangeiras e restrições de unicidade/checagem para que falhas parciais não deixem dados corrompidos ou incompletos.
