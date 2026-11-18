@@ -46,12 +46,12 @@ Estabelecer o controle de acesso baseado no princípio do menor privilégio, a s
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.5-perfis-permissoes-isolamento` a partir da `main`
-- [ ] Implementar modelo e repositório de isolamento de dados de clientes e autorizações expressas (CA-1 e CA-2)
-- [ ] Implementar validação de segregação entre clientes e checagem de menor privilégio por ação (CA-1, CA-2 e CA-3)
-- [ ] Implementar criptografia de dados sensíveis armazenados, proteção de segredos e validação de TLS (CA-4)
-- [ ] Expor rotas e middlewares de controle de acesso, isolamento entre clientes e criptografia
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Implementar modelo e repositório de isolamento de dados de clientes e autorizações expressas (CA-1 e CA-2)
+- [x] Implementar validação de segregação entre clientes e checagem de menor privilégio por ação (CA-1, CA-2 e CA-3)
+- [x] Implementar criptografia de dados sensíveis armazenados, proteção de segredos e validação de TLS (CA-4)
+- [x] Expor rotas e middlewares de controle de acesso, isolamento entre clientes e criptografia
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -70,7 +70,9 @@ Estabelecer o controle de acesso baseado no princípio do menor privilégio, a s
    - Persistir um registro com dado sensível e verificar no armazenamento interno que o valor gravado está cifrado (não legível em texto puro) e que é decifrado corretamente apenas para quem tem permissão e acesso ao cliente; verificar rejeição de requisição insegura quando TLS é exigido.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/003_isolamento_clientes_seguranca.sql`
+- Modelos, Repositório, Serviços, Controller e Rotas: `src/models/IsolamentoClienteModel.ts`, `src/repositories/IsolamentoClienteRepository.ts`, `src/services/CriptografiaSegurancaService.ts`, `src/services/IsolamentoClienteService.ts`, `src/controllers/IsolamentoClienteController.ts`, `src/routes/isolamentoClienteRoutes.ts`
+- Suíte de testes automatizados (`tests/isolamentoClientesSeguranca.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/isolamentoClientesSeguranca.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
