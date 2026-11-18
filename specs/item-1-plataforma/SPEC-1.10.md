@@ -43,12 +43,12 @@ Disponibilizar a configuração segura de integrações externas e internas por 
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.10-credenciais-tokens-integracao` a partir da `main`
-- [ ] Criar migração SQL e modelos para credenciais protegidas e tokens de integração com escopo mínimo
-- [ ] Implementar repositório e serviço de armazenamento protegido de credenciais e emissão de tokens com escopo mínimo (CA-1, CA-2 e CA-4)
-- [ ] Implementar rotação e revogação imediata de tokens/credenciais (CA-3)
-- [ ] Expor controller e rotas Express para gestão e validação de credenciais e tokens de integração
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar migração SQL e modelos para credenciais protegidas e tokens de integração com escopo mínimo
+- [x] Implementar repositório e serviço de armazenamento protegido de credenciais e emissão de tokens com escopo mínimo (CA-1, CA-2 e CA-4)
+- [x] Implementar rotação e revogação imediata de tokens/credenciais (CA-3)
+- [x] Expor controller e rotas Express para gestão e validação de credenciais e tokens de integração
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -65,7 +65,9 @@ Disponibilizar a configuração segura de integrações externas e internas por 
    - Rotacionar um token ativo e confirmar que o token antigo passa a retornar 401 e o novo funciona; revogar o token e confirmar recusa imediata (401).
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/008_credenciais_tokens_integracao.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/CredencialTokenIntegracaoModel.ts`, `src/repositories/CredencialTokenIntegracaoRepository.ts`, `src/services/CredencialTokenIntegracaoService.ts`, `src/controllers/CredencialTokenIntegracaoController.ts`, `src/routes/credencialTokenIntegracaoRoutes.ts`
+- Suíte de testes automatizados (`tests/credenciaisTokensIntegracao.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/credenciaisTokensIntegracao.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
