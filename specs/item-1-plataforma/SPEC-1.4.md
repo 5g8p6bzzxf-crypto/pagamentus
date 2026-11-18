@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/mraVbqk1 | Revisando |
 
 ## 1. Contexto e objetivo
 Prover os mecanismos de administração de usuários, perfis, permissões, autenticação multifator (MFA) e controle de sessões ativas. A especificação garante a segurança no acesso ao sistema por meio da aplicação de política de senhas fortes, exigência de MFA para perfis privilegiados, limitação/bloqueio de tentativas de login malsucedidas e capacidade de encerramento de sessões ativas.
