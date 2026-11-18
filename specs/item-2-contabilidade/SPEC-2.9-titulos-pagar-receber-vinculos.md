@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/TeTxvWKP | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define o cadastro de **títulos a pagar e a receber** com suas **parcelas, vencimentos, fornecedores/clientes, condições de pagamento e categorias**, bem como o registro de **anexos e vínculos** entre cada título, documento fiscal, lançamento contábil e comprovante. O objetivo é garantir rastreabilidade entre o contas a pagar/receber e os registros fiscais e contábeis da empresa.
@@ -50,12 +50,12 @@ Esta especificação define o cadastro de **títulos a pagar e a receber** com s
 - **Testes (`tests/titulosPagarReceberVinculos.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/TituloFinanceiroModel.ts`.
-- [ ] Criar repositório em `src/repositories/TituloFinanceiroRepository.ts`.
-- [ ] Implementar `TituloFinanceiroService` em `src/services/TituloFinanceiroService.ts`.
-- [ ] Implementar `TituloFinanceiroController` e `tituloFinanceiroRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/titulosPagarReceberVinculos.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/TituloFinanceiroModel.ts`.
+- [x] Criar repositório em `src/repositories/TituloFinanceiroRepository.ts`.
+- [x] Implementar `TituloFinanceiroService` em `src/services/TituloFinanceiroService.ts`.
+- [x] Implementar `TituloFinanceiroController` e `tituloFinanceiroRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/titulosPagarReceberVinculos.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.2` – Lançamentos contábeis (`ILancamentoContabilRepository` para validação de vínculo com lançamento existente).
@@ -65,7 +65,9 @@ Esta especificação define o cadastro de **títulos a pagar e a receber** com s
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/TituloFinanceiroModel.ts`, `src/repositories/TituloFinanceiroRepository.ts`, `src/services/TituloFinanceiroService.ts`, `src/controllers/TituloFinanceiroController.ts` e `src/routes/tituloFinanceiroRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/titulosPagarReceberVinculos.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
