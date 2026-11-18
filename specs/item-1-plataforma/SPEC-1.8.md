@@ -43,12 +43,12 @@ Permitir anexar e controlar a validade de documentos vinculados ao cadastro de p
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.8-anexos-cadastrais-validade` a partir da `main`
-- [ ] Criar migração SQL e modelos para anexos cadastrais e alertas de validade
-- [ ] Implementar repositório e serviço de anexação de documentos e cálculo de validade (CA-1 e CA-4)
-- [ ] Implementar classificação e consulta de alertas para documentos vencidos e a vencer (CA-2 e CA-3)
-- [ ] Expor controller e rotas Express para anexos cadastrais e alertas de validade
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar migração SQL e modelos para anexos cadastrais e alertas de validade
+- [x] Implementar repositório e serviço de anexação de documentos e cálculo de validade (CA-1 e CA-4)
+- [x] Implementar classificação e consulta de alertas para documentos vencidos e a vencer (CA-2 e CA-3)
+- [x] Expor controller e rotas Express para anexos cadastrais e alertas de validade
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -67,7 +67,9 @@ Permitir anexar e controlar a validade de documentos vinculados ao cadastro de p
    - Tentar anexar documento sem nome de arquivo, com tipo inválido ou data inválida e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/006_anexos_cadastrais_validade.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AnexoCadastralModel.ts`, `src/repositories/AnexoCadastralRepository.ts`, `src/services/AnexoCadastralService.ts`, `src/controllers/AnexoCadastralController.ts`, `src/routes/anexoCadastralRoutes.ts`
+- Suíte de testes automatizados (`tests/anexosCadastraisValidade.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/anexosCadastraisValidade.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*

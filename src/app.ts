@@ -41,6 +41,11 @@ import { EstabelecimentoSocioResponsavelService } from './services/Estabelecimen
 import { EstabelecimentoSocioResponsavelController } from './controllers/EstabelecimentoSocioResponsavelController';
 import { criarEstabelecimentoSocioResponsavelRouter } from './routes/estabelecimentoSocioResponsavelRoutes';
 
+import { InMemoryAnexoCadastralRepository } from './repositories/AnexoCadastralRepository';
+import { AnexoCadastralService } from './services/AnexoCadastralService';
+import { AnexoCadastralController } from './controllers/AnexoCadastralController';
+import { criarAnexoCadastralRouter } from './routes/anexoCadastralRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -64,6 +69,8 @@ export function criarApp(): {
   pessoaEmpresaService: PessoaEmpresaService;
   estabelecimentoSocioRepo: InMemoryEstabelecimentoSocioResponsavelRepository;
   estabelecimentoSocioService: EstabelecimentoSocioResponsavelService;
+  anexoCadastralRepo: InMemoryAnexoCadastralRepository;
+  anexoCadastralService: AnexoCadastralService;
 } {
   const app = express();
 
@@ -127,6 +134,11 @@ export function criarApp(): {
     estabelecimentoSocioService
   );
 
+  // 9. Módulo Anexos Cadastrais com Controle de Validade e Alertas (SPEC-1.8)
+  const anexoCadastralRepo = new InMemoryAnexoCadastralRepository();
+  const anexoCadastralService = new AnexoCadastralService(anexoCadastralRepo);
+  const anexoCadastralController = new AnexoCadastralController(anexoCadastralService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -136,6 +148,7 @@ export function criarApp(): {
   app.use('/api', criarIsolamentoClienteRouter(isolamentoController, authController));
   app.use('/api', criarPessoaEmpresaRouter(pessoaEmpresaController));
   app.use('/api', criarEstabelecimentoSocioResponsavelRouter(estabelecimentoSocioController));
+  app.use('/api', criarAnexoCadastralRouter(anexoCadastralController));
 
   return {
     app,
@@ -157,6 +170,8 @@ export function criarApp(): {
     pessoaEmpresaService,
     estabelecimentoSocioRepo,
     estabelecimentoSocioService,
+    anexoCadastralRepo,
+    anexoCadastralService,
   };
 }
 
