@@ -70,6 +70,7 @@ Disponibilizar o cadastro estruturado de clientes e entidades como Pessoa Físic
    - Tentar registrar dados fiscais com `vigenciaFim` anterior a `vigenciaInicio` e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/17
 - Migração SQL: `src/database/migrations/004_cadastro_pessoas_empresas.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/PessoaEmpresaModel.ts`, `src/repositories/PessoaEmpresaRepository.ts`, `src/services/PessoaEmpresaService.ts`, `src/controllers/PessoaEmpresaController.ts`, `src/routes/pessoaEmpresaRoutes.ts`
 - Suíte de testes automatizados (`tests/cadastroPessoasEmpresas.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/cadastroPessoasEmpresas.test.ts`).
