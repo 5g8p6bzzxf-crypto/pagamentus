@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/haic1hl2 | Revisando |
 
 ## 1. Contexto e objetivo
 Estabelecer as diretrizes documentais e os fluxos operacionais de conformidade com a Lei Geral de Proteção de Dados (LGPD) para o sistema, definindo finalidade, base legal, minimização de dados, direitos dos titulares, regras de contratos com operadores, prazos de retenção e descarte, além do registro de incidentes e do atendimento às solicitações de titulares conforme procedimento aprovado.
