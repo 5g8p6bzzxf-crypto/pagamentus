@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/7OqfFmVW | Revisando |
 
 ## 1. Contexto e objetivo
 Disponibilizar a configuração segura de integrações externas e internas por meio do armazenamento protegido de credenciais, emissão de tokens de integração com escopo mínimo necessário e suporte a rotação e revogação imediata de credenciais/tokens.
