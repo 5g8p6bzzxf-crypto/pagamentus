@@ -80,6 +80,10 @@ import { criarRelatorioContabilRouter } from './routes/relatorioContabilRoutes';
 import { DemonstracaoContabilService } from './services/DemonstracaoContabilService';
 import { DemonstracaoContabilController } from './controllers/DemonstracaoContabilController';
 import { criarDemonstracaoContabilRouter } from './routes/demonstracaoContabilRoutes';
+import { InMemoryTituloFinanceiroRepository } from './repositories/TituloFinanceiroRepository';
+import { TituloFinanceiroService } from './services/TituloFinanceiroService';
+import { TituloFinanceiroController } from './controllers/TituloFinanceiroController';
+import { criarTituloFinanceiroRouter } from './routes/tituloFinanceiroRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -119,6 +123,8 @@ export function criarApp(): {
   centroCustoService: CentroCustoComparativoService;
   relatorioContabilService: RelatorioContabilService;
   demonstracaoContabilService: DemonstracaoContabilService;
+  tituloFinanceiroRepo: InMemoryTituloFinanceiroRepository;
+  tituloFinanceiroService: TituloFinanceiroService;
 } {
   const app = express();
 
@@ -251,6 +257,16 @@ export function criarApp(): {
     demonstracaoContabilService
   );
 
+  // 18. Módulo Títulos a Pagar e a Receber e Vínculos (SPEC-2.9)
+  const tituloFinanceiroRepo = new InMemoryTituloFinanceiroRepository();
+  const tituloFinanceiroService = new TituloFinanceiroService(
+    tituloFinanceiroRepo,
+    lancamentoRepo
+  );
+  const tituloFinanceiroController = new TituloFinanceiroController(
+    tituloFinanceiroService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -269,6 +285,7 @@ export function criarApp(): {
   app.use('/api', criarCentroCustoComparativoRouter(centroCustoController));
   app.use('/api', criarRelatorioContabilRouter(relatorioContabilController));
   app.use('/api', criarDemonstracaoContabilRouter(demonstracaoContabilController));
+  app.use('/api', criarTituloFinanceiroRouter(tituloFinanceiroController));
 
   return {
     app,
@@ -305,6 +322,8 @@ export function criarApp(): {
     centroCustoService,
     relatorioContabilService,
     demonstracaoContabilService,
+    tituloFinanceiroRepo,
+    tituloFinanceiroService,
   };
 }
 
