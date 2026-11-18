@@ -61,6 +61,7 @@ Estabelecer as diretrizes documentais e os fluxos operacionais de conformidade c
    - Registrar um incidente de privacidade via `POST /api/lgpd/incidentes` e verificar consulta e recusa de dados inválidos.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/22
 - Documentação LGPD: `docs/privacidade/LGPD-politica-e-procedimentos.md`
 - Migração SQL: `src/database/migrations/009_lgpd_solicitacoes_incidentes.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/LgpdPrivacidadeModel.ts`, `src/repositories/LgpdPrivacidadeRepository.ts`, `src/services/LgpdPrivacidadeService.ts`, `src/controllers/LgpdPrivacidadeController.ts`, `src/routes/lgpdPrivacidadeRoutes.ts`
