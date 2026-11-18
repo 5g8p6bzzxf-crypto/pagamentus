@@ -63,6 +63,7 @@ Estabelecer os mecanismos e documentos operacionais de backup automático cripto
    - Verificar a existência de `docs/operacao/plano-continuidade-e-incidentes.md` e a presença das seções de RPO/RTO, resposta a incidentes, recuperação de desastre e comunicação com clientes.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/23
 - Plano de Continuidade e Incidentes: `docs/operacao/plano-continuidade-e-incidentes.md`
 - Migração SQL: `src/database/migrations/010_backup_recuperacao_continuidade.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/BackupRecuperacaoModel.ts`, `src/repositories/BackupRecuperacaoRepository.ts`, `src/services/BackupRecuperacaoService.ts`, `src/controllers/BackupRecuperacaoController.ts`, `src/routes/backupRecuperacaoRoutes.ts`
