@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/p7KBPr9c | Revisando |
 
 ## 1. Contexto e objetivo
 Estabelecer os mecanismos e documentos operacionais de backup automático criptografado, testes periódicos de restauração com registro de evidências, definição de RPO/RTO e o plano formal de continuidade de negócios, resposta a incidentes, recuperação de desastres e comunicação com clientes.
