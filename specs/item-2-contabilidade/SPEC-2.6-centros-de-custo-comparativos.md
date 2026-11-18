@@ -66,6 +66,7 @@ Permitir o cadastro e a manutenção de dimensões gerenciais por empresa — ce
 4. **Validações de Erro (CA-4):** Tentar cadastrar código duplicado, associar centro de custo inexistente no lançamento ou omitir um período no comparativo e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/26
 - Modelos e Repositório: `src/models/CentroCustoModel.ts`, `src/repositories/CentroCustoRepository.ts`
 - Serviço, Controller, Rotas e Integração: `src/services/CentroCustoComparativoService.ts`, `src/controllers/CentroCustoComparativoController.ts`, `src/routes/centroCustoComparativoRoutes.ts`, `src/services/LancamentoContabilService.ts`
 - Suíte de testes automatizados (`tests/centrosCustoComparativos.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/centrosCustoComparativos.test.ts`).

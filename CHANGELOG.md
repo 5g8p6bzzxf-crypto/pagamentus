@@ -20,7 +20,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.3] Recorrentes, rateios, provisões e estornos (PR #12, Ítalo Natam): Modelos de lançamentos recorrentes, rateios proporcionais e estornos com rastreabilidade ao lançamento de origem (RF-009).
 - [SPEC-2.4] Importação de lançamentos (PR #12, Ítalo Natam): Importação de lançamentos em lote por planilha com pré-validação, relatório de erros por linha e opção de desfazer lote (RF-010).
 - [SPEC-2.5] Períodos contábeis (PR #25, Ítalo Natam): Controle de períodos contábeis abertos, em fechamento e encerrados com bloqueio e reabertura mediante permissão, justificativa e auditoria (RF-012, RB-002).
-- [SPEC-2.6] Centros de custo e comparativos (Ítalo Natam): Cadastro de centros de custo, departamentos, projetos e unidades, associação a lançamentos e comparativo entre dois períodos (RF-014).
+- [SPEC-2.6] Centros de custo e comparativos (PR #26, Ítalo Natam): Cadastro de centros de custo, departamentos, projetos e unidades, associação a lançamentos e comparativo entre dois períodos (RF-014).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
