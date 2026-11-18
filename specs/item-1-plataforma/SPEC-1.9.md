@@ -67,6 +67,7 @@ Prover a trilha de auditoria imutável para operações relevantes do sistema (i
    - Tentar registrar uma alteração, exclusão lógica ou estorno sem justificativa ou sem usuário responsável e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/20
 - Migração SQL: `src/database/migrations/007_auditoria_historico_cadastral.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AuditoriaHistoricoModel.ts`, `src/repositories/AuditoriaHistoricoRepository.ts`, `src/services/AuditoriaHistoricoService.ts`, `src/controllers/AuditoriaHistoricoController.ts`, `src/routes/auditoriaHistoricoRoutes.ts`
 - Suíte de testes automatizados (`tests/auditoriaHistoricoCadastral.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/auditoriaHistoricoCadastral.test.ts`).
