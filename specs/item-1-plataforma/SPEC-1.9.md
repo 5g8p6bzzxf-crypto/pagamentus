@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/XvoCa5RL | Revisando |
 
 ## 1. Contexto e objetivo
 Prover a trilha de auditoria imutável para operações relevantes do sistema (inclusão, alteração, exclusão lógica, estorno e aprovação) e o histórico de alterações cadastrais contendo o usuário responsável, data/horário, objeto afetado, resultado e justificativa. A especificação garante que correções sejam rastreáveis preservando registros históricos e que os logs de auditoria sejam protegidos contra edição ou exclusão indevida.
