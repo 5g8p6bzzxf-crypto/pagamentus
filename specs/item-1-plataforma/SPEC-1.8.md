@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/pp9KANUa | Revisando |
 
 ## 1. Contexto e objetivo
 Permitir anexar e controlar a validade de documentos vinculados ao cadastro de pessoas e empresas, tais como contrato social, procurações, documentos cadastrais, certificados e outros arquivos. A especificação garante o acompanhamento do ciclo de validade dos anexos e a geração de alertas para documentos vencidos ou próximos do vencimento (a vencer).
