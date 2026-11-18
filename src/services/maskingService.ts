@@ -15,6 +15,7 @@ const SENSITIVE_MONEY_FIELDS = new Set([
   'salario_base', 'salariobase', 'salarioBase',
   'novo_salario', 'novosalario', 'novoSalario',
   'salario_anterior', 'salarioanterior', 'salarioAnterior',
+  'desconto_empregado', 'descontoempregado', 'descontoEmpregado',
   'valor', 'val', 'vrSalFx', 'vrRubr',
   'total_proventos', 'totalproventos', 'totalProventos',
   'total_descontos', 'totaldescontos', 'totalDescontos',

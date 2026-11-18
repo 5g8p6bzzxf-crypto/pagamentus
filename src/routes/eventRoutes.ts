@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { query } from '../db/database';
 import { maskObject } from '../services/maskingService';
+import { isNonNegativeNumber, isPositiveInteger, isValidCompetence } from '../services/rf053Validation';
 import { Employee } from '../types';
 
 const router = Router();
@@ -14,7 +15,7 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
     let sql = `
       SELECT v.*, e.nome as employee_nome, e.cargo as employee_cargo
       FROM variable_events v
-      JOIN employees e ON v.employee_id = e.id
+      JOIN employees e ON v.employee_id = e.id AND v.organization_id = e.organization_id
       WHERE v.organization_id = $1
     `;
     const params: any[] = [orgId];
@@ -41,16 +42,41 @@ router.get('/', async (req: Request, res: Response): Promise<void> => {
 router.post('/', async (req: Request, res: Response): Promise<void> => {
   try {
     const orgId = req.organizationId || 1;
-    const { employee_id, competencia, tipo, descricao, quantidade, percentual, valor } = req.body;
+    const {
+      employee_id,
+      competencia,
+      tipo,
+      descricao,
+      quantidade = 0,
+      percentual = 0,
+      valor
+    } = req.body;
+    const amount = Number(valor);
+    const quantity = Number(quantidade);
+    const percentage = Number(percentual);
 
-    if (!employee_id || !competencia || !tipo || valor === undefined) {
-      res.status(400).json({ error: 'Empregado, competência, tipo e valor são obrigatórios.' });
+    if (valor === undefined || valor === null || valor === ''
+      || !isPositiveInteger(Number(employee_id))
+      || !isValidCompetence(competencia)
+      || typeof tipo !== 'string'
+      || !tipo.trim()
+      || tipo.trim().length > 50
+      || !Number.isFinite(amount)
+      || !isNonNegativeNumber(amount)
+      || amount > 9999999999.99
+      || !Number.isFinite(quantity)
+      || !isNonNegativeNumber(quantity)
+      || quantity > 9999.99
+      || !Number.isFinite(percentage)
+      || !isNonNegativeNumber(percentage)
+      || percentage > 9999.99) {
+      res.status(400).json({ error: 'Empregado, competência e valores válidos são obrigatórios.' });
       return;
     }
 
     const empRes = await query<Employee>(
       'SELECT id, nome, salario_base, jornada FROM employees WHERE organization_id = $1 AND id = $2',
-      [orgId, employee_id]
+      [orgId, Number(employee_id)]
     );
 
     if (empRes.rows.length === 0) {
@@ -59,18 +85,18 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
     }
 
     const emp = empRes.rows[0];
-    let calculatedValue = Number(valor);
+    let calculatedValue = amount;
 
-    if (calculatedValue === 0 && quantidade > 0) {
+    if (calculatedValue === 0 && quantity > 0) {
       const divisor = emp.jornada.includes('40h') ? 200 : 220;
       const valorHora = parseFloat(String(emp.salario_base)) / divisor;
 
       if (tipo === 'hora_extra') {
-        const fator = 1 + ((Number(percentual) || 50) / 100);
-        calculatedValue = Number((valorHora * fator * Number(quantidade)).toFixed(2));
+        const fator = 1 + ((percentage || 50) / 100);
+        calculatedValue = Number((valorHora * fator * quantity).toFixed(2));
       } else if (tipo === 'falta') {
         const valorDia = parseFloat(String(emp.salario_base)) / 30;
-        calculatedValue = Number((valorDia * Number(quantidade)).toFixed(2));
+        calculatedValue = Number((valorDia * quantity).toFixed(2));
       }
     }
 
@@ -80,12 +106,12 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
       RETURNING *
     `, [
       orgId,
-      employee_id,
-      competencia.trim(),
+      Number(employee_id),
+      competencia,
       tipo.trim(),
-      descricao ? descricao.trim() : `${tipo} - ${quantidade || ''}`,
-      Number(quantidade) || 0,
-      Number(percentual) || 0,
+      descricao ? String(descricao).trim() : `${tipo} - ${quantity || ''}`,
+      quantity,
+      percentage,
       calculatedValue
     ]);
 
@@ -94,6 +120,14 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
 
     res.status(201).json(maskObject(created, req.isRhAdmin));
   } catch (error: any) {
+    if (error.code === '23503') {
+      res.status(404).json({ error: 'Empregado não encontrado nesta organização.' });
+      return;
+    }
+    if (error.code === '23514') {
+      res.status(400).json({ error: 'O evento viola uma regra de validação.' });
+      return;
+    }
     res.status(500).json({ error: error.message });
   }
 });
@@ -124,7 +158,7 @@ router.get('/leaves', async (req: Request, res: Response): Promise<void> => {
     const result = await query(`
       SELECT l.*, e.nome as employee_nome, e.cargo as employee_cargo
       FROM leaves l
-      JOIN employees e ON l.employee_id = e.id
+      JOIN employees e ON l.employee_id = e.id AND l.organization_id = e.organization_id
       WHERE l.organization_id = $1
       ORDER BY l.data_inicio DESC
     `, [orgId]);
@@ -141,7 +175,7 @@ router.get('/contract-changes', async (req: Request, res: Response): Promise<voi
     const result = await query(`
       SELECT cc.*, e.nome as employee_nome
       FROM contract_changes cc
-      JOIN employees e ON cc.employee_id = e.id
+      JOIN employees e ON cc.employee_id = e.id AND cc.organization_id = e.organization_id
       WHERE cc.organization_id = $1
       ORDER BY cc.data_alteracao DESC
     `, [orgId]);

@@ -13,6 +13,8 @@ export interface Employee {
   cargo: string;
   salario_base: number | string;
   jornada: string;
+  departamento?: string | null;
+  regime_contratual?: string | null;
   data_admissao: string;
   status: 'ativo' | 'afastado' | 'inativo';
   dependentes: number;
@@ -30,6 +32,12 @@ export interface ContractChange {
   novo_salario?: number | string | null;
   cargo_anterior?: string | null;
   novo_cargo?: string | null;
+  jornada_anterior?: string | null;
+  nova_jornada?: string | null;
+  departamento_anterior?: string | null;
+  novo_departamento?: string | null;
+  regime_anterior?: string | null;
+  novo_regime?: string | null;
   data_alteracao: string;
   created_at?: string;
 }
