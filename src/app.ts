@@ -46,6 +46,11 @@ import { AnexoCadastralService } from './services/AnexoCadastralService';
 import { AnexoCadastralController } from './controllers/AnexoCadastralController';
 import { criarAnexoCadastralRouter } from './routes/anexoCadastralRoutes';
 
+import { InMemoryAuditoriaHistoricoRepository } from './repositories/AuditoriaHistoricoRepository';
+import { AuditoriaHistoricoService } from './services/AuditoriaHistoricoService';
+import { AuditoriaHistoricoController } from './controllers/AuditoriaHistoricoController';
+import { criarAuditoriaHistoricoRouter } from './routes/auditoriaHistoricoRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -71,6 +76,8 @@ export function criarApp(): {
   estabelecimentoSocioService: EstabelecimentoSocioResponsavelService;
   anexoCadastralRepo: InMemoryAnexoCadastralRepository;
   anexoCadastralService: AnexoCadastralService;
+  auditoriaRepo: InMemoryAuditoriaHistoricoRepository;
+  auditoriaService: AuditoriaHistoricoService;
 } {
   const app = express();
 
@@ -139,6 +146,11 @@ export function criarApp(): {
   const anexoCadastralService = new AnexoCadastralService(anexoCadastralRepo);
   const anexoCadastralController = new AnexoCadastralController(anexoCadastralService);
 
+  // 10. Módulo Auditoria e Histórico Cadastral Imutável (SPEC-1.9)
+  const auditoriaRepo = new InMemoryAuditoriaHistoricoRepository();
+  const auditoriaService = new AuditoriaHistoricoService(auditoriaRepo);
+  const auditoriaController = new AuditoriaHistoricoController(auditoriaService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -149,6 +161,7 @@ export function criarApp(): {
   app.use('/api', criarPessoaEmpresaRouter(pessoaEmpresaController));
   app.use('/api', criarEstabelecimentoSocioResponsavelRouter(estabelecimentoSocioController));
   app.use('/api', criarAnexoCadastralRouter(anexoCadastralController));
+  app.use('/api', criarAuditoriaHistoricoRouter(auditoriaController));
 
   return {
     app,
@@ -172,6 +185,8 @@ export function criarApp(): {
     estabelecimentoSocioService,
     anexoCadastralRepo,
     anexoCadastralService,
+    auditoriaRepo,
+    auditoriaService,
   };
 }
 
