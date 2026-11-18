@@ -65,6 +65,7 @@ Esta especificação complementa a `SPEC-2.9` e define o controle de **pagamento
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/30
 - Modelos, repositório, serviço, controller e rotas em `src/models/BaixaTituloModel.ts`, `src/repositories/BaixaTituloRepository.ts`, `src/services/BaixaTituloService.ts`, `src/controllers/BaixaTituloController.ts` e `src/routes/baixaTituloRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/baixasJurosInadimplencia.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
