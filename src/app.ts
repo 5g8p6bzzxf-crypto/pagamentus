@@ -74,6 +74,9 @@ import { InMemoryCentroCustoRepository } from './repositories/CentroCustoReposit
 import { CentroCustoComparativoService } from './services/CentroCustoComparativoService';
 import { CentroCustoComparativoController } from './controllers/CentroCustoComparativoController';
 import { criarCentroCustoComparativoRouter } from './routes/centroCustoComparativoRoutes';
+import { RelatorioContabilService } from './services/RelatorioContabilService';
+import { RelatorioContabilController } from './controllers/RelatorioContabilController';
+import { criarRelatorioContabilRouter } from './routes/relatorioContabilRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -111,6 +114,7 @@ export function criarApp(): {
   periodoContabilService: PeriodoContabilService;
   centroCustoRepo: InMemoryCentroCustoRepository;
   centroCustoService: CentroCustoComparativoService;
+  relatorioContabilService: RelatorioContabilService;
 } {
   const app = express();
 
@@ -225,6 +229,15 @@ export function criarApp(): {
   );
   const centroCustoController = new CentroCustoComparativoController(centroCustoService);
 
+  // 16. Módulo Balancete, Razão, Diário e Relatório Auxiliar (SPEC-2.7)
+  const relatorioContabilService = new RelatorioContabilService(
+    lancamentoRepo,
+    planoContasRepo
+  );
+  const relatorioContabilController = new RelatorioContabilController(
+    relatorioContabilService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -241,6 +254,7 @@ export function criarApp(): {
   app.use('/api', criarBackupRecuperacaoRouter(backupController));
   app.use('/api', criarPeriodoContabilRouter(periodoContabilController));
   app.use('/api', criarCentroCustoComparativoRouter(centroCustoController));
+  app.use('/api', criarRelatorioContabilRouter(relatorioContabilController));
 
   return {
     app,
@@ -275,6 +289,7 @@ export function criarApp(): {
     periodoContabilService,
     centroCustoRepo,
     centroCustoService,
+    relatorioContabilService,
   };
 }
 
