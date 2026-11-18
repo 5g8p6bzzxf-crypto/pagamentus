@@ -23,6 +23,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.6] Centros de custo e comparativos (PR #26, Ítalo Natam): Cadastro de centros de custo, departamentos, projetos e unidades, associação a lançamentos e comparativo entre dois períodos (RF-014).
 - [SPEC-2.7] Balancete, razão e diário (PR #27, Ítalo Natam): Geração de Balancete de Verificação, Livro Razão, Livro Diário e relatório auxiliar consistentes com os lançamentos (RF-013).
 - [SPEC-2.8] Balanço, DRE, DFC e DMPL (PR #28, Ítalo Natam): Geração de Balanço Patrimonial, DRE, DFC e DMPL/DLPA consistentes a partir do mesmo cenário contábil (RF-013).
+- [SPEC-2.9] Títulos a pagar e a receber e vínculos (PR #29, Ítalo Natam): Cadastro de títulos, parcelas, vencimentos, fornecedores/clientes, categorias, condições de pagamento e vínculos com documento fiscal, lançamento contábil, comprovante e anexos (RF-046, RF-050).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
