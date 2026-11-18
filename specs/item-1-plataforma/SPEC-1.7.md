@@ -67,6 +67,7 @@ Permitir o cadastro e a gestão de múltiplos estabelecimentos (matriz e filiais
    - Tentar cadastrar filial, sócio ou responsável técnico duplicado na mesma organização ou sem os campos obrigatórios e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/18
 - Migração SQL: `src/database/migrations/005_estabelecimentos_socios_responsaveis.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/EstabelecimentoSocioResponsavelModel.ts`, `src/repositories/EstabelecimentoSocioResponsavelRepository.ts`, `src/services/EstabelecimentoSocioResponsavelService.ts`, `src/controllers/EstabelecimentoSocioResponsavelController.ts`, `src/routes/estabelecimentoSocioResponsavelRoutes.ts`
 - Suíte de testes automatizados (`tests/estabelecimentosSociosResponsaveis.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/estabelecimentosSociosResponsaveis.test.ts`).
