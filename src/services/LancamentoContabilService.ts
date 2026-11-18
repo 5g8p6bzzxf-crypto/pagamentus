@@ -43,25 +43,22 @@ export class LancamentoContabilService {
 
     // 2.1 Validação opcional de centro de custo cadastrado e ativo (SPEC-2.6 / RF-014)
     if (this.centroCustoRepo) {
-      const dimensoesEmpresa = await this.centroCustoRepo.listarPorEmpresa(dto.empresaId);
-      if (dimensoesEmpresa.length > 0) {
-        const validarCc = async (ccId: string) => {
-          const dimensao = await this.centroCustoRepo!.buscarPorId(ccId);
-          if (!dimensao || dimensao.empresaId !== dto.empresaId) {
-            throw new Error(`Centro de custo '${ccId}' não encontrado para a empresa.`);
-          }
-          if (!dimensao.ativo) {
-            throw new Error(`Centro de custo '${dimensao.codigo}' está inativo.`);
-          }
-        };
-
-        if (dto.centroCustoId) {
-          await validarCc(dto.centroCustoId);
+      const validarCc = async (ccId: string) => {
+        const dimensao = await this.centroCustoRepo!.buscarPorId(ccId);
+        if (!dimensao || dimensao.empresaId !== dto.empresaId) {
+          throw new Error(`Centro de custo '${ccId}' não encontrado para a empresa.`);
         }
-        for (const partida of dto.partidas) {
-          if (partida.centroCustoId) {
-            await validarCc(partida.centroCustoId);
-          }
+        if (!dimensao.ativo) {
+          throw new Error(`Centro de custo '${dimensao.codigo}' está inativo.`);
+        }
+      };
+
+      if (dto.centroCustoId) {
+        await validarCc(dto.centroCustoId);
+      }
+      for (const partida of dto.partidas) {
+        if (partida.centroCustoId) {
+          await validarCc(partida.centroCustoId);
         }
       }
     }

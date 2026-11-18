@@ -249,5 +249,24 @@ describe('SPEC-2.6: Centros de custo e comparativos (RF-014)', () => {
       );
       expect(compInvalido.status).toBe(400);
     });
+
+    it('deve recusar centro de custo inexistente mesmo quando a empresa ainda não possui centros de custo cadastrados', async () => {
+      const res = await request(app)
+        .post(`/api/empresas/${empresaFicticiaId}/lancamentos`)
+        .send({
+          dataLancamento: '2026-11-18',
+          competencia: '2026-11',
+          historico: 'Tentativa CC sem nenhum cadastro prévio',
+          documentoOrigem: 'DOC-ERR-SEM-CC',
+          centroCustoId: 'cc-inexistente-sem-cadastro',
+          partidas: [
+            { contaId: contaDespesaId, tipo: 'DEBITO', valor: 100 },
+            { contaId: contaCaixaId, tipo: 'CREDITO', valor: 100 },
+          ],
+        });
+
+      expect(res.status).toBe(400);
+      expect(res.body.mensagem).toMatch(/não encontrado/i);
+    });
   });
 });
