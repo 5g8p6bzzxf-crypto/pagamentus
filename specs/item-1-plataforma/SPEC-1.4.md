@@ -76,6 +76,7 @@ Prover os mecanismos de administração de usuários, perfis, permissões, auten
    - Testar a atribuição de perfis/permissões e verificar que ações administrativas são permitidas apenas a quem possui a permissão correspondente.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/14
 - Migração SQL: `src/database/migrations/002_auth_mfa_sessions.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AutenticacaoModel.ts`, `src/repositories/AutenticacaoRepository.ts`, `src/services/AutenticacaoService.ts`, `src/controllers/AutenticacaoController.ts`, `src/routes/autenticacaoRoutes.ts`
 - Suíte de testes automatizados (`tests/autenticacaoMfaSessoes.test.ts`): 7 testes aprovados cobrindo integralmente CA-1 a CA-5 (`PASS tests/autenticacaoMfaSessoes.test.ts`).
