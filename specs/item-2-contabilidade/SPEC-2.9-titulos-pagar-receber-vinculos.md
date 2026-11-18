@@ -65,6 +65,7 @@ Esta especificação define o cadastro de **títulos a pagar e a receber** com s
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/29
 - Modelos, repositório, serviço, controller e rotas em `src/models/TituloFinanceiroModel.ts`, `src/repositories/TituloFinanceiroRepository.ts`, `src/services/TituloFinanceiroService.ts`, `src/controllers/TituloFinanceiroController.ts` e `src/routes/tituloFinanceiroRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/titulosPagarReceberVinculos.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
