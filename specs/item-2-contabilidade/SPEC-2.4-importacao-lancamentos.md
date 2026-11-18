@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @italograu17-ai | 4º período | https://trello.com/c/piZHXcEu | Feito |
+| 2 – Contabilidade | @italograu17-ai | 4º período | https://trello.com/c/LYRflCPc | Feito |
 
 ## 1. Contexto e objetivo
 Permitir a importação em lote de lançamentos contábeis a partir de arquivos/planilhas estruturadas, fornecendo rotina de pré-validação antes da gravação definitiva, emissão de relatório detalhado de erros por linha/registro e capacidade de desfazimento (rollback/exclusão) integral de um lote importado.
