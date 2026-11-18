@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/GAZKwOOv | Revisando |
 
 ## 1. Contexto e objetivo
 Permitir o cadastro e a gestão de múltiplos estabelecimentos (matriz e filiais), sócios e responsáveis técnicos vinculados a uma mesma organização. A especificação garante que uma organização possa manter sua estrutura societária, técnica e de unidades operacionais centralizada sob o mesmo vínculo organizacional.
