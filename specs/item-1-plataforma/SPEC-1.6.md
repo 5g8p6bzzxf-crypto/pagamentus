@@ -47,12 +47,12 @@ Disponibilizar o cadastro estruturado de clientes e entidades como Pessoa Físic
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.6-cadastro-pessoas-empresas` a partir da `main`
-- [ ] Criar migração SQL e modelos para cadastro de PF/PJ e dados fiscais com vigência
-- [ ] Implementar repositório e serviço com validação de CPF/CNPJ, inscrições, contatos, endereços e responsáveis (CA-1 e CA-2)
-- [ ] Implementar registro e validação de regime tributário, atividade econômica, CNAE, natureza jurídica, município/UF, enquadramentos e vigência (CA-3 e CA-4)
-- [ ] Expor controller e rotas Express para os cadastros de PF/PJ e dados fiscais
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar migração SQL e modelos para cadastro de PF/PJ e dados fiscais com vigência
+- [x] Implementar repositório e serviço com validação de CPF/CNPJ, inscrições, contatos, endereços e responsáveis (CA-1 e CA-2)
+- [x] Implementar registro e validação de regime tributário, atividade econômica, CNAE, natureza jurídica, município/UF, enquadramentos e vigência (CA-3 e CA-4)
+- [x] Expor controller e rotas Express para os cadastros de PF/PJ e dados fiscais
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -70,7 +70,9 @@ Disponibilizar o cadastro estruturado de clientes e entidades como Pessoa Físic
    - Tentar registrar dados fiscais com `vigenciaFim` anterior a `vigenciaInicio` e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/004_cadastro_pessoas_empresas.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/PessoaEmpresaModel.ts`, `src/repositories/PessoaEmpresaRepository.ts`, `src/services/PessoaEmpresaService.ts`, `src/controllers/PessoaEmpresaController.ts`, `src/routes/pessoaEmpresaRoutes.ts`
+- Suíte de testes automatizados (`tests/cadastroPessoasEmpresas.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/cadastroPessoasEmpresas.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
