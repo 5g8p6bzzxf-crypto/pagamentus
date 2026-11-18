@@ -25,6 +25,12 @@ import { AutenticacaoService } from './services/AutenticacaoService';
 import { AutenticacaoController } from './controllers/AutenticacaoController';
 import { criarAutenticacaoRouter } from './routes/autenticacaoRoutes';
 
+import { InMemoryIsolamentoClienteRepository } from './repositories/IsolamentoClienteRepository';
+import { CriptografiaSegurancaService } from './services/CriptografiaSegurancaService';
+import { IsolamentoClienteService } from './services/IsolamentoClienteService';
+import { IsolamentoClienteController } from './controllers/IsolamentoClienteController';
+import { criarIsolamentoClienteRouter } from './routes/isolamentoClienteRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -41,6 +47,9 @@ export function criarApp(): {
   importacaoService: ImportacaoLancamentosService;
   authRepo: InMemoryAutenticacaoRepository;
   authService: AutenticacaoService;
+  isolamentoRepo: InMemoryIsolamentoClienteRepository;
+  criptoService: CriptografiaSegurancaService;
+  isolamentoService: IsolamentoClienteService;
 } {
   const app = express();
 
@@ -79,12 +88,24 @@ export function criarApp(): {
   const authService = new AutenticacaoService(authRepo);
   const authController = new AutenticacaoController(authService);
 
+  // 6. Módulo Isolamento entre Clientes, Menor Privilégio e Criptografia/TLS (SPEC-1.5)
+  const isolamentoRepo = new InMemoryIsolamentoClienteRepository();
+  const criptoService = new CriptografiaSegurancaService();
+  const isolamentoService = new IsolamentoClienteService(
+    isolamentoRepo,
+    authRepo,
+    authService,
+    criptoService
+  );
+  const isolamentoController = new IsolamentoClienteController(isolamentoService, criptoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
   app.use('/api', criarModeloLancamentoRouter(modeloController));
   app.use('/api', criarImportacaoLancamentosRouter(importacaoController));
   app.use('/api', criarAutenticacaoRouter(authController));
+  app.use('/api', criarIsolamentoClienteRouter(isolamentoController, authController));
 
   return {
     app,
@@ -99,6 +120,9 @@ export function criarApp(): {
     importacaoService,
     authRepo,
     authService,
+    isolamentoRepo,
+    criptoService,
+    isolamentoService,
   };
 }
 

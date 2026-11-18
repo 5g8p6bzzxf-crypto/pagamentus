@@ -7,6 +7,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - SPEC-1.2: Definição da stack tecnológica oficial, diretrizes de escalabilidade (ADR-001) e segregação de ambientes de teste e produção.
 - SPEC-1.3: Modelo de dados inicial com chaves, restrições e controle transacional atômico com rollback (RNF-013).
 - [SPEC-1.4] Autenticação, senhas e MFA (PR #14, João Vitor): Política de senhas fortes, MFA para perfis privilegiados, bloqueio de tentativas e encerramento de sessões (RF-075, RNF-003).
+- [SPEC-1.5] Perfis, permissões e isolamento entre clientes (PR #15, João Vitor): Segregação entre clientes com autorização expressa, menor privilégio, criptografia de dados sensíveis e TLS (RB-008, RNF-001).
 - SPEC-2.1: Estrutura e manutenção de plano de contas contábil configurável por empresa com validação de lançamentos em contas analíticas.
 - SPEC-2.2: Lançamentos manuais estruturados com partidas dobradas, validação de período aberto, contas ativas e consistência de valores.
 - SPEC-2.3: Modelos de lançamentos recorrentes, rateios proporcionais e estornos com rastreabilidade ao lançamento de origem.
