@@ -64,6 +64,7 @@ Esta especificação define a geração dos relatórios contábeis básicos — 
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/27
 - Modelos, serviço, controller e rotas em `src/models/RelatorioContabilModel.ts`, `src/services/RelatorioContabilService.ts`, `src/controllers/RelatorioContabilController.ts` e `src/routes/relatorioContabilRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/relatoriosContabeis.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
