@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @italograu17-ai | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @italograu17-ai | A definir | https://trello.com/c/GHLUQ6wR | Revisando |
 
 ## 1. Contexto e objetivo
 Permitir o cadastro e a manutenção de dimensões gerenciais por empresa — centros de custo, departamentos, projetos e unidades — bem como sua associação em lançamentos contábeis e a emissão de comparativos financeiros/contábeis entre dois períodos (competências).
