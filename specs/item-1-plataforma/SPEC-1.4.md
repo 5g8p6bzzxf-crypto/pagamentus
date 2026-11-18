@@ -49,13 +49,13 @@ Prover os mecanismos de administração de usuários, perfis, permissões, auten
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.4-autenticacao-senhas-mfa` a partir da `main`
-- [ ] Implementar validação de política de senhas fortes e hash de senha (CA-1)
-- [ ] Implementar controle de tentativas de login com bloqueio por excesso de falhas (CA-3)
-- [ ] Implementar verificação obrigatória de MFA para perfis privilegiados (CA-2)
-- [ ] Implementar gerenciamento e encerramento/revogação de sessões ativas (CA-4)
-- [ ] Implementar administração e validação de usuários, perfis e permissões (CA-5)
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-5
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Implementar validação de política de senhas fortes e hash de senha (CA-1)
+- [x] Implementar controle de tentativas de login com bloqueio por excesso de falhas (CA-3)
+- [x] Implementar verificação obrigatória de MFA para perfis privilegiados (CA-2)
+- [x] Implementar gerenciamento e encerramento/revogação de sessões ativas (CA-4)
+- [x] Implementar administração e validação de usuários, perfis e permissões (CA-5)
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-5
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -76,7 +76,9 @@ Prover os mecanismos de administração de usuários, perfis, permissões, auten
    - Testar a atribuição de perfis/permissões e verificar que ações administrativas são permitidas apenas a quem possui a permissão correspondente.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/002_auth_mfa_sessions.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AutenticacaoModel.ts`, `src/repositories/AutenticacaoRepository.ts`, `src/services/AutenticacaoService.ts`, `src/controllers/AutenticacaoController.ts`, `src/routes/autenticacaoRoutes.ts`
+- Suíte de testes automatizados (`tests/autenticacaoMfaSessoes.test.ts`): 7 testes aprovados cobrindo integralmente CA-1 a CA-5 (`PASS tests/autenticacaoMfaSessoes.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*

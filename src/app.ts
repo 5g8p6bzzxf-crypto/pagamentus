@@ -20,8 +20,13 @@ import { ImportacaoLancamentosService } from './services/ImportacaoLancamentosSe
 import { ImportacaoLancamentosController } from './controllers/ImportacaoLancamentosController';
 import { criarImportacaoLancamentosRouter } from './routes/importacaoLancamentosRoutes';
 
+import { InMemoryAutenticacaoRepository } from './repositories/AutenticacaoRepository';
+import { AutenticacaoService } from './services/AutenticacaoService';
+import { AutenticacaoController } from './controllers/AutenticacaoController';
+import { criarAutenticacaoRouter } from './routes/autenticacaoRoutes';
+
 /**
- * Factory para criar a aplicação Express configurada com os módulos contábeis
+ * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
 export function criarApp(): {
   app: Express;
@@ -34,6 +39,8 @@ export function criarApp(): {
   modeloService: ModeloLancamentoService;
   loteRepo: InMemoryLoteImportacaoRepository;
   importacaoService: ImportacaoLancamentosService;
+  authRepo: InMemoryAutenticacaoRepository;
+  authService: AutenticacaoService;
 } {
   const app = express();
 
@@ -67,11 +74,17 @@ export function criarApp(): {
   );
   const importacaoController = new ImportacaoLancamentosController(importacaoService);
 
+  // 5. Módulo Autenticação, Senhas, MFA, Perfis, Permissões e Sessões (SPEC-1.4)
+  const authRepo = new InMemoryAutenticacaoRepository();
+  const authService = new AutenticacaoService(authRepo);
+  const authController = new AutenticacaoController(authService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
   app.use('/api', criarModeloLancamentoRouter(modeloController));
   app.use('/api', criarImportacaoLancamentosRouter(importacaoController));
+  app.use('/api', criarAutenticacaoRouter(authController));
 
   return {
     app,
@@ -84,6 +97,8 @@ export function criarApp(): {
     modeloService,
     loteRepo,
     importacaoService,
+    authRepo,
+    authService,
   };
 }
 
