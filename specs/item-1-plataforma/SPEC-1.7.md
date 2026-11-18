@@ -43,12 +43,12 @@ Permitir o cadastro e a gestão de múltiplos estabelecimentos (matriz e filiais
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.7-estabelecimentos-filiais-socios-responsaveis` a partir da `main`
-- [ ] Criar migração SQL e modelos para estabelecimentos/filiais, sócios e responsáveis técnicos vinculados à organização
-- [ ] Implementar repositório e serviço para múltiplos estabelecimentos/filiais (CA-1 e CA-4)
-- [ ] Implementar repositório e serviço para múltiplos sócios e responsáveis técnicos na mesma organização (CA-2, CA-3 e CA-4)
-- [ ] Expor controller e rotas Express para cadastro e consulta por organização
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar migração SQL e modelos para estabelecimentos/filiais, sócios e responsáveis técnicos vinculados à organização
+- [x] Implementar repositório e serviço para múltiplos estabelecimentos/filiais (CA-1 e CA-4)
+- [x] Implementar repositório e serviço para múltiplos sócios e responsáveis técnicos na mesma organização (CA-2, CA-3 e CA-4)
+- [x] Expor controller e rotas Express para cadastro e consulta por organização
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -67,7 +67,9 @@ Permitir o cadastro e a gestão de múltiplos estabelecimentos (matriz e filiais
    - Tentar cadastrar filial, sócio ou responsável técnico duplicado na mesma organização ou sem os campos obrigatórios e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/005_estabelecimentos_socios_responsaveis.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/EstabelecimentoSocioResponsavelModel.ts`, `src/repositories/EstabelecimentoSocioResponsavelRepository.ts`, `src/services/EstabelecimentoSocioResponsavelService.ts`, `src/controllers/EstabelecimentoSocioResponsavelController.ts`, `src/routes/estabelecimentoSocioResponsavelRoutes.ts`
+- Suíte de testes automatizados (`tests/estabelecimentosSociosResponsaveis.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/estabelecimentosSociosResponsaveis.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*

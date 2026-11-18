@@ -36,6 +36,11 @@ import { PessoaEmpresaService } from './services/PessoaEmpresaService';
 import { PessoaEmpresaController } from './controllers/PessoaEmpresaController';
 import { criarPessoaEmpresaRouter } from './routes/pessoaEmpresaRoutes';
 
+import { InMemoryEstabelecimentoSocioResponsavelRepository } from './repositories/EstabelecimentoSocioResponsavelRepository';
+import { EstabelecimentoSocioResponsavelService } from './services/EstabelecimentoSocioResponsavelService';
+import { EstabelecimentoSocioResponsavelController } from './controllers/EstabelecimentoSocioResponsavelController';
+import { criarEstabelecimentoSocioResponsavelRouter } from './routes/estabelecimentoSocioResponsavelRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -57,6 +62,8 @@ export function criarApp(): {
   isolamentoService: IsolamentoClienteService;
   pessoaEmpresaRepo: InMemoryPessoaEmpresaRepository;
   pessoaEmpresaService: PessoaEmpresaService;
+  estabelecimentoSocioRepo: InMemoryEstabelecimentoSocioResponsavelRepository;
+  estabelecimentoSocioService: EstabelecimentoSocioResponsavelService;
 } {
   const app = express();
 
@@ -111,6 +118,15 @@ export function criarApp(): {
   const pessoaEmpresaService = new PessoaEmpresaService(pessoaEmpresaRepo);
   const pessoaEmpresaController = new PessoaEmpresaController(pessoaEmpresaService);
 
+  // 8. Módulo Estabelecimentos (Matriz e Filiais), Sócios e Responsáveis Técnicos (SPEC-1.7)
+  const estabelecimentoSocioRepo = new InMemoryEstabelecimentoSocioResponsavelRepository();
+  const estabelecimentoSocioService = new EstabelecimentoSocioResponsavelService(
+    estabelecimentoSocioRepo
+  );
+  const estabelecimentoSocioController = new EstabelecimentoSocioResponsavelController(
+    estabelecimentoSocioService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -119,6 +135,7 @@ export function criarApp(): {
   app.use('/api', criarAutenticacaoRouter(authController));
   app.use('/api', criarIsolamentoClienteRouter(isolamentoController, authController));
   app.use('/api', criarPessoaEmpresaRouter(pessoaEmpresaController));
+  app.use('/api', criarEstabelecimentoSocioResponsavelRouter(estabelecimentoSocioController));
 
   return {
     app,
@@ -138,6 +155,8 @@ export function criarApp(): {
     isolamentoService,
     pessoaEmpresaRepo,
     pessoaEmpresaService,
+    estabelecimentoSocioRepo,
+    estabelecimentoSocioService,
   };
 }
 

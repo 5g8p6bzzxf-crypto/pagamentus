@@ -9,6 +9,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-1.4] Autenticação, senhas e MFA (PR #14, João Vitor): Política de senhas fortes, MFA para perfis privilegiados, bloqueio de tentativas e encerramento de sessões (RF-075, RNF-003).
 - [SPEC-1.5] Perfis, permissões e isolamento entre clientes (PR #15, João Vitor): Segregação entre clientes com autorização expressa, menor privilégio, criptografia de dados sensíveis e TLS (RB-008, RNF-001).
 - [SPEC-1.6] Cadastro de pessoas e empresas (PR #17, João Vitor): Cadastro de PF/PJ com validação de CPF/CNPJ, inscrições, contatos, endereços, responsáveis e dados fiscais com vigência (RF-001, RF-002).
+- [SPEC-1.7] Estabelecimentos, filiais, sócios e responsáveis (João Vitor): Múltiplos estabelecimentos, filiais, sócios e responsáveis técnicos vinculados à mesma organização (RF-005).
 - SPEC-2.1: Estrutura e manutenção de plano de contas contábil configurável por empresa com validação de lançamentos em contas analíticas.
 - SPEC-2.2: Lançamentos manuais estruturados com partidas dobradas, validação de período aberto, contas ativas e consistência de valores.
 - SPEC-2.3: Modelos de lançamentos recorrentes, rateios proporcionais e estornos com rastreabilidade ao lançamento de origem.
