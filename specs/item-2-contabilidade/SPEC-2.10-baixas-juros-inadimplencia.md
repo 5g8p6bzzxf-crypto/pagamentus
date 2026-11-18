@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/LbBBaKsb | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação complementa a `SPEC-2.9` e define o controle de **pagamentos, recebimentos, baixas totais ou parciais, juros, multas, descontos, estornos e inadimplência** sobre as parcelas dos títulos a pagar e a receber da empresa. O objetivo é manter atualizado o saldo em aberto de cada parcela, o histórico de baixas/estornos e a identificação de parcelas em atraso.
@@ -50,12 +50,12 @@ Esta especificação complementa a `SPEC-2.9` e define o controle de **pagamento
 - **Testes (`tests/baixasJurosInadimplencia.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/BaixaTituloModel.ts`.
-- [ ] Criar repositório em `src/repositories/BaixaTituloRepository.ts`.
-- [ ] Implementar `BaixaTituloService` em `src/services/BaixaTituloService.ts`.
-- [ ] Implementar `BaixaTituloController` e `baixaTituloRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/baixasJurosInadimplencia.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/BaixaTituloModel.ts`.
+- [x] Criar repositório em `src/repositories/BaixaTituloRepository.ts`.
+- [x] Implementar `BaixaTituloService` em `src/services/BaixaTituloService.ts`.
+- [x] Implementar `BaixaTituloController` e `baixaTituloRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/baixasJurosInadimplencia.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.9` – Títulos a pagar e a receber e vínculos (`ITituloFinanceiroRepository`).
@@ -65,7 +65,9 @@ Esta especificação complementa a `SPEC-2.9` e define o controle de **pagamento
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/BaixaTituloModel.ts`, `src/repositories/BaixaTituloRepository.ts`, `src/services/BaixaTituloService.ts`, `src/controllers/BaixaTituloController.ts` e `src/routes/baixaTituloRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/baixasJurosInadimplencia.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
