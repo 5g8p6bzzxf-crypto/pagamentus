@@ -56,6 +56,11 @@ import { CredencialTokenIntegracaoService } from './services/CredencialTokenInte
 import { CredencialTokenIntegracaoController } from './controllers/CredencialTokenIntegracaoController';
 import { criarCredencialTokenIntegracaoRouter } from './routes/credencialTokenIntegracaoRoutes';
 
+import { InMemoryLgpdPrivacidadeRepository } from './repositories/LgpdPrivacidadeRepository';
+import { LgpdPrivacidadeService } from './services/LgpdPrivacidadeService';
+import { LgpdPrivacidadeController } from './controllers/LgpdPrivacidadeController';
+import { criarLgpdPrivacidadeRouter } from './routes/lgpdPrivacidadeRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -85,6 +90,8 @@ export function criarApp(): {
   auditoriaService: AuditoriaHistoricoService;
   credencialTokenRepo: InMemoryCredencialTokenIntegracaoRepository;
   credencialTokenService: CredencialTokenIntegracaoService;
+  lgpdRepo: InMemoryLgpdPrivacidadeRepository;
+  lgpdService: LgpdPrivacidadeService;
 } {
   const app = express();
 
@@ -168,6 +175,11 @@ export function criarApp(): {
     credencialTokenService
   );
 
+  // 12. Módulo Privacidade e LGPD (SPEC-1.11)
+  const lgpdRepo = new InMemoryLgpdPrivacidadeRepository();
+  const lgpdService = new LgpdPrivacidadeService(lgpdRepo);
+  const lgpdController = new LgpdPrivacidadeController(lgpdService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -180,6 +192,7 @@ export function criarApp(): {
   app.use('/api', criarAnexoCadastralRouter(anexoCadastralController));
   app.use('/api', criarAuditoriaHistoricoRouter(auditoriaController));
   app.use('/api', criarCredencialTokenIntegracaoRouter(credencialTokenController));
+  app.use('/api', criarLgpdPrivacidadeRouter(lgpdController));
 
   return {
     app,
@@ -207,6 +220,8 @@ export function criarApp(): {
     auditoriaService,
     credencialTokenRepo,
     credencialTokenService,
+    lgpdRepo,
+    lgpdService,
   };
 }
 

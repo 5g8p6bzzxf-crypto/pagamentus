@@ -41,11 +41,11 @@ Estabelecer as diretrizes documentais e os fluxos operacionais de conformidade c
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.11-privacidade-lgpd` a partir da `main`
-- [ ] Elaborar documento `docs/privacidade/LGPD-politica-e-procedimentos.md` com finalidade, base legal, minimização, direitos dos titulares, operadores, retenção, descarte e fluxo do pedido do titular (CA-1 e CA-2)
-- [ ] Criar migração SQL e modelos para solicitações de titulares e registro de incidentes LGPD
-- [ ] Implementar repositório, serviço, controller e rotas Express para fluxo de solicitação de titular e registro de incidentes (CA-2, CA-3 e CA-4)
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Elaborar documento `docs/privacidade/LGPD-politica-e-procedimentos.md` com finalidade, base legal, minimização, direitos dos titulares, operadores, retenção, descarte e fluxo do pedido do titular (CA-1 e CA-2)
+- [x] Criar migração SQL e modelos para solicitações de titulares e registro de incidentes LGPD
+- [x] Implementar repositório, serviço, controller e rotas Express para fluxo de solicitação de titular e registro de incidentes (CA-2, CA-3 e CA-4)
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -61,7 +61,10 @@ Estabelecer as diretrizes documentais e os fluxos operacionais de conformidade c
    - Registrar um incidente de privacidade via `POST /api/lgpd/incidentes` e verificar consulta e recusa de dados inválidos.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Documentação LGPD: `docs/privacidade/LGPD-politica-e-procedimentos.md`
+- Migração SQL: `src/database/migrations/009_lgpd_solicitacoes_incidentes.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/LgpdPrivacidadeModel.ts`, `src/repositories/LgpdPrivacidadeRepository.ts`, `src/services/LgpdPrivacidadeService.ts`, `src/controllers/LgpdPrivacidadeController.ts`, `src/routes/lgpdPrivacidadeRoutes.ts`
+- Suíte de testes automatizados (`tests/lgpdPrivacidade.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/lgpdPrivacidade.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
