@@ -43,12 +43,12 @@ Prover a trilha de auditoria imutável para operações relevantes do sistema (i
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.9-auditoria-historico-cadastral` a partir da `main`
-- [ ] Criar migração SQL e modelos para trilha de auditoria e histórico cadastral imutável
-- [ ] Implementar repositório e serviço de registro e consulta de auditoria e histórico cadastral (CA-1, CA-2 e CA-4)
-- [ ] Implementar proteção de imutabilidade bloqueando edição e exclusão de logs de auditoria (CA-3)
-- [ ] Expor controller e rotas Express para auditoria e histórico cadastral
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar migração SQL e modelos para trilha de auditoria e histórico cadastral imutável
+- [x] Implementar repositório e serviço de registro e consulta de auditoria e histórico cadastral (CA-1, CA-2 e CA-4)
+- [x] Implementar proteção de imutabilidade bloqueando edição e exclusão de logs de auditoria (CA-3)
+- [x] Expor controller e rotas Express para auditoria e histórico cadastral
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -67,7 +67,9 @@ Prover a trilha de auditoria imutável para operações relevantes do sistema (i
    - Tentar registrar uma alteração, exclusão lógica ou estorno sem justificativa ou sem usuário responsável e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Migração SQL: `src/database/migrations/007_auditoria_historico_cadastral.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AuditoriaHistoricoModel.ts`, `src/repositories/AuditoriaHistoricoRepository.ts`, `src/services/AuditoriaHistoricoService.ts`, `src/controllers/AuditoriaHistoricoController.ts`, `src/routes/auditoriaHistoricoRoutes.ts`
+- Suíte de testes automatizados (`tests/auditoriaHistoricoCadastral.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/auditoriaHistoricoCadastral.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
