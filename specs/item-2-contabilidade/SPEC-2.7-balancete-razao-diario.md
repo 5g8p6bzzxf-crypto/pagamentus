@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/fVr1VbaO | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a geração dos relatórios contábeis básicos — **Balancete de Verificação**, **Livro Razão**, **Livro Diário** e **livro/relatório auxiliar** — a partir dos lançamentos contábeis e do plano de contas da empresa. O objetivo é permitir a conferência dos saldos e da movimentação contábil de forma consistente com os lançamentos registrados no sistema.
@@ -49,11 +49,11 @@ Esta especificação define a geração dos relatórios contábeis básicos — 
 - **Testes (`tests/relatoriosContabeis.test.ts`):** Cenário completo com múltiplos lançamentos conferindo se Balancete, Razão, Diário e relatório auxiliar batem com os lançamentos e validando recusas de parâmetros inválidos.
 
 ## 7. Tarefas de implementação
-- [ ] Criar interfaces dos relatórios em `src/models/RelatorioContabilModel.ts`.
-- [ ] Implementar `RelatorioContabilService` em `src/services/RelatorioContabilService.ts` para Balancete, Razão, Diário e relatório auxiliar.
-- [ ] Implementar `RelatorioContabilController` e `relatorioContabilRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/relatoriosContabeis.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar suíte de testes e build TypeScript e registrar evidências na spec.
+- [x] Criar interfaces dos relatórios em `src/models/RelatorioContabilModel.ts`.
+- [x] Implementar `RelatorioContabilService` em `src/services/RelatorioContabilService.ts` para Balancete, Razão, Diário e relatório auxiliar.
+- [x] Implementar `RelatorioContabilController` e `relatorioContabilRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/relatoriosContabeis.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar suíte de testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.1` – Plano de contas (`IPlanoContasRepository` e natureza/código das contas).
@@ -64,7 +64,9 @@ Esta especificação define a geração dos relatórios contábeis básicos — 
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, serviço, controller e rotas em `src/models/RelatorioContabilModel.ts`, `src/services/RelatorioContabilService.ts`, `src/controllers/RelatorioContabilController.ts` e `src/routes/relatorioContabilRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/relatoriosContabeis.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
