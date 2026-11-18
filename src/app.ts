@@ -31,6 +31,11 @@ import { IsolamentoClienteService } from './services/IsolamentoClienteService';
 import { IsolamentoClienteController } from './controllers/IsolamentoClienteController';
 import { criarIsolamentoClienteRouter } from './routes/isolamentoClienteRoutes';
 
+import { InMemoryPessoaEmpresaRepository } from './repositories/PessoaEmpresaRepository';
+import { PessoaEmpresaService } from './services/PessoaEmpresaService';
+import { PessoaEmpresaController } from './controllers/PessoaEmpresaController';
+import { criarPessoaEmpresaRouter } from './routes/pessoaEmpresaRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -50,6 +55,8 @@ export function criarApp(): {
   isolamentoRepo: InMemoryIsolamentoClienteRepository;
   criptoService: CriptografiaSegurancaService;
   isolamentoService: IsolamentoClienteService;
+  pessoaEmpresaRepo: InMemoryPessoaEmpresaRepository;
+  pessoaEmpresaService: PessoaEmpresaService;
 } {
   const app = express();
 
@@ -99,6 +106,11 @@ export function criarApp(): {
   );
   const isolamentoController = new IsolamentoClienteController(isolamentoService, criptoService);
 
+  // 7. Módulo Cadastro de Pessoas (PF), Empresas (PJ) e Dados Fiscais com Vigência (SPEC-1.6)
+  const pessoaEmpresaRepo = new InMemoryPessoaEmpresaRepository();
+  const pessoaEmpresaService = new PessoaEmpresaService(pessoaEmpresaRepo);
+  const pessoaEmpresaController = new PessoaEmpresaController(pessoaEmpresaService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -106,6 +118,7 @@ export function criarApp(): {
   app.use('/api', criarImportacaoLancamentosRouter(importacaoController));
   app.use('/api', criarAutenticacaoRouter(authController));
   app.use('/api', criarIsolamentoClienteRouter(isolamentoController, authController));
+  app.use('/api', criarPessoaEmpresaRouter(pessoaEmpresaController));
 
   return {
     app,
@@ -123,6 +136,8 @@ export function criarApp(): {
     isolamentoRepo,
     criptoService,
     isolamentoService,
+    pessoaEmpresaRepo,
+    pessoaEmpresaService,
   };
 }
 
