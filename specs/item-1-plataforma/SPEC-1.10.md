@@ -65,6 +65,7 @@ Disponibilizar a configuração segura de integrações externas e internas por 
    - Rotacionar um token ativo e confirmar que o token antigo passa a retornar 401 e o novo funciona; revogar o token e confirmar recusa imediata (401).
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/21
 - Migração SQL: `src/database/migrations/008_credenciais_tokens_integracao.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/CredencialTokenIntegracaoModel.ts`, `src/repositories/CredencialTokenIntegracaoRepository.ts`, `src/services/CredencialTokenIntegracaoService.ts`, `src/controllers/CredencialTokenIntegracaoController.ts`, `src/routes/credencialTokenIntegracaoRoutes.ts`
 - Suíte de testes automatizados (`tests/credenciaisTokensIntegracao.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/credenciaisTokensIntegracao.test.ts`).
