@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/xwPe0VCl | Revisando |
 
 ## 1. Contexto e objetivo
 Disponibilizar o cadastro estruturado de clientes e entidades como Pessoa Física (PF) e Pessoa Jurídica (PJ), contemplando seus dados cadastrais (nome/razão social, nome fantasia, CPF/CNPJ, inscrições, contatos, endereços e responsáveis) e o registro de dados fiscais e tributários (regime tributário, atividade econômica, CNAE, natureza jurídica, município/UF, enquadramentos e datas de vigência).
