@@ -51,6 +51,11 @@ import { AuditoriaHistoricoService } from './services/AuditoriaHistoricoService'
 import { AuditoriaHistoricoController } from './controllers/AuditoriaHistoricoController';
 import { criarAuditoriaHistoricoRouter } from './routes/auditoriaHistoricoRoutes';
 
+import { InMemoryCredencialTokenIntegracaoRepository } from './repositories/CredencialTokenIntegracaoRepository';
+import { CredencialTokenIntegracaoService } from './services/CredencialTokenIntegracaoService';
+import { CredencialTokenIntegracaoController } from './controllers/CredencialTokenIntegracaoController';
+import { criarCredencialTokenIntegracaoRouter } from './routes/credencialTokenIntegracaoRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -78,6 +83,8 @@ export function criarApp(): {
   anexoCadastralService: AnexoCadastralService;
   auditoriaRepo: InMemoryAuditoriaHistoricoRepository;
   auditoriaService: AuditoriaHistoricoService;
+  credencialTokenRepo: InMemoryCredencialTokenIntegracaoRepository;
+  credencialTokenService: CredencialTokenIntegracaoService;
 } {
   const app = express();
 
@@ -151,6 +158,16 @@ export function criarApp(): {
   const auditoriaService = new AuditoriaHistoricoService(auditoriaRepo);
   const auditoriaController = new AuditoriaHistoricoController(auditoriaService);
 
+  // 11. Módulo Credenciais Protegidas e Tokens de Integração com Escopo Mínimo (SPEC-1.10)
+  const credencialTokenRepo = new InMemoryCredencialTokenIntegracaoRepository();
+  const credencialTokenService = new CredencialTokenIntegracaoService(
+    credencialTokenRepo,
+    criptoService
+  );
+  const credencialTokenController = new CredencialTokenIntegracaoController(
+    credencialTokenService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -162,6 +179,7 @@ export function criarApp(): {
   app.use('/api', criarEstabelecimentoSocioResponsavelRouter(estabelecimentoSocioController));
   app.use('/api', criarAnexoCadastralRouter(anexoCadastralController));
   app.use('/api', criarAuditoriaHistoricoRouter(auditoriaController));
+  app.use('/api', criarCredencialTokenIntegracaoRouter(credencialTokenController));
 
   return {
     app,
@@ -187,6 +205,8 @@ export function criarApp(): {
     anexoCadastralService,
     auditoriaRepo,
     auditoriaService,
+    credencialTokenRepo,
+    credencialTokenService,
   };
 }
 
