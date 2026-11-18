@@ -77,6 +77,9 @@ import { criarCentroCustoComparativoRouter } from './routes/centroCustoComparati
 import { RelatorioContabilService } from './services/RelatorioContabilService';
 import { RelatorioContabilController } from './controllers/RelatorioContabilController';
 import { criarRelatorioContabilRouter } from './routes/relatorioContabilRoutes';
+import { DemonstracaoContabilService } from './services/DemonstracaoContabilService';
+import { DemonstracaoContabilController } from './controllers/DemonstracaoContabilController';
+import { criarDemonstracaoContabilRouter } from './routes/demonstracaoContabilRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -115,6 +118,7 @@ export function criarApp(): {
   centroCustoRepo: InMemoryCentroCustoRepository;
   centroCustoService: CentroCustoComparativoService;
   relatorioContabilService: RelatorioContabilService;
+  demonstracaoContabilService: DemonstracaoContabilService;
 } {
   const app = express();
 
@@ -238,6 +242,15 @@ export function criarApp(): {
     relatorioContabilService
   );
 
+  // 17. Módulo Balanço, DRE, DFC e DMPL/DLPA (SPEC-2.8)
+  const demonstracaoContabilService = new DemonstracaoContabilService(
+    lancamentoRepo,
+    planoContasRepo
+  );
+  const demonstracaoContabilController = new DemonstracaoContabilController(
+    demonstracaoContabilService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -255,6 +268,7 @@ export function criarApp(): {
   app.use('/api', criarPeriodoContabilRouter(periodoContabilController));
   app.use('/api', criarCentroCustoComparativoRouter(centroCustoController));
   app.use('/api', criarRelatorioContabilRouter(relatorioContabilController));
+  app.use('/api', criarDemonstracaoContabilRouter(demonstracaoContabilController));
 
   return {
     app,
@@ -290,6 +304,7 @@ export function criarApp(): {
     centroCustoRepo,
     centroCustoService,
     relatorioContabilService,
+    demonstracaoContabilService,
   };
 }
 
