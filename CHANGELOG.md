@@ -15,10 +15,10 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-1.10] Credenciais e tokens de integração (PR #21, João Vitor): Armazenamento protegido de credenciais, emissão de tokens com escopo mínimo e rotação/revogação (RF-076).
 - [SPEC-1.11] Privacidade e LGPD (PR #22, João Vitor): Política LGPD (finalidade, base legal, minimização, operadores, retenção e descarte), fluxo de pedidos de titulares e registro de incidentes (RNF-002).
 - [SPEC-1.12] Backup, recuperação e continuidade (PR #23, João Vitor): Backups automáticos criptografados, testes periódicos de restauração registrados, RPO/RTO e plano de continuidade/incidentes (RNF-008, RNF-016).
-- SPEC-2.1: Estrutura e manutenção de plano de contas contábil configurável por empresa com validação de lançamentos em contas analíticas.
-- SPEC-2.2: Lançamentos manuais estruturados com partidas dobradas, validação de período aberto, contas ativas e consistência de valores.
-- SPEC-2.3: Modelos de lançamentos recorrentes, rateios proporcionais e estornos com rastreabilidade ao lançamento de origem.
-- SPEC-2.4: Importação de lançamentos em lote por planilha com pré-validação, relatório de erros por linha e opção de desfazer lote.
+- [SPEC-2.1] Plano de contas (PR #6, Ítalo Natam): Estrutura e manutenção de plano de contas contábil configurável por empresa com validação de lançamentos em contas analíticas (RF-006).
+- [SPEC-2.2] Lançamentos manuais com partidas dobradas (PR #12, Ítalo Natam): Lançamentos manuais estruturados com partidas dobradas, validação de período aberto, contas ativas e consistência de valores (RF-007, RF-008, RB-001).
+- [SPEC-2.3] Recorrentes, rateios, provisões e estornos (PR #12, Ítalo Natam): Modelos de lançamentos recorrentes, rateios proporcionais e estornos com rastreabilidade ao lançamento de origem (RF-009).
+- [SPEC-2.4] Importação de lançamentos (PR #12, Ítalo Natam): Importação de lançamentos em lote por planilha com pré-validação, relatório de erros por linha e opção de desfazer lote (RF-010).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
