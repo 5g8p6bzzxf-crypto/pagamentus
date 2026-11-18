@@ -70,6 +70,7 @@ Estabelecer o controle de acesso baseado no princípio do menor privilégio, a s
    - Persistir um registro com dado sensível e verificar no armazenamento interno que o valor gravado está cifrado (não legível em texto puro) e que é decifrado corretamente apenas para quem tem permissão e acesso ao cliente; verificar rejeição de requisição insegura quando TLS é exigido.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/15
 - Migração SQL: `src/database/migrations/003_isolamento_clientes_seguranca.sql`
 - Modelos, Repositório, Serviços, Controller e Rotas: `src/models/IsolamentoClienteModel.ts`, `src/repositories/IsolamentoClienteRepository.ts`, `src/services/CriptografiaSegurancaService.ts`, `src/services/IsolamentoClienteService.ts`, `src/controllers/IsolamentoClienteController.ts`, `src/routes/isolamentoClienteRoutes.ts`
 - Suíte de testes automatizados (`tests/isolamentoClientesSeguranca.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/isolamentoClientesSeguranca.test.ts`).
