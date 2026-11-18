@@ -65,6 +65,7 @@ Estabelecer o controle de ciclo de vida dos períodos contábeis por empresa (`A
 4. **Reabertura Autorizada com Auditoria (CA-4):** Reabrir com usuário autorizado e justificativa válida; confirmar status `ABERTO`, novo lançamento aceito e registro gravado na trilha de auditoria.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/25
 - Modelos e Repositório: `src/models/LancamentoContabil.ts`, `src/repositories/PeriodoContabilRepository.ts`
 - Serviço, Controller e Rotas: `src/services/PeriodoContabilService.ts`, `src/controllers/PeriodoContabilController.ts`, `src/routes/periodoContabilRoutes.ts`
 - Suíte de testes automatizados (`tests/periodosContabeis.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/periodosContabeis.test.ts`).
