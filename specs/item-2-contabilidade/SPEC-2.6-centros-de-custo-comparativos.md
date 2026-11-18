@@ -47,12 +47,12 @@ Permitir o cadastro e a manutenção de dimensões gerenciais por empresa — ce
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/2.6-centros-de-custo-comparativos` a partir da `main`
-- [ ] Criar modelo e repositório `CentroCustoDimensao` suportando centros de custo, departamentos, projetos e unidades (CA-1)
-- [ ] Implementar serviço `CentroCustoComparativoService` com validação de duplicidade/existência e cálculo de comparativo entre dois períodos (CA-1, CA-3 e CA-4)
-- [ ] Integrar validação opcional de `centroCustoId` em `LancamentoContabilService` ao associar centro de custo a lançamentos (CA-2 e CA-4)
-- [ ] Expor controller e rotas Express para centros de custo e comparativo por período
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Criar modelo e repositório `CentroCustoDimensao` suportando centros de custo, departamentos, projetos e unidades (CA-1)
+- [x] Implementar serviço `CentroCustoComparativoService` com validação de duplicidade/existência e cálculo de comparativo entre dois períodos (CA-1, CA-3 e CA-4)
+- [x] Integrar validação opcional de `centroCustoId` em `LancamentoContabilService` ao associar centro de custo a lançamentos (CA-2 e CA-4)
+- [x] Expor controller e rotas Express para centros de custo e comparativo por período
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-2.1` (Plano de contas).
@@ -66,7 +66,9 @@ Permitir o cadastro e a manutenção de dimensões gerenciais por empresa — ce
 4. **Validações de Erro (CA-4):** Tentar cadastrar código duplicado, associar centro de custo inexistente no lançamento ou omitir um período no comparativo e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Modelos e Repositório: `src/models/CentroCustoModel.ts`, `src/repositories/CentroCustoRepository.ts`
+- Serviço, Controller, Rotas e Integração: `src/services/CentroCustoComparativoService.ts`, `src/controllers/CentroCustoComparativoController.ts`, `src/routes/centroCustoComparativoRoutes.ts`, `src/services/LancamentoContabilService.ts`
+- Suíte de testes automatizados (`tests/centrosCustoComparativos.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/centrosCustoComparativos.test.ts`).
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*

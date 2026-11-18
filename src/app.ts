@@ -70,6 +70,11 @@ import { PeriodoContabilService } from './services/PeriodoContabilService';
 import { PeriodoContabilController } from './controllers/PeriodoContabilController';
 import { criarPeriodoContabilRouter } from './routes/periodoContabilRoutes';
 
+import { InMemoryCentroCustoRepository } from './repositories/CentroCustoRepository';
+import { CentroCustoComparativoService } from './services/CentroCustoComparativoService';
+import { CentroCustoComparativoController } from './controllers/CentroCustoComparativoController';
+import { criarCentroCustoComparativoRouter } from './routes/centroCustoComparativoRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -104,6 +109,8 @@ export function criarApp(): {
   backupRepo: InMemoryBackupRecuperacaoRepository;
   backupService: BackupRecuperacaoService;
   periodoContabilService: PeriodoContabilService;
+  centroCustoRepo: InMemoryCentroCustoRepository;
+  centroCustoService: CentroCustoComparativoService;
 } {
   const app = express();
 
@@ -115,10 +122,16 @@ export function criarApp(): {
   const planoContasService = new PlanoContasService(planoContasRepo);
   const planoContasController = new PlanoContasController(planoContasService);
 
-  // 2. Módulo Lançamentos Contábeis (SPEC-2.2 / SPEC-2.3)
+  // 2. Módulo Lançamentos Contábeis (SPEC-2.2 / SPEC-2.3 / SPEC-2.6)
   const lancamentoRepo = new InMemoryLancamentoContabilRepository();
   const periodoRepo = new InMemoryPeriodoContabilRepository();
-  const lancamentoService = new LancamentoContabilService(lancamentoRepo, periodoRepo, planoContasService);
+  const centroCustoRepo = new InMemoryCentroCustoRepository();
+  const lancamentoService = new LancamentoContabilService(
+    lancamentoRepo,
+    periodoRepo,
+    planoContasService,
+    centroCustoRepo
+  );
   const lancamentoController = new LancamentoContabilController(lancamentoService);
 
   // 3. Módulo Modelos de Lançamento e Recorrentes (SPEC-2.3)
@@ -205,6 +218,13 @@ export function criarApp(): {
   );
   const periodoContabilController = new PeriodoContabilController(periodoContabilService);
 
+  // 15. Módulo Centros de Custo, Dimensões Gerenciais e Comparativos (SPEC-2.6)
+  const centroCustoService = new CentroCustoComparativoService(
+    centroCustoRepo,
+    lancamentoRepo
+  );
+  const centroCustoController = new CentroCustoComparativoController(centroCustoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -220,6 +240,7 @@ export function criarApp(): {
   app.use('/api', criarLgpdPrivacidadeRouter(lgpdController));
   app.use('/api', criarBackupRecuperacaoRouter(backupController));
   app.use('/api', criarPeriodoContabilRouter(periodoContabilController));
+  app.use('/api', criarCentroCustoComparativoRouter(centroCustoController));
 
   return {
     app,
@@ -252,6 +273,8 @@ export function criarApp(): {
     backupRepo,
     backupService,
     periodoContabilService,
+    centroCustoRepo,
+    centroCustoService,
   };
 }
 
