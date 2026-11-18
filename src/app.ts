@@ -66,6 +66,10 @@ import { BackupRecuperacaoService } from './services/BackupRecuperacaoService';
 import { BackupRecuperacaoController } from './controllers/BackupRecuperacaoController';
 import { criarBackupRecuperacaoRouter } from './routes/backupRecuperacaoRoutes';
 
+import { PeriodoContabilService } from './services/PeriodoContabilService';
+import { PeriodoContabilController } from './controllers/PeriodoContabilController';
+import { criarPeriodoContabilRouter } from './routes/periodoContabilRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -99,6 +103,7 @@ export function criarApp(): {
   lgpdService: LgpdPrivacidadeService;
   backupRepo: InMemoryBackupRecuperacaoRepository;
   backupService: BackupRecuperacaoService;
+  periodoContabilService: PeriodoContabilService;
 } {
   const app = express();
 
@@ -192,6 +197,14 @@ export function criarApp(): {
   const backupService = new BackupRecuperacaoService(backupRepo, criptoService);
   const backupController = new BackupRecuperacaoController(backupService);
 
+  // 14. Módulo Períodos Contábeis (SPEC-2.5)
+  const periodoContabilService = new PeriodoContabilService(
+    periodoRepo,
+    authService,
+    auditoriaService
+  );
+  const periodoContabilController = new PeriodoContabilController(periodoContabilService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -206,6 +219,7 @@ export function criarApp(): {
   app.use('/api', criarCredencialTokenIntegracaoRouter(credencialTokenController));
   app.use('/api', criarLgpdPrivacidadeRouter(lgpdController));
   app.use('/api', criarBackupRecuperacaoRouter(backupController));
+  app.use('/api', criarPeriodoContabilRouter(periodoContabilController));
 
   return {
     app,
@@ -237,6 +251,7 @@ export function criarApp(): {
     lgpdService,
     backupRepo,
     backupService,
+    periodoContabilService,
   };
 }
 

@@ -47,11 +47,11 @@ Estabelecer o controle de ciclo de vida dos períodos contábeis por empresa (`A
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/2.5-periodos-contabeis` a partir da `main`
-- [ ] Evoluir modelo e repositório de `PeriodoContabil` para suportar `ABERTO`, `EM_FECHAMENTO` e `ENCERRADO` (CA-1)
-- [ ] Implementar serviço `PeriodoContabilService` com transição de estados, bloqueio de período encerrado e reabertura com permissão, justificativa e auditoria (CA-1, CA-2, CA-3 e CA-4)
-- [ ] Expor controller e rotas Express para gestão de períodos contábeis
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Evoluir modelo e repositório de `PeriodoContabil` para suportar `ABERTO`, `EM_FECHAMENTO` e `ENCERRADO` (CA-1)
+- [x] Implementar serviço `PeriodoContabilService` com transição de estados, bloqueio de período encerrado e reabertura com permissão, justificativa e auditoria (CA-1, CA-2, CA-3 e CA-4)
+- [x] Expor controller e rotas Express para gestão de períodos contábeis
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.4` / `SPEC-1.5` (Perfis e verificação de permissões).
@@ -65,7 +65,9 @@ Estabelecer o controle de ciclo de vida dos períodos contábeis por empresa (`A
 4. **Reabertura Autorizada com Auditoria (CA-4):** Reabrir com usuário autorizado e justificativa válida; confirmar status `ABERTO`, novo lançamento aceito e registro gravado na trilha de auditoria.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Modelos e Repositório: `src/models/LancamentoContabil.ts`, `src/repositories/PeriodoContabilRepository.ts`
+- Serviço, Controller e Rotas: `src/services/PeriodoContabilService.ts`, `src/controllers/PeriodoContabilController.ts`, `src/routes/periodoContabilRoutes.ts`
+- Suíte de testes automatizados (`tests/periodosContabeis.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/periodosContabeis.test.ts`).
 
 ## 11. Histórico de revisão
 *(Nenhuma ressalva registrada até o momento).*
