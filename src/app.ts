@@ -61,6 +61,11 @@ import { LgpdPrivacidadeService } from './services/LgpdPrivacidadeService';
 import { LgpdPrivacidadeController } from './controllers/LgpdPrivacidadeController';
 import { criarLgpdPrivacidadeRouter } from './routes/lgpdPrivacidadeRoutes';
 
+import { InMemoryBackupRecuperacaoRepository } from './repositories/BackupRecuperacaoRepository';
+import { BackupRecuperacaoService } from './services/BackupRecuperacaoService';
+import { BackupRecuperacaoController } from './controllers/BackupRecuperacaoController';
+import { criarBackupRecuperacaoRouter } from './routes/backupRecuperacaoRoutes';
+
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
  */
@@ -92,6 +97,8 @@ export function criarApp(): {
   credencialTokenService: CredencialTokenIntegracaoService;
   lgpdRepo: InMemoryLgpdPrivacidadeRepository;
   lgpdService: LgpdPrivacidadeService;
+  backupRepo: InMemoryBackupRecuperacaoRepository;
+  backupService: BackupRecuperacaoService;
 } {
   const app = express();
 
@@ -180,6 +187,11 @@ export function criarApp(): {
   const lgpdService = new LgpdPrivacidadeService(lgpdRepo);
   const lgpdController = new LgpdPrivacidadeController(lgpdService);
 
+  // 13. Módulo Backup Criptografado, Restauração e Continuidade (SPEC-1.12)
+  const backupRepo = new InMemoryBackupRecuperacaoRepository();
+  const backupService = new BackupRecuperacaoService(backupRepo, criptoService);
+  const backupController = new BackupRecuperacaoController(backupService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -193,6 +205,7 @@ export function criarApp(): {
   app.use('/api', criarAuditoriaHistoricoRouter(auditoriaController));
   app.use('/api', criarCredencialTokenIntegracaoRouter(credencialTokenController));
   app.use('/api', criarLgpdPrivacidadeRouter(lgpdController));
+  app.use('/api', criarBackupRecuperacaoRouter(backupController));
 
   return {
     app,
@@ -222,6 +235,8 @@ export function criarApp(): {
     credencialTokenService,
     lgpdRepo,
     lgpdService,
+    backupRepo,
+    backupService,
   };
 }
 

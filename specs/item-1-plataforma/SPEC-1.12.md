@@ -42,11 +42,11 @@ Estabelecer os mecanismos e documentos operacionais de backup automático cripto
 
 ## 7. Tarefas de implementação
 - [x] Criar branch de trabalho `spec/1.12-backup-recuperacao-continuidade` a partir da `main`
-- [ ] Elaborar `docs/operacao/plano-continuidade-e-incidentes.md` com RPO/RTO, resposta a incidentes, recuperação de desastre e comunicação com clientes (CA-4)
-- [ ] Criar migração SQL e modelos para registros de backup criptografado e testes de restauração
-- [ ] Implementar repositório, serviço, controller e rotas Express para backup automático criptografado e teste de restauração registrado (CA-1, CA-2 e CA-3)
-- [ ] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
-- [ ] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
+- [x] Elaborar `docs/operacao/plano-continuidade-e-incidentes.md` com RPO/RTO, resposta a incidentes, recuperação de desastre e comunicação com clientes (CA-4)
+- [x] Criar migração SQL e modelos para registros de backup criptografado e testes de restauração
+- [x] Implementar repositório, serviço, controller e rotas Express para backup automático criptografado e teste de restauração registrado (CA-1, CA-2 e CA-3)
+- [x] Implementar testes automatizados cobrindo os critérios CA-1 a CA-4
+- [x] Atualizar `CHANGELOG.md` na seção `[Não lançado]`
 
 ## 8. Dependências
 - `SPEC-1.1` (Repositório, documentação e padrões de contribuição).
@@ -63,7 +63,10 @@ Estabelecer os mecanismos e documentos operacionais de backup automático cripto
    - Verificar a existência de `docs/operacao/plano-continuidade-e-incidentes.md` e a presença das seções de RPO/RTO, resposta a incidentes, recuperação de desastre e comunicação com clientes.
 
 ## 10. Evidências (preencher ao concluir)
-*A ser preenchido ao concluir a implementação e testes.*
+- Plano de Continuidade e Incidentes: `docs/operacao/plano-continuidade-e-incidentes.md`
+- Migração SQL: `src/database/migrations/010_backup_recuperacao_continuidade.sql`
+- Modelos, Repositório, Serviço, Controller e Rotas: `src/models/BackupRecuperacaoModel.ts`, `src/repositories/BackupRecuperacaoRepository.ts`, `src/services/BackupRecuperacaoService.ts`, `src/controllers/BackupRecuperacaoController.ts`, `src/routes/backupRecuperacaoRoutes.ts`
+- Suíte de testes automatizados (`tests/backupRecuperacaoContinuidade.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/backupRecuperacaoContinuidade.test.ts`).
 
 ## 11. Histórico de revisão
 *Nenhuma ressalva registrada até o momento.*
