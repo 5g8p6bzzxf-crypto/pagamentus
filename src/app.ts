@@ -84,6 +84,10 @@ import { InMemoryTituloFinanceiroRepository } from './repositories/TituloFinance
 import { TituloFinanceiroService } from './services/TituloFinanceiroService';
 import { TituloFinanceiroController } from './controllers/TituloFinanceiroController';
 import { criarTituloFinanceiroRouter } from './routes/tituloFinanceiroRoutes';
+import { InMemoryBaixaTituloRepository } from './repositories/BaixaTituloRepository';
+import { BaixaTituloService } from './services/BaixaTituloService';
+import { BaixaTituloController } from './controllers/BaixaTituloController';
+import { criarBaixaTituloRouter } from './routes/baixaTituloRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -125,6 +129,8 @@ export function criarApp(): {
   demonstracaoContabilService: DemonstracaoContabilService;
   tituloFinanceiroRepo: InMemoryTituloFinanceiroRepository;
   tituloFinanceiroService: TituloFinanceiroService;
+  baixaTituloRepo: InMemoryBaixaTituloRepository;
+  baixaTituloService: BaixaTituloService;
 } {
   const app = express();
 
@@ -267,6 +273,14 @@ export function criarApp(): {
     tituloFinanceiroService
   );
 
+  // 19. Módulo Baixas, Juros, Multas, Descontos, Estornos e Inadimplência (SPEC-2.10)
+  const baixaTituloRepo = new InMemoryBaixaTituloRepository();
+  const baixaTituloService = new BaixaTituloService(
+    baixaTituloRepo,
+    tituloFinanceiroRepo
+  );
+  const baixaTituloController = new BaixaTituloController(baixaTituloService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -286,6 +300,7 @@ export function criarApp(): {
   app.use('/api', criarRelatorioContabilRouter(relatorioContabilController));
   app.use('/api', criarDemonstracaoContabilRouter(demonstracaoContabilController));
   app.use('/api', criarTituloFinanceiroRouter(tituloFinanceiroController));
+  app.use('/api', criarBaixaTituloRouter(baixaTituloController));
 
   return {
     app,
@@ -324,6 +339,8 @@ export function criarApp(): {
     demonstracaoContabilService,
     tituloFinanceiroRepo,
     tituloFinanceiroService,
+    baixaTituloRepo,
+    baixaTituloService,
   };
 }
 
