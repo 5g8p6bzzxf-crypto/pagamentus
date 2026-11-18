@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @italograu17-ai | 4º período | A definir | Feito |
+| 2 – Contabilidade | @italograu17-ai | 4º período | https://trello.com/c/tSPGBhjF | Feito |
 
 ## 1. Contexto e objetivo
 Permitir o registro de lançamentos contábeis manuais estruturados pelo método das partidas dobradas (débitos iguais a créditos), assegurando a consistência contábil antes da gravação através da validação obrigatória de balanceamento, contas analíticas ativas e período contábil aberto.

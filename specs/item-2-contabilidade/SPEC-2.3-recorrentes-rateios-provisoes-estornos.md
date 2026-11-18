@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @italograu17-ai | 4º período | A definir | Feito |
+| 2 – Contabilidade | @italograu17-ai | 4º período | https://trello.com/c/wbgzApKt | Feito |
 
 ## 1. Contexto e objetivo
 Permitir a criação e utilização de modelos de lançamentos contábeis recorrentes (para geração automatizada de rotinas periódicas como provisões, depreciações e apropriações com rateios) e a execução de estornos contábeis mantendo o estrito vínculo de rastreabilidade com o lançamento original.
