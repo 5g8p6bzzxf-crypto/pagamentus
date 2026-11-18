@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/SZg1MXdD | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação complementa a `SPEC-2.7` e define a geração das demonstrações contábeis de síntese — **Balanço Patrimonial**, **DRE (Demonstração do Resultado do Exercício)**, **DFC (Demonstração dos Fluxos de Caixa)** quando aplicável e **DMPL/DLPA (Demonstração das Mutações do Patrimônio Líquido / Lucros ou Prejuízos Acumulados)** quando aplicável — a partir dos mesmos lançamentos contábeis e plano de contas da empresa, garantindo totais conferidos e consistentes entre si.
@@ -48,11 +48,11 @@ Esta especificação complementa a `SPEC-2.7` e define a geração das demonstra
 - **Testes (`tests/demonstracoesContabeis.test.ts`):** Cenário único completo gerando Balanço, DRE, DFC e DMPL/DLPA, conferindo todos os totais entre si, cenário não aplicável e validações de entrada.
 
 ## 7. Tarefas de implementação
-- [ ] Criar interfaces das demonstrações em `src/models/DemonstracaoContabilModel.ts`.
-- [ ] Implementar `DemonstracaoContabilService` em `src/services/DemonstracaoContabilService.ts`.
-- [ ] Implementar `DemonstracaoContabilController` e `demonstracaoContabilRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/demonstracoesContabeis.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar suíte de testes e build TypeScript e registrar evidências na spec.
+- [x] Criar interfaces das demonstrações em `src/models/DemonstracaoContabilModel.ts`.
+- [x] Implementar `DemonstracaoContabilService` em `src/services/DemonstracaoContabilService.ts`.
+- [x] Implementar `DemonstracaoContabilController` e `demonstracaoContabilRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/demonstracoesContabeis.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar suíte de testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.1` – Plano de contas (`IPlanoContasRepository` e classificação/natureza das contas).
@@ -63,7 +63,9 @@ Esta especificação complementa a `SPEC-2.7` e define a geração das demonstra
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, serviço, controller e rotas em `src/models/DemonstracaoContabilModel.ts`, `src/services/DemonstracaoContabilService.ts`, `src/controllers/DemonstracaoContabilController.ts` e `src/routes/demonstracaoContabilRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/demonstracoesContabeis.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
