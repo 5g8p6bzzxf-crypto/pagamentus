@@ -67,6 +67,7 @@ Permitir anexar e controlar a validade de documentos vinculados ao cadastro de p
    - Tentar anexar documento sem nome de arquivo, com tipo inválido ou data inválida e confirmar recusa com HTTP 400.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/19
 - Migração SQL: `src/database/migrations/006_anexos_cadastrais_validade.sql`
 - Modelos, Repositório, Serviço, Controller e Rotas: `src/models/AnexoCadastralModel.ts`, `src/repositories/AnexoCadastralRepository.ts`, `src/services/AnexoCadastralService.ts`, `src/controllers/AnexoCadastralController.ts`, `src/routes/anexoCadastralRoutes.ts`
 - Suíte de testes automatizados (`tests/anexosCadastraisValidade.test.ts`): 4 cenários aprovados cobrindo integralmente CA-1 a CA-4 (`PASS tests/anexosCadastraisValidade.test.ts`).
