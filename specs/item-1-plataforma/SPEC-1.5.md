@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 1 – Plataforma | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 1 – Plataforma | @joaovitor-webdev | A definir | https://trello.com/c/0XhuydEv | Revisando |
 
 ## 1. Contexto e objetivo
 Estabelecer o controle de acesso baseado no princípio do menor privilégio, a segregação de dados entre clientes/organizações e os mecanismos de proteção de dados sensíveis e segredos. A especificação garante que um usuário vinculado a um cliente não possa visualizar ou manipular dados pertencentes a outro cliente sem autorização expressa, além de negar qualquer ação para a qual o perfil do usuário não possua permissão atribuída.
