@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/2WE1HxGo | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define o **controle de tributos retidos e sofridos, créditos tributários, compensações, parcelamentos e vencimentos** por empresa, permitindo acompanhar saldos, utilizações e datas de vencimento das obrigações e parcelamentos.
@@ -50,12 +50,12 @@ Esta especificação define o **controle de tributos retidos e sofridos, crédit
 - **Testes (`tests/retencoesCreditosParcelamentos.test.ts`):** Testes de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/RetencaoCreditoParcelamentoModel.ts`.
-- [ ] Criar repositório em `src/repositories/RetencaoCreditoParcelamentoRepository.ts`.
-- [ ] Implementar `RetencaoCreditoParcelamentoService` em `src/services/RetencaoCreditoParcelamentoService.ts`.
-- [ ] Implementar `RetencaoCreditoParcelamentoController` e `retencaoCreditoParcelamentoRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/retencoesCreditosParcelamentos.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/RetencaoCreditoParcelamentoModel.ts`.
+- [x] Criar repositório em `src/repositories/RetencaoCreditoParcelamentoRepository.ts`.
+- [x] Implementar `RetencaoCreditoParcelamentoService` em `src/services/RetencaoCreditoParcelamentoService.ts`.
+- [x] Implementar `RetencaoCreditoParcelamentoController` e `retencaoCreditoParcelamentoRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/retencoesCreditosParcelamentos.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - Nenhuma dependência obrigatória bloqueante.
@@ -65,7 +65,9 @@ Esta especificação define o **controle de tributos retidos e sofridos, crédit
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/RetencaoCreditoParcelamentoModel.ts`, `src/repositories/RetencaoCreditoParcelamentoRepository.ts`, `src/services/RetencaoCreditoParcelamentoService.ts`, `src/controllers/RetencaoCreditoParcelamentoController.ts` e `src/routes/retencaoCreditoParcelamentoRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/retencoesCreditosParcelamentos.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
