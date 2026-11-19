@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/8ivyVM6H | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **classificação fiscal das operações** por **natureza da operação, CFOP/códigos aplicáveis, NCM e CST/CSOSN**, conforme o tipo de operação e o regime tributário da empresa, utilizando **tabelas fictícias configuráveis** (sem caráter de tabela fiscal oficial).
@@ -46,12 +46,12 @@ Esta especificação define a **classificação fiscal das operações** por **n
 - **Testes (`tests/classificacaoOperacoes.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/ClassificacaoOperacaoModel.ts`.
-- [ ] Criar repositório em `src/repositories/ClassificacaoOperacaoRepository.ts`.
-- [ ] Implementar `ClassificacaoOperacaoService` em `src/services/ClassificacaoOperacaoService.ts`.
-- [ ] Implementar `ClassificacaoOperacaoController` e `classificacaoOperacaoRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/classificacaoOperacoes.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/ClassificacaoOperacaoModel.ts`.
+- [x] Criar repositório em `src/repositories/ClassificacaoOperacaoRepository.ts`.
+- [x] Implementar `ClassificacaoOperacaoService` em `src/services/ClassificacaoOperacaoService.ts`.
+- [x] Implementar `ClassificacaoOperacaoController` e `classificacaoOperacaoRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/classificacaoOperacoes.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - Módulo base Express/TypeScript e estrutura multi-tenant por `empresaId`.
@@ -61,7 +61,9 @@ Esta especificação define a **classificação fiscal das operações** por **n
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/ClassificacaoOperacaoModel.ts`, `src/repositories/ClassificacaoOperacaoRepository.ts`, `src/services/ClassificacaoOperacaoService.ts`, `src/controllers/ClassificacaoOperacaoController.ts` e `src/routes/classificacaoOperacaoRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/classificacaoOperacoes.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
