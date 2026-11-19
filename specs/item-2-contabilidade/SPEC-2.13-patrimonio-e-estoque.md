@@ -72,6 +72,7 @@ Esta especificação define o controle de **patrimônio (bens imobilizados/intan
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/33
 - Modelos, repositório, serviço, controller e rotas em `src/models/PatrimonioEstoqueModel.ts`, `src/repositories/PatrimonioEstoqueRepository.ts`, `src/services/PatrimonioEstoqueService.ts`, `src/controllers/PatrimonioEstoqueController.ts` e `src/routes/patrimonioEstoqueRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/patrimonioEstoque.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
