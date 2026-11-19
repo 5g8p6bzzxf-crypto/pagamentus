@@ -61,6 +61,7 @@ Esta especificação define a geração dos relatórios gerenciais financeiros d
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/32
 - Modelos, serviço, controller e rotas em `src/models/RelatorioFinanceiroModel.ts`, `src/services/RelatorioFinanceiroService.ts`, `src/controllers/RelatorioFinanceiroController.ts` e `src/routes/relatorioFinanceiroRoutes.ts`, registrados em `src/app.ts`.
 - Suporte a `centroCustoId` opcional em `src/models/TituloFinanceiroModel.ts` e `src/services/TituloFinanceiroService.ts`.
 - Suíte de testes `npx jest tests/fluxoCaixaRelatoriosFinanceiros.test.ts tests/titulosPagarReceberVinculos.test.ts` aprovada (2 suítes, 7 testes: CA-1 a CA-4 + regressão).
