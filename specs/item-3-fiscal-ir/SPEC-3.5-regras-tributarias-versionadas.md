@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/dWBjUREh | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **parametrização e versionamento controlado de regras tributárias** (tabelas, fórmulas e leiautes) por **exercício fiscal, vigência, regime, jurisdição e situação do contribuinte**, garantindo que os cálculos utilizem a versão correta da regra para cada cenário (com dados parametrizados de demonstração, sem caráter de tabela oficial).
@@ -48,12 +48,12 @@ Esta especificação define a **parametrização e versionamento controlado de r
 - **Testes (`tests/regrasTributariasVersionadas.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/RegraTributariaVersionadaModel.ts`.
-- [ ] Criar repositório em `src/repositories/RegraTributariaVersionadaRepository.ts`.
-- [ ] Implementar `RegraTributariaVersionadaService` em `src/services/RegraTributariaVersionadaService.ts`.
-- [ ] Implementar `RegraTributariaVersionadaController` e `regraTributariaVersionadaRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/regrasTributariasVersionadas.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/RegraTributariaVersionadaModel.ts`.
+- [x] Criar repositório em `src/repositories/RegraTributariaVersionadaRepository.ts`.
+- [x] Implementar `RegraTributariaVersionadaService` em `src/services/RegraTributariaVersionadaService.ts`.
+- [x] Implementar `RegraTributariaVersionadaController` e `regraTributariaVersionadaRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/regrasTributariasVersionadas.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-3.4` (reaproveitamento do tipo `RegimeTributario`).
@@ -63,7 +63,9 @@ Esta especificação define a **parametrização e versionamento controlado de r
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/RegraTributariaVersionadaModel.ts`, `src/repositories/RegraTributariaVersionadaRepository.ts`, `src/services/RegraTributariaVersionadaService.ts`, `src/controllers/RegraTributariaVersionadaController.ts` e `src/routes/regraTributariaVersionadaRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/regrasTributariasVersionadas.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
