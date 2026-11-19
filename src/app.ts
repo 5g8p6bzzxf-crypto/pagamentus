@@ -99,6 +99,10 @@ import { InMemoryPatrimonioEstoqueRepository } from './repositories/PatrimonioEs
 import { PatrimonioEstoqueService } from './services/PatrimonioEstoqueService';
 import { PatrimonioEstoqueController } from './controllers/PatrimonioEstoqueController';
 import { criarPatrimonioEstoqueRouter } from './routes/patrimonioEstoqueRoutes';
+import { InMemoryDocumentoFiscalImportadoRepository } from './repositories/DocumentoFiscalImportadoRepository';
+import { DocumentoFiscalImportadoService } from './services/DocumentoFiscalImportadoService';
+import { DocumentoFiscalImportadoController } from './controllers/DocumentoFiscalImportadoController';
+import { criarDocumentoFiscalImportadoRouter } from './routes/documentoFiscalImportadoRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -147,6 +151,8 @@ export function criarApp(): {
   relatorioFinanceiroService: RelatorioFinanceiroService;
   patrimonioEstoqueRepo: InMemoryPatrimonioEstoqueRepository;
   patrimonioEstoqueService: PatrimonioEstoqueService;
+  documentoFiscalImportadoRepo: InMemoryDocumentoFiscalImportadoRepository;
+  documentoFiscalImportadoService: DocumentoFiscalImportadoService;
 } {
   const app = express();
 
@@ -327,6 +333,14 @@ export function criarApp(): {
     patrimonioEstoqueService
   );
 
+  // 23. Módulo Importação de Documentos Fiscais (SPEC-3.1)
+  const documentoFiscalImportadoRepo =
+    new InMemoryDocumentoFiscalImportadoRepository();
+  const documentoFiscalImportadoService =
+    new DocumentoFiscalImportadoService(documentoFiscalImportadoRepo);
+  const documentoFiscalImportadoController =
+    new DocumentoFiscalImportadoController(documentoFiscalImportadoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -350,6 +364,10 @@ export function criarApp(): {
   app.use('/api', criarConciliacaoRouter(conciliacaoController));
   app.use('/api', criarRelatorioFinanceiroRouter(relatorioFinanceiroController));
   app.use('/api', criarPatrimonioEstoqueRouter(patrimonioEstoqueController));
+  app.use(
+    '/api',
+    criarDocumentoFiscalImportadoRouter(documentoFiscalImportadoController)
+  );
 
   return {
     app,
@@ -395,6 +413,8 @@ export function criarApp(): {
     relatorioFinanceiroService,
     patrimonioEstoqueRepo,
     patrimonioEstoqueService,
+    documentoFiscalImportadoRepo,
+    documentoFiscalImportadoService,
   };
 }
 
