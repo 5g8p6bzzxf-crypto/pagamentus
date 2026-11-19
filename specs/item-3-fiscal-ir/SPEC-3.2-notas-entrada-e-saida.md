@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/bPvrb2Ge | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define o **registro e controle de notas fiscais de entrada, saída e serviços**, contemplando **retenções, cancelamentos, devoluções e ajustes aplicáveis** vinculados à empresa, para manter o registro fiscal organizado e rastreável.
@@ -52,12 +52,12 @@ Esta especificação define o **registro e controle de notas fiscais de entrada,
 - **Testes (`tests/notasEntradaSaida.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/NotaFiscalModel.ts`.
-- [ ] Criar repositório em `src/repositories/NotaFiscalRepository.ts`.
-- [ ] Implementar `NotaFiscalService` em `src/services/NotaFiscalService.ts`.
-- [ ] Implementar `NotaFiscalController` e `notaFiscalRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/notasEntradaSaida.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/NotaFiscalModel.ts`.
+- [x] Criar repositório em `src/repositories/NotaFiscalRepository.ts`.
+- [x] Implementar `NotaFiscalService` em `src/services/NotaFiscalService.ts`.
+- [x] Implementar `NotaFiscalController` e `notaFiscalRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/notasEntradaSaida.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - Módulo base Express/TypeScript e estrutura multi-tenant por `empresaId`.
@@ -67,7 +67,9 @@ Esta especificação define o **registro e controle de notas fiscais de entrada,
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/NotaFiscalModel.ts`, `src/repositories/NotaFiscalRepository.ts`, `src/services/NotaFiscalService.ts`, `src/controllers/NotaFiscalController.ts` e `src/routes/notaFiscalRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/notasEntradaSaida.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
