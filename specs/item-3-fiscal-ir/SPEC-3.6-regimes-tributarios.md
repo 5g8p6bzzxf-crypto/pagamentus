@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/NLkJOXmL | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **parametrização de regimes tributários e o controle de histórico de opção com vigência temporal** por empresa, contemplando Simples Nacional, Lucro Presumido, Lucro Real e outros enquadramentos aplicáveis, bem como anexos/faixas, atividades, segregação de receitas e parâmetros associados.
@@ -46,12 +46,12 @@ Esta especificação define a **parametrização de regimes tributários e o con
 - **Testes (`tests/regimesTributarios.test.ts`):** Testes de integração com `supertest` cobrindo CA-1 a CA-3.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/RegimeTributarioEmpresaModel.ts`.
-- [ ] Criar repositório em `src/repositories/RegimeTributarioEmpresaRepository.ts`.
-- [ ] Implementar `RegimeTributarioEmpresaService` em `src/services/RegimeTributarioEmpresaService.ts`.
-- [ ] Implementar `RegimeTributarioEmpresaController` e `regimeTributarioEmpresaRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/regimesTributarios.test.ts` cobrindo CA-1 a CA-3.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/RegimeTributarioEmpresaModel.ts`.
+- [x] Criar repositório em `src/repositories/RegimeTributarioEmpresaRepository.ts`.
+- [x] Implementar `RegimeTributarioEmpresaService` em `src/services/RegimeTributarioEmpresaService.ts`.
+- [x] Implementar `RegimeTributarioEmpresaController` e `regimeTributarioEmpresaRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/regimesTributarios.test.ts` cobrindo CA-1 a CA-3.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - Nenhuma dependência obrigatória bloqueante (reaproveita padrão de API REST em `src/app.ts`).
@@ -61,7 +61,9 @@ Esta especificação define a **parametrização de regimes tributários e o con
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/RegimeTributarioEmpresaModel.ts`, `src/repositories/RegimeTributarioEmpresaRepository.ts`, `src/services/RegimeTributarioEmpresaService.ts`, `src/controllers/RegimeTributarioEmpresaController.ts` e `src/routes/regimeTributarioEmpresaRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/regimesTributarios.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-3).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
