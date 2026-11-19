@@ -88,6 +88,10 @@ import { InMemoryBaixaTituloRepository } from './repositories/BaixaTituloReposit
 import { BaixaTituloService } from './services/BaixaTituloService';
 import { BaixaTituloController } from './controllers/BaixaTituloController';
 import { criarBaixaTituloRouter } from './routes/baixaTituloRoutes';
+import { InMemoryConciliacaoRepository } from './repositories/ConciliacaoRepository';
+import { ConciliacaoService } from './services/ConciliacaoService';
+import { ConciliacaoController } from './controllers/ConciliacaoController';
+import { criarConciliacaoRouter } from './routes/conciliacaoRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -131,6 +135,8 @@ export function criarApp(): {
   tituloFinanceiroService: TituloFinanceiroService;
   baixaTituloRepo: InMemoryBaixaTituloRepository;
   baixaTituloService: BaixaTituloService;
+  conciliacaoRepo: InMemoryConciliacaoRepository;
+  conciliacaoService: ConciliacaoService;
 } {
   const app = express();
 
@@ -281,6 +287,17 @@ export function criarApp(): {
   );
   const baixaTituloController = new BaixaTituloController(baixaTituloService);
 
+  // 20. Módulo Conciliação Contábil e Bancária (SPEC-2.11)
+  const conciliacaoRepo = new InMemoryConciliacaoRepository();
+  const conciliacaoService = new ConciliacaoService(
+    conciliacaoRepo,
+    lancamentoRepo,
+    planoContasRepo,
+    tituloFinanceiroRepo,
+    baixaTituloRepo
+  );
+  const conciliacaoController = new ConciliacaoController(conciliacaoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -301,6 +318,7 @@ export function criarApp(): {
   app.use('/api', criarDemonstracaoContabilRouter(demonstracaoContabilController));
   app.use('/api', criarTituloFinanceiroRouter(tituloFinanceiroController));
   app.use('/api', criarBaixaTituloRouter(baixaTituloController));
+  app.use('/api', criarConciliacaoRouter(conciliacaoController));
 
   return {
     app,
@@ -341,6 +359,8 @@ export function criarApp(): {
     tituloFinanceiroService,
     baixaTituloRepo,
     baixaTituloService,
+    conciliacaoRepo,
+    conciliacaoService,
   };
 }
 
