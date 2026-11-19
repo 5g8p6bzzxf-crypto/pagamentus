@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/zGPxV9HL | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **importação de extratos bancários com sugestão automática de conciliação e confirmação manual**, além da **conciliação de saldos contábeis** com extratos bancários, contas a pagar/receber, folha e módulos fiscais. O objetivo é permitir que o usuário confira divergências de saldos e valide manualmente os vínculos entre movimentações bancárias e registros do sistema.
@@ -51,12 +51,12 @@ Esta especificação define a **importação de extratos bancários com sugestã
 - **Testes (`tests/conciliacaoContabilBancaria.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/ConciliacaoModel.ts`.
-- [ ] Criar repositório em `src/repositories/ConciliacaoRepository.ts`.
-- [ ] Implementar `ConciliacaoService` em `src/services/ConciliacaoService.ts`.
-- [ ] Implementar `ConciliacaoController` e `conciliacaoRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/conciliacaoContabilBancaria.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/ConciliacaoModel.ts`.
+- [x] Criar repositório em `src/repositories/ConciliacaoRepository.ts`.
+- [x] Implementar `ConciliacaoService` em `src/services/ConciliacaoService.ts`.
+- [x] Implementar `ConciliacaoController` e `conciliacaoRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/conciliacaoContabilBancaria.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.1`, `SPEC-2.2`, `SPEC-2.9` e `SPEC-2.10`.
@@ -66,7 +66,9 @@ Esta especificação define a **importação de extratos bancários com sugestã
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/ConciliacaoModel.ts`, `src/repositories/ConciliacaoRepository.ts`, `src/services/ConciliacaoService.ts`, `src/controllers/ConciliacaoController.ts` e `src/routes/conciliacaoRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/conciliacaoContabilBancaria.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
