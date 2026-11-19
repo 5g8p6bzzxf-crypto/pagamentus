@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/CYwJPRPs | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a geração dos relatórios gerenciais financeiros da empresa — **Fluxo de Caixa**, **Posição Financeira**, **Aging de Recebíveis**, **Previsão de Pagamentos** e **Relatório Financeiro por Centro de Custo** — a partir dos títulos a pagar/receber (`SPEC-2.9`), baixas registradas (`SPEC-2.10`) e centros de custo (`SPEC-2.6`). O objetivo é consolidar a visão financeira com totais conferidos.
@@ -47,11 +47,11 @@ Esta especificação define a geração dos relatórios gerenciais financeiros d
 - **Testes (`tests/fluxoCaixaRelatoriosFinanceiros.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/RelatorioFinanceiroModel.ts` (e suporte opcional a `centroCustoId` em `TituloFinanceiroModel.ts`/`TituloFinanceiroService.ts`).
-- [ ] Implementar `RelatorioFinanceiroService` em `src/services/RelatorioFinanceiroService.ts`.
-- [ ] Implementar `RelatorioFinanceiroController` e `relatorioFinanceiroRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/fluxoCaixaRelatoriosFinanceiros.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/RelatorioFinanceiroModel.ts` (e suporte opcional a `centroCustoId` em `TituloFinanceiroModel.ts`/`TituloFinanceiroService.ts`).
+- [x] Implementar `RelatorioFinanceiroService` em `src/services/RelatorioFinanceiroService.ts`.
+- [x] Implementar `RelatorioFinanceiroController` e `relatorioFinanceiroRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/fluxoCaixaRelatoriosFinanceiros.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-2.6` (Centros de custo), `SPEC-2.9` (Títulos a pagar e receber) e `SPEC-2.10` (Baixas e juros).
@@ -61,7 +61,10 @@ Esta especificação define a geração dos relatórios gerenciais financeiros d
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, serviço, controller e rotas em `src/models/RelatorioFinanceiroModel.ts`, `src/services/RelatorioFinanceiroService.ts`, `src/controllers/RelatorioFinanceiroController.ts` e `src/routes/relatorioFinanceiroRoutes.ts`, registrados em `src/app.ts`.
+- Suporte a `centroCustoId` opcional em `src/models/TituloFinanceiroModel.ts` e `src/services/TituloFinanceiroService.ts`.
+- Suíte de testes `npx jest tests/fluxoCaixaRelatoriosFinanceiros.test.ts tests/titulosPagarReceberVinculos.test.ts` aprovada (2 suítes, 7 testes: CA-1 a CA-4 + regressão).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
