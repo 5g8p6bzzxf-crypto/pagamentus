@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3 – Fiscal e IR | @matheusbdsousa-lgtm | A definir | https://trello.com/c/aW3pL2nK | Revisando |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/aW3pL2nK | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **importação de documentos fiscais eletrônicos e arquivos disponibilizados por sistemas autorizados**, garantindo a **preservação do arquivo original e de sua integridade** por meio de hash criptográfico (`SHA-256`).
