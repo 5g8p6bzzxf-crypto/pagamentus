@@ -61,6 +61,7 @@ Esta especificação define a **classificação fiscal das operações** por **n
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/40
 - Modelos, repositório, serviço, controller e rotas em `src/models/ClassificacaoOperacaoModel.ts`, `src/repositories/ClassificacaoOperacaoRepository.ts`, `src/services/ClassificacaoOperacaoService.ts`, `src/controllers/ClassificacaoOperacaoController.ts` e `src/routes/classificacaoOperacaoRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/classificacaoOperacoes.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
