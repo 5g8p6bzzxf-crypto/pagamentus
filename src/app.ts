@@ -103,6 +103,10 @@ import { InMemoryDocumentoFiscalImportadoRepository } from './repositories/Docum
 import { DocumentoFiscalImportadoService } from './services/DocumentoFiscalImportadoService';
 import { DocumentoFiscalImportadoController } from './controllers/DocumentoFiscalImportadoController';
 import { criarDocumentoFiscalImportadoRouter } from './routes/documentoFiscalImportadoRoutes';
+import { InMemoryNotaFiscalRepository } from './repositories/NotaFiscalRepository';
+import { NotaFiscalService } from './services/NotaFiscalService';
+import { NotaFiscalController } from './controllers/NotaFiscalController';
+import { criarNotaFiscalRouter } from './routes/notaFiscalRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -153,6 +157,8 @@ export function criarApp(): {
   patrimonioEstoqueService: PatrimonioEstoqueService;
   documentoFiscalImportadoRepo: InMemoryDocumentoFiscalImportadoRepository;
   documentoFiscalImportadoService: DocumentoFiscalImportadoService;
+  notaFiscalRepo: InMemoryNotaFiscalRepository;
+  notaFiscalService: NotaFiscalService;
 } {
   const app = express();
 
@@ -341,6 +347,11 @@ export function criarApp(): {
   const documentoFiscalImportadoController =
     new DocumentoFiscalImportadoController(documentoFiscalImportadoService);
 
+  // 24. Módulo Notas de Entrada e Saída (SPEC-3.2)
+  const notaFiscalRepo = new InMemoryNotaFiscalRepository();
+  const notaFiscalService = new NotaFiscalService(notaFiscalRepo);
+  const notaFiscalController = new NotaFiscalController(notaFiscalService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -368,6 +379,7 @@ export function criarApp(): {
     '/api',
     criarDocumentoFiscalImportadoRouter(documentoFiscalImportadoController)
   );
+  app.use('/api', criarNotaFiscalRouter(notaFiscalController));
 
   return {
     app,
@@ -415,6 +427,8 @@ export function criarApp(): {
     patrimonioEstoqueService,
     documentoFiscalImportadoRepo,
     documentoFiscalImportadoService,
+    notaFiscalRepo,
+    notaFiscalService,
   };
 }
 
