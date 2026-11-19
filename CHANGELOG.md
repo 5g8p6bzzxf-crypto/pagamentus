@@ -30,7 +30,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.13] Patrimônio e estoque (PR #33, Ítalo Natam): Cadastro de bens, depreciação/amortização/exaustão, transferências, reavaliações, baixas com histórico documental e importação de saldos e movimentações de estoque (RF-057, RF-058, RF-059, RF-060).
 - [SPEC-3.1] Importação de documentos fiscais (PR #37, Matheus Sousa): Importação de documentos fiscais e arquivos de sistemas autorizados preservando o conteúdo original e verificando integridade via SHA-256 (RF-016).
 - [SPEC-3.2] Notas de entrada e saída (PR #38, Matheus Sousa): Registro de notas de entrada, saída e serviços com retenções, cancelamentos, devoluções e ajustes aplicáveis (RF-017).
-- [SPEC-3.3] Validação fiscal e duplicidades (PR #A definir, Matheus Sousa): Configuração de regras fiscais por empresa e validação de campos, datas, valores, participantes, códigos tributários e duplicidades com retorno detalhado dos motivos (RF-018).
+- [SPEC-3.3] Validação fiscal e duplicidades (PR #39, Matheus Sousa): Configuração de regras fiscais por empresa e validação de campos, datas, valores, participantes, códigos tributários e duplicidades com retorno detalhado dos motivos (RF-018).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
