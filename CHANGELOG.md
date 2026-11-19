@@ -27,6 +27,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.10] Baixas, juros e inadimplência (PR #30, Ítalo Natam): Controle de pagamentos, recebimentos, baixas parciais/totais com juros, multas e descontos, estornos e marcação de inadimplência (RF-047).
 - [SPEC-2.11] Conciliação contábil e bancária (PR #31, Ítalo Natam): Importação de extratos bancários com sugestão de conciliação, confirmação manual e conciliação de saldos contábeis com pagar/receber, folha e módulos fiscais (RF-011, RF-048).
 - [SPEC-2.12] Fluxo de caixa e relatórios financeiros (PR #32, Ítalo Natam): Geração de fluxo de caixa, posição financeira, aging de recebíveis, previsão de pagamentos e relatório financeiro por centro de custo (RF-049).
+- [SPEC-2.13] Patrimônio e estoque (PR #33, Ítalo Natam): Cadastro de bens, depreciação/amortização/exaustão, transferências, reavaliações, baixas com histórico documental e importação de saldos e movimentações de estoque (RF-057, RF-058, RF-059, RF-060).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado

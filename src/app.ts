@@ -95,6 +95,10 @@ import { criarConciliacaoRouter } from './routes/conciliacaoRoutes';
 import { RelatorioFinanceiroService } from './services/RelatorioFinanceiroService';
 import { RelatorioFinanceiroController } from './controllers/RelatorioFinanceiroController';
 import { criarRelatorioFinanceiroRouter } from './routes/relatorioFinanceiroRoutes';
+import { InMemoryPatrimonioEstoqueRepository } from './repositories/PatrimonioEstoqueRepository';
+import { PatrimonioEstoqueService } from './services/PatrimonioEstoqueService';
+import { PatrimonioEstoqueController } from './controllers/PatrimonioEstoqueController';
+import { criarPatrimonioEstoqueRouter } from './routes/patrimonioEstoqueRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -141,6 +145,8 @@ export function criarApp(): {
   conciliacaoRepo: InMemoryConciliacaoRepository;
   conciliacaoService: ConciliacaoService;
   relatorioFinanceiroService: RelatorioFinanceiroService;
+  patrimonioEstoqueRepo: InMemoryPatrimonioEstoqueRepository;
+  patrimonioEstoqueService: PatrimonioEstoqueService;
 } {
   const app = express();
 
@@ -312,6 +318,15 @@ export function criarApp(): {
     relatorioFinanceiroService
   );
 
+  // 22. Módulo Patrimônio e Estoque (SPEC-2.13)
+  const patrimonioEstoqueRepo = new InMemoryPatrimonioEstoqueRepository();
+  const patrimonioEstoqueService = new PatrimonioEstoqueService(
+    patrimonioEstoqueRepo
+  );
+  const patrimonioEstoqueController = new PatrimonioEstoqueController(
+    patrimonioEstoqueService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -334,6 +349,7 @@ export function criarApp(): {
   app.use('/api', criarBaixaTituloRouter(baixaTituloController));
   app.use('/api', criarConciliacaoRouter(conciliacaoController));
   app.use('/api', criarRelatorioFinanceiroRouter(relatorioFinanceiroController));
+  app.use('/api', criarPatrimonioEstoqueRouter(patrimonioEstoqueController));
 
   return {
     app,
@@ -377,6 +393,8 @@ export function criarApp(): {
     conciliacaoRepo,
     conciliacaoService,
     relatorioFinanceiroService,
+    patrimonioEstoqueRepo,
+    patrimonioEstoqueService,
   };
 }
 
