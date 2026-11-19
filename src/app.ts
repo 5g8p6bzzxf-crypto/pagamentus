@@ -119,6 +119,10 @@ import { InMemoryRegraTributariaVersionadaRepository } from './repositories/Regr
 import { RegraTributariaVersionadaService } from './services/RegraTributariaVersionadaService';
 import { RegraTributariaVersionadaController } from './controllers/RegraTributariaVersionadaController';
 import { criarRegraTributariaVersionadaRouter } from './routes/regraTributariaVersionadaRoutes';
+import { InMemoryRegimeTributarioEmpresaRepository } from './repositories/RegimeTributarioEmpresaRepository';
+import { RegimeTributarioEmpresaService } from './services/RegimeTributarioEmpresaService';
+import { RegimeTributarioEmpresaController } from './controllers/RegimeTributarioEmpresaController';
+import { criarRegimeTributarioEmpresaRouter } from './routes/regimeTributarioEmpresaRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -177,6 +181,8 @@ export function criarApp(): {
   classificacaoOperacaoService: ClassificacaoOperacaoService;
   regraTributariaVersionadaRepo: InMemoryRegraTributariaVersionadaRepository;
   regraTributariaVersionadaService: RegraTributariaVersionadaService;
+  regimeTributarioEmpresaRepo: InMemoryRegimeTributarioEmpresaRepository;
+  regimeTributarioEmpresaService: RegimeTributarioEmpresaService;
 } {
   const app = express();
 
@@ -398,6 +404,15 @@ export function criarApp(): {
   const regraTributariaVersionadaController =
     new RegraTributariaVersionadaController(regraTributariaVersionadaService);
 
+  // 28. Módulo Regimes Tributários (SPEC-3.6)
+  const regimeTributarioEmpresaRepo =
+    new InMemoryRegimeTributarioEmpresaRepository();
+  const regimeTributarioEmpresaService = new RegimeTributarioEmpresaService(
+    regimeTributarioEmpresaRepo
+  );
+  const regimeTributarioEmpresaController =
+    new RegimeTributarioEmpresaController(regimeTributarioEmpresaService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -434,6 +449,10 @@ export function criarApp(): {
   app.use(
     '/api',
     criarRegraTributariaVersionadaRouter(regraTributariaVersionadaController)
+  );
+  app.use(
+    '/api',
+    criarRegimeTributarioEmpresaRouter(regimeTributarioEmpresaController)
   );
 
   return {
@@ -490,6 +509,8 @@ export function criarApp(): {
     classificacaoOperacaoService,
     regraTributariaVersionadaRepo,
     regraTributariaVersionadaService,
+    regimeTributarioEmpresaRepo,
+    regimeTributarioEmpresaService,
   };
 }
 
