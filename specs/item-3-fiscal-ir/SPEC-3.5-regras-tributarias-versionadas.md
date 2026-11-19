@@ -66,6 +66,7 @@ Esta especificação define a **parametrização e versionamento controlado de r
 - Modelos, repositório, serviço, controller e rotas em `src/models/RegraTributariaVersionadaModel.ts`, `src/repositories/RegraTributariaVersionadaRepository.ts`, `src/services/RegraTributariaVersionadaService.ts`, `src/controllers/RegraTributariaVersionadaController.ts` e `src/routes/regraTributariaVersionadaRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/regrasTributariasVersionadas.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/41
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
