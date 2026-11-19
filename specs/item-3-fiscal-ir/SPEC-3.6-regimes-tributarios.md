@@ -64,6 +64,7 @@ Esta especificação define a **parametrização de regimes tributários e o con
 - Modelos, repositório, serviço, controller e rotas em `src/models/RegimeTributarioEmpresaModel.ts`, `src/repositories/RegimeTributarioEmpresaRepository.ts`, `src/services/RegimeTributarioEmpresaService.ts`, `src/controllers/RegimeTributarioEmpresaController.ts` e `src/routes/regimeTributarioEmpresaRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/regimesTributarios.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-3).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/42
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
