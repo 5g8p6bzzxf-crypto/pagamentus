@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/CuSU54R9 | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define o **motor de cálculo tributário parametrizado e a geração de memória de cálculo detalhada e reproduzível** para tributos federais, estaduais e municipais, considerando regime, atividade, município/UF, período e tipo de operação (com regras parametrizadas de demonstração, sem caráter de tabela oficial).
@@ -49,12 +49,12 @@ Esta especificação define o **motor de cálculo tributário parametrizado e a 
 - **Testes (`tests/calculoMemoria.test.ts`):** Casos de referência cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/CalculoTributarioModel.ts`.
-- [ ] Criar repositório em `src/repositories/CalculoTributarioRepository.ts`.
-- [ ] Implementar `CalculoTributarioService` em `src/services/CalculoTributarioService.ts`.
-- [ ] Implementar `CalculoTributarioController` e `calculoTributarioRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes de referência em `tests/calculoMemoria.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/CalculoTributarioModel.ts`.
+- [x] Criar repositório em `src/repositories/CalculoTributarioRepository.ts`.
+- [x] Implementar `CalculoTributarioService` em `src/services/CalculoTributarioService.ts`.
+- [x] Implementar `CalculoTributarioController` e `calculoTributarioRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes de referência em `tests/calculoMemoria.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-3.5` e `SPEC-3.6` (reaproveitamento do conceito de regras versionadas e regimes tributários).
@@ -64,7 +64,9 @@ Esta especificação define o **motor de cálculo tributário parametrizado e a 
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/CalculoTributarioModel.ts`, `src/repositories/CalculoTributarioRepository.ts`, `src/services/CalculoTributarioService.ts`, `src/controllers/CalculoTributarioController.ts` e `src/routes/calculoTributarioRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/calculoMemoria.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
