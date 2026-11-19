@@ -34,6 +34,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.4] Classificação das operações (PR #40, Matheus Sousa): Classificação fiscal por natureza, CFOP, NCM e CST/CSOSN conforme operação e regime utilizando tabelas fictícias configuráveis (RF-019).
 - [SPEC-3.5] Regras tributárias versionadas (PR #41, Matheus Sousa): Parametrização versionada de regras tributárias por exercício, vigência, regime, jurisdição e situação do contribuinte com motor de cálculo (RF-080, RB-004).
 - [SPEC-3.6] Regimes tributários (PR #42, Matheus Sousa): Parametrização de regimes tributários e manutenção de histórico de opção, anexos/faixas, atividades, segregação de receitas e parâmetros com vigência temporal (RF-025, RF-026).
+- [SPEC-3.7] Cálculo e memória de cálculo (PR #43, Matheus Sousa): Motor de cálculo tributário parametrizado por esfera, regime, atividade, município/UF, período e operação com memória de cálculo detalhada e arredondamento HALF_UP (RF-020, RF-021, RF-027, RNF-012).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado

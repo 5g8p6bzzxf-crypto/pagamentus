@@ -123,6 +123,10 @@ import { InMemoryRegimeTributarioEmpresaRepository } from './repositories/Regime
 import { RegimeTributarioEmpresaService } from './services/RegimeTributarioEmpresaService';
 import { RegimeTributarioEmpresaController } from './controllers/RegimeTributarioEmpresaController';
 import { criarRegimeTributarioEmpresaRouter } from './routes/regimeTributarioEmpresaRoutes';
+import { InMemoryCalculoTributarioRepository } from './repositories/CalculoTributarioRepository';
+import { CalculoTributarioService } from './services/CalculoTributarioService';
+import { CalculoTributarioController } from './controllers/CalculoTributarioController';
+import { criarCalculoTributarioRouter } from './routes/calculoTributarioRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -183,6 +187,8 @@ export function criarApp(): {
   regraTributariaVersionadaService: RegraTributariaVersionadaService;
   regimeTributarioEmpresaRepo: InMemoryRegimeTributarioEmpresaRepository;
   regimeTributarioEmpresaService: RegimeTributarioEmpresaService;
+  calculoTributarioRepo: InMemoryCalculoTributarioRepository;
+  calculoTributarioService: CalculoTributarioService;
 } {
   const app = express();
 
@@ -413,6 +419,15 @@ export function criarApp(): {
   const regimeTributarioEmpresaController =
     new RegimeTributarioEmpresaController(regimeTributarioEmpresaService);
 
+  // 29. Módulo Cálculo e Memória de Cálculo (SPEC-3.7)
+  const calculoTributarioRepo = new InMemoryCalculoTributarioRepository();
+  const calculoTributarioService = new CalculoTributarioService(
+    calculoTributarioRepo
+  );
+  const calculoTributarioController = new CalculoTributarioController(
+    calculoTributarioService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -454,6 +469,7 @@ export function criarApp(): {
     '/api',
     criarRegimeTributarioEmpresaRouter(regimeTributarioEmpresaController)
   );
+  app.use('/api', criarCalculoTributarioRouter(calculoTributarioController));
 
   return {
     app,
@@ -511,6 +527,8 @@ export function criarApp(): {
     regraTributariaVersionadaService,
     regimeTributarioEmpresaRepo,
     regimeTributarioEmpresaService,
+    calculoTributarioRepo,
+    calculoTributarioService,
   };
 }
 
