@@ -111,6 +111,10 @@ import { InMemoryValidacaoFiscalRepository } from './repositories/ValidacaoFisca
 import { ValidacaoFiscalService } from './services/ValidacaoFiscalService';
 import { ValidacaoFiscalController } from './controllers/ValidacaoFiscalController';
 import { criarValidacaoFiscalRouter } from './routes/validacaoFiscalRoutes';
+import { InMemoryClassificacaoOperacaoRepository } from './repositories/ClassificacaoOperacaoRepository';
+import { ClassificacaoOperacaoService } from './services/ClassificacaoOperacaoService';
+import { ClassificacaoOperacaoController } from './controllers/ClassificacaoOperacaoController';
+import { criarClassificacaoOperacaoRouter } from './routes/classificacaoOperacaoRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -165,6 +169,8 @@ export function criarApp(): {
   notaFiscalService: NotaFiscalService;
   validacaoFiscalRepo: InMemoryValidacaoFiscalRepository;
   validacaoFiscalService: ValidacaoFiscalService;
+  classificacaoOperacaoRepo: InMemoryClassificacaoOperacaoRepository;
+  classificacaoOperacaoService: ClassificacaoOperacaoService;
 } {
   const app = express();
 
@@ -369,6 +375,15 @@ export function criarApp(): {
     validacaoFiscalService
   );
 
+  // 26. Módulo Classificação das Operações (SPEC-3.4)
+  const classificacaoOperacaoRepo =
+    new InMemoryClassificacaoOperacaoRepository();
+  const classificacaoOperacaoService = new ClassificacaoOperacaoService(
+    classificacaoOperacaoRepo
+  );
+  const classificacaoOperacaoController =
+    new ClassificacaoOperacaoController(classificacaoOperacaoService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -398,6 +413,10 @@ export function criarApp(): {
   );
   app.use('/api', criarNotaFiscalRouter(notaFiscalController));
   app.use('/api', criarValidacaoFiscalRouter(validacaoFiscalController));
+  app.use(
+    '/api',
+    criarClassificacaoOperacaoRouter(classificacaoOperacaoController)
+  );
 
   return {
     app,
@@ -449,6 +468,8 @@ export function criarApp(): {
     notaFiscalService,
     validacaoFiscalRepo,
     validacaoFiscalService,
+    classificacaoOperacaoRepo,
+    classificacaoOperacaoService,
   };
 }
 
