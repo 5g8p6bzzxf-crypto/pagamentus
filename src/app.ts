@@ -127,6 +127,10 @@ import { InMemoryCalculoTributarioRepository } from './repositories/CalculoTribu
 import { CalculoTributarioService } from './services/CalculoTributarioService';
 import { CalculoTributarioController } from './controllers/CalculoTributarioController';
 import { criarCalculoTributarioRouter } from './routes/calculoTributarioRoutes';
+import { InMemoryRetencaoCreditoParcelamentoRepository } from './repositories/RetencaoCreditoParcelamentoRepository';
+import { RetencaoCreditoParcelamentoService } from './services/RetencaoCreditoParcelamentoService';
+import { RetencaoCreditoParcelamentoController } from './controllers/RetencaoCreditoParcelamentoController';
+import { criarRetencaoCreditoParcelamentoRouter } from './routes/retencaoCreditoParcelamentoRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -189,6 +193,8 @@ export function criarApp(): {
   regimeTributarioEmpresaService: RegimeTributarioEmpresaService;
   calculoTributarioRepo: InMemoryCalculoTributarioRepository;
   calculoTributarioService: CalculoTributarioService;
+  retencaoCreditoParcelamentoRepo: InMemoryRetencaoCreditoParcelamentoRepository;
+  retencaoCreditoParcelamentoService: RetencaoCreditoParcelamentoService;
 } {
   const app = express();
 
@@ -428,6 +434,16 @@ export function criarApp(): {
     calculoTributarioService
   );
 
+  // 30. Módulo Retenções, Créditos e Parcelamentos (SPEC-3.8)
+  const retencaoCreditoParcelamentoRepo =
+    new InMemoryRetencaoCreditoParcelamentoRepository();
+  const retencaoCreditoParcelamentoService =
+    new RetencaoCreditoParcelamentoService(retencaoCreditoParcelamentoRepo);
+  const retencaoCreditoParcelamentoController =
+    new RetencaoCreditoParcelamentoController(
+      retencaoCreditoParcelamentoService
+    );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -470,6 +486,12 @@ export function criarApp(): {
     criarRegimeTributarioEmpresaRouter(regimeTributarioEmpresaController)
   );
   app.use('/api', criarCalculoTributarioRouter(calculoTributarioController));
+  app.use(
+    '/api',
+    criarRetencaoCreditoParcelamentoRouter(
+      retencaoCreditoParcelamentoController
+    )
+  );
 
   return {
     app,
@@ -529,6 +551,8 @@ export function criarApp(): {
     regimeTributarioEmpresaService,
     calculoTributarioRepo,
     calculoTributarioService,
+    retencaoCreditoParcelamentoRepo,
+    retencaoCreditoParcelamentoService,
   };
 }
 
