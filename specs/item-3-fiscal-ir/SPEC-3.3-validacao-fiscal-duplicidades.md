@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | A definir | Fazendo |
+| 3A – Fiscal e tributos | @matheusbdsousa-lgtm | A definir | https://trello.com/c/miNCCfqQ | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define a **validação fiscal de documentos e notas** quanto a campos fiscais, datas, valores, participantes, códigos tributários e **detecção de duplicidades** conforme regras configuradas por empresa, retornando os motivos claros de rejeição.
@@ -46,12 +46,12 @@ Esta especificação define a **validação fiscal de documentos e notas** quant
 - **Testes (`tests/validacaoFiscalDuplicidades.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/ValidacaoFiscalModel.ts`.
-- [ ] Criar repositório em `src/repositories/ValidacaoFiscalRepository.ts`.
-- [ ] Implementar `ValidacaoFiscalService` em `src/services/ValidacaoFiscalService.ts`.
-- [ ] Implementar `ValidacaoFiscalController` e `validacaoFiscalRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/validacaoFiscalDuplicidades.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/ValidacaoFiscalModel.ts`.
+- [x] Criar repositório em `src/repositories/ValidacaoFiscalRepository.ts`.
+- [x] Implementar `ValidacaoFiscalService` em `src/services/ValidacaoFiscalService.ts`.
+- [x] Implementar `ValidacaoFiscalController` e `validacaoFiscalRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/validacaoFiscalDuplicidades.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - `SPEC-3.1` (`IDocumentoFiscalImportadoRepository`) e `SPEC-3.2` (`INotaFiscalRepository`).
@@ -61,7 +61,9 @@ Esta especificação define a **validação fiscal de documentos e notas** quant
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/ValidacaoFiscalModel.ts`, `src/repositories/ValidacaoFiscalRepository.ts`, `src/services/ValidacaoFiscalService.ts`, `src/controllers/ValidacaoFiscalController.ts` e `src/routes/validacaoFiscalRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/validacaoFiscalDuplicidades.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
