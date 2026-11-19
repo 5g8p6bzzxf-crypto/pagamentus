@@ -2,7 +2,7 @@
 
 | Item | Responsável | Revisor (4º período) | Trello | Status |
 |---|---|---|---|---|
-| 2 – Contabilidade | @joaovitor-webdev | A definir | A definir | Fazendo |
+| 2 – Contabilidade | @joaovitor-webdev | A definir | https://trello.com/c/oK7jfxFh | Revisando |
 
 ## 1. Contexto e objetivo
 Esta especificação define o controle de **patrimônio (bens imobilizados/intangíveis/exauríveis)** — incluindo cadastro, cálculo de depreciação/amortização/exaustão, baixas, transferências, reavaliações permitidas e histórico documental — e a **importação de saldos e movimentações de estoque** da empresa.
@@ -57,12 +57,12 @@ Esta especificação define o controle de **patrimônio (bens imobilizados/intan
 - **Testes (`tests/patrimonioEstoque.test.ts`):** Cenários de integração com `supertest` cobrindo CA-1 a CA-4.
 
 ## 7. Tarefas de implementação
-- [ ] Criar modelos em `src/models/PatrimonioEstoqueModel.ts`.
-- [ ] Criar repositório em `src/repositories/PatrimonioEstoqueRepository.ts`.
-- [ ] Implementar `PatrimonioEstoqueService` em `src/services/PatrimonioEstoqueService.ts`.
-- [ ] Implementar `PatrimonioEstoqueController` e `patrimonioEstoqueRoutes` e registrar em `src/app.ts`.
-- [ ] Criar testes automatizados em `tests/patrimonioEstoque.test.ts` cobrindo CA-1 a CA-4.
-- [ ] Executar testes e build TypeScript e registrar evidências na spec.
+- [x] Criar modelos em `src/models/PatrimonioEstoqueModel.ts`.
+- [x] Criar repositório em `src/repositories/PatrimonioEstoqueRepository.ts`.
+- [x] Implementar `PatrimonioEstoqueService` em `src/services/PatrimonioEstoqueService.ts`.
+- [x] Implementar `PatrimonioEstoqueController` e `patrimonioEstoqueRoutes` e registrar em `src/app.ts`.
+- [x] Criar testes automatizados em `tests/patrimonioEstoque.test.ts` cobrindo CA-1 a CA-4.
+- [x] Executar testes e build TypeScript e registrar evidências na spec.
 
 ## 8. Dependências
 - Módulo base Express/TypeScript e estrutura multi-tenant por `empresaId`.
@@ -72,7 +72,9 @@ Esta especificação define o controle de **patrimônio (bens imobilizados/intan
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
-- A preencher após implementação e execução dos testes.
+- Modelos, repositório, serviço, controller e rotas em `src/models/PatrimonioEstoqueModel.ts`, `src/repositories/PatrimonioEstoqueRepository.ts`, `src/services/PatrimonioEstoqueService.ts`, `src/controllers/PatrimonioEstoqueController.ts` e `src/routes/patrimonioEstoqueRoutes.ts`, registrados em `src/app.ts`.
+- Suíte de testes `npx jest tests/patrimonioEstoque.test.ts` aprovada (1 suíte, 4 testes: CA-1 a CA-4).
+- Compilação `npm run build` (`tsc`) concluída sem erros.
 
 ## 11. Histórico de revisão
 - Ainda sem revisões registradas.
