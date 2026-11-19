@@ -115,6 +115,10 @@ import { InMemoryClassificacaoOperacaoRepository } from './repositories/Classifi
 import { ClassificacaoOperacaoService } from './services/ClassificacaoOperacaoService';
 import { ClassificacaoOperacaoController } from './controllers/ClassificacaoOperacaoController';
 import { criarClassificacaoOperacaoRouter } from './routes/classificacaoOperacaoRoutes';
+import { InMemoryRegraTributariaVersionadaRepository } from './repositories/RegraTributariaVersionadaRepository';
+import { RegraTributariaVersionadaService } from './services/RegraTributariaVersionadaService';
+import { RegraTributariaVersionadaController } from './controllers/RegraTributariaVersionadaController';
+import { criarRegraTributariaVersionadaRouter } from './routes/regraTributariaVersionadaRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -171,6 +175,8 @@ export function criarApp(): {
   validacaoFiscalService: ValidacaoFiscalService;
   classificacaoOperacaoRepo: InMemoryClassificacaoOperacaoRepository;
   classificacaoOperacaoService: ClassificacaoOperacaoService;
+  regraTributariaVersionadaRepo: InMemoryRegraTributariaVersionadaRepository;
+  regraTributariaVersionadaService: RegraTributariaVersionadaService;
 } {
   const app = express();
 
@@ -384,6 +390,14 @@ export function criarApp(): {
   const classificacaoOperacaoController =
     new ClassificacaoOperacaoController(classificacaoOperacaoService);
 
+  // 27. Módulo Regras Tributárias Versionadas (SPEC-3.5)
+  const regraTributariaVersionadaRepo =
+    new InMemoryRegraTributariaVersionadaRepository();
+  const regraTributariaVersionadaService =
+    new RegraTributariaVersionadaService(regraTributariaVersionadaRepo);
+  const regraTributariaVersionadaController =
+    new RegraTributariaVersionadaController(regraTributariaVersionadaService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -416,6 +430,10 @@ export function criarApp(): {
   app.use(
     '/api',
     criarClassificacaoOperacaoRouter(classificacaoOperacaoController)
+  );
+  app.use(
+    '/api',
+    criarRegraTributariaVersionadaRouter(regraTributariaVersionadaController)
   );
 
   return {
@@ -470,6 +488,8 @@ export function criarApp(): {
     validacaoFiscalService,
     classificacaoOperacaoRepo,
     classificacaoOperacaoService,
+    regraTributariaVersionadaRepo,
+    regraTributariaVersionadaService,
   };
 }
 
