@@ -25,7 +25,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.8] Balanço, DRE, DFC e DMPL (PR #28, Ítalo Natam): Geração de Balanço Patrimonial, DRE, DFC e DMPL/DLPA consistentes a partir do mesmo cenário contábil (RF-013).
 - [SPEC-2.9] Títulos a pagar e a receber e vínculos (PR #29, Ítalo Natam): Cadastro de títulos, parcelas, vencimentos, fornecedores/clientes, categorias, condições de pagamento e vínculos com documento fiscal, lançamento contábil, comprovante e anexos (RF-046, RF-050).
 - [SPEC-2.10] Baixas, juros e inadimplência (PR #30, Ítalo Natam): Controle de pagamentos, recebimentos, baixas parciais/totais com juros, multas e descontos, estornos e marcação de inadimplência (RF-047).
-- [SPEC-2.11] Conciliação contábil e bancária (PR #A definir, Ítalo Natam): Importação de extratos bancários com sugestão de conciliação, confirmação manual e conciliação de saldos contábeis com pagar/receber, folha e módulos fiscais (RF-011, RF-048).
+- [SPEC-2.11] Conciliação contábil e bancária (PR #31, Ítalo Natam): Importação de extratos bancários com sugestão de conciliação, confirmação manual e conciliação de saldos contábeis com pagar/receber, folha e módulos fiscais (RF-011, RF-048).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado

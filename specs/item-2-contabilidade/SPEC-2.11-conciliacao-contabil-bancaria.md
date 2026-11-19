@@ -66,6 +66,7 @@ Esta especificação define a **importação de extratos bancários com sugestã
 2. Executar `npm run build` para garantir ausência de erros de compilação TypeScript.
 
 ## 10. Evidências (preencher ao concluir)
+- PR: https://github.com/joaovitor-webdev/pagamentus/pull/31
 - Modelos, repositório, serviço, controller e rotas em `src/models/ConciliacaoModel.ts`, `src/repositories/ConciliacaoRepository.ts`, `src/services/ConciliacaoService.ts`, `src/controllers/ConciliacaoController.ts` e `src/routes/conciliacaoRoutes.ts`, registrados em `src/app.ts`.
 - Suíte de testes `npx jest tests/conciliacaoContabilBancaria.test.ts` aprovada (1 suíte, 3 testes: CA-1 a CA-4).
 - Compilação `npm run build` (`tsc`) concluída sem erros.
