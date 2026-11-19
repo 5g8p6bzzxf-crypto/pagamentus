@@ -107,6 +107,10 @@ import { InMemoryNotaFiscalRepository } from './repositories/NotaFiscalRepositor
 import { NotaFiscalService } from './services/NotaFiscalService';
 import { NotaFiscalController } from './controllers/NotaFiscalController';
 import { criarNotaFiscalRouter } from './routes/notaFiscalRoutes';
+import { InMemoryValidacaoFiscalRepository } from './repositories/ValidacaoFiscalRepository';
+import { ValidacaoFiscalService } from './services/ValidacaoFiscalService';
+import { ValidacaoFiscalController } from './controllers/ValidacaoFiscalController';
+import { criarValidacaoFiscalRouter } from './routes/validacaoFiscalRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -159,6 +163,8 @@ export function criarApp(): {
   documentoFiscalImportadoService: DocumentoFiscalImportadoService;
   notaFiscalRepo: InMemoryNotaFiscalRepository;
   notaFiscalService: NotaFiscalService;
+  validacaoFiscalRepo: InMemoryValidacaoFiscalRepository;
+  validacaoFiscalService: ValidacaoFiscalService;
 } {
   const app = express();
 
@@ -352,6 +358,17 @@ export function criarApp(): {
   const notaFiscalService = new NotaFiscalService(notaFiscalRepo);
   const notaFiscalController = new NotaFiscalController(notaFiscalService);
 
+  // 25. Módulo Validação Fiscal e Duplicidades (SPEC-3.3)
+  const validacaoFiscalRepo = new InMemoryValidacaoFiscalRepository();
+  const validacaoFiscalService = new ValidacaoFiscalService(
+    validacaoFiscalRepo,
+    notaFiscalRepo,
+    documentoFiscalImportadoRepo
+  );
+  const validacaoFiscalController = new ValidacaoFiscalController(
+    validacaoFiscalService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -380,6 +397,7 @@ export function criarApp(): {
     criarDocumentoFiscalImportadoRouter(documentoFiscalImportadoController)
   );
   app.use('/api', criarNotaFiscalRouter(notaFiscalController));
+  app.use('/api', criarValidacaoFiscalRouter(validacaoFiscalController));
 
   return {
     app,
@@ -429,6 +447,8 @@ export function criarApp(): {
     documentoFiscalImportadoService,
     notaFiscalRepo,
     notaFiscalService,
+    validacaoFiscalRepo,
+    validacaoFiscalService,
   };
 }
 
