@@ -29,7 +29,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-2.12] Fluxo de caixa e relatórios financeiros (PR #32, Ítalo Natam): Geração de fluxo de caixa, posição financeira, aging de recebíveis, previsão de pagamentos e relatório financeiro por centro de custo (RF-049).
 - [SPEC-2.13] Patrimônio e estoque (PR #33, Ítalo Natam): Cadastro de bens, depreciação/amortização/exaustão, transferências, reavaliações, baixas com histórico documental e importação de saldos e movimentações de estoque (RF-057, RF-058, RF-059, RF-060).
 - [SPEC-3.1] Importação de documentos fiscais (PR #37, Matheus Sousa): Importação de documentos fiscais e arquivos de sistemas autorizados preservando o conteúdo original e verificando integridade via SHA-256 (RF-016).
-- [SPEC-3.2] Notas de entrada e saída (PR #A definir, Matheus Sousa): Registro de notas de entrada, saída e serviços com retenções, cancelamentos, devoluções e ajustes aplicáveis (RF-017).
+- [SPEC-3.2] Notas de entrada e saída (PR #38, Matheus Sousa): Registro de notas de entrada, saída e serviços com retenções, cancelamentos, devoluções e ajustes aplicáveis (RF-017).
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
