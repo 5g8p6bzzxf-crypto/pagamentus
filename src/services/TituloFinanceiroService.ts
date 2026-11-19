@@ -28,6 +28,7 @@ export class TituloFinanceiroService {
     contraparte: ContraparteTitulo;
     categoria: string;
     condicaoPagamento: string;
+    centroCustoId?: string;
     valorTotal: number;
     parcelas: ParcelaTitulo[];
   }): Promise<TituloFinanceiro> {
@@ -107,6 +108,7 @@ export class TituloFinanceiroService {
       },
       categoria,
       condicaoPagamento,
+      centroCustoId: dados.centroCustoId,
       valorTotal: Number(dados.valorTotal.toFixed(2)),
       parcelas: parcelasFormatadas,
       vinculos: {},

@@ -92,6 +92,9 @@ import { InMemoryConciliacaoRepository } from './repositories/ConciliacaoReposit
 import { ConciliacaoService } from './services/ConciliacaoService';
 import { ConciliacaoController } from './controllers/ConciliacaoController';
 import { criarConciliacaoRouter } from './routes/conciliacaoRoutes';
+import { RelatorioFinanceiroService } from './services/RelatorioFinanceiroService';
+import { RelatorioFinanceiroController } from './controllers/RelatorioFinanceiroController';
+import { criarRelatorioFinanceiroRouter } from './routes/relatorioFinanceiroRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -137,6 +140,7 @@ export function criarApp(): {
   baixaTituloService: BaixaTituloService;
   conciliacaoRepo: InMemoryConciliacaoRepository;
   conciliacaoService: ConciliacaoService;
+  relatorioFinanceiroService: RelatorioFinanceiroService;
 } {
   const app = express();
 
@@ -298,6 +302,16 @@ export function criarApp(): {
   );
   const conciliacaoController = new ConciliacaoController(conciliacaoService);
 
+  // 21. Módulo Fluxo de Caixa e Relatórios Financeiros (SPEC-2.12)
+  const relatorioFinanceiroService = new RelatorioFinanceiroService(
+    tituloFinanceiroRepo,
+    baixaTituloRepo,
+    centroCustoRepo
+  );
+  const relatorioFinanceiroController = new RelatorioFinanceiroController(
+    relatorioFinanceiroService
+  );
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -319,6 +333,7 @@ export function criarApp(): {
   app.use('/api', criarTituloFinanceiroRouter(tituloFinanceiroController));
   app.use('/api', criarBaixaTituloRouter(baixaTituloController));
   app.use('/api', criarConciliacaoRouter(conciliacaoController));
+  app.use('/api', criarRelatorioFinanceiroRouter(relatorioFinanceiroController));
 
   return {
     app,
@@ -361,6 +376,7 @@ export function criarApp(): {
     baixaTituloService,
     conciliacaoRepo,
     conciliacaoService,
+    relatorioFinanceiroService,
   };
 }
 

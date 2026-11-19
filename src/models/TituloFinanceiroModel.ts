@@ -40,6 +40,7 @@ export interface TituloFinanceiro {
   contraparte: ContraparteTitulo;
   categoria: string;
   condicaoPagamento: string;
+  centroCustoId?: string;
   valorTotal: number;
   parcelas: ParcelaTitulo[];
   vinculos: VinculoTitulo;
