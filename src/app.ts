@@ -131,6 +131,9 @@ import { InMemoryRetencaoCreditoParcelamentoRepository } from './repositories/Re
 import { RetencaoCreditoParcelamentoService } from './services/RetencaoCreditoParcelamentoService';
 import { RetencaoCreditoParcelamentoController } from './controllers/RetencaoCreditoParcelamentoController';
 import { criarRetencaoCreditoParcelamentoRouter } from './routes/retencaoCreditoParcelamentoRoutes';
+import { GuiaDemonstrativoFiscalService } from './services/GuiaDemonstrativoFiscalService';
+import { GuiaDemonstrativoFiscalController } from './controllers/GuiaDemonstrativoFiscalController';
+import { criarGuiaDemonstrativoFiscalRouter } from './routes/guiaDemonstrativoFiscalRoutes';
 
 /**
  * Factory para criar a aplicação Express configurada com os módulos contábeis e de plataforma
@@ -195,6 +198,7 @@ export function criarApp(): {
   calculoTributarioService: CalculoTributarioService;
   retencaoCreditoParcelamentoRepo: InMemoryRetencaoCreditoParcelamentoRepository;
   retencaoCreditoParcelamentoService: RetencaoCreditoParcelamentoService;
+  guiaDemonstrativoFiscalService: GuiaDemonstrativoFiscalService;
 } {
   const app = express();
 
@@ -444,6 +448,11 @@ export function criarApp(): {
       retencaoCreditoParcelamentoService
     );
 
+  // 31. Módulo Guias e Demonstrativos para Conferência (SPEC-3.9)
+  const guiaDemonstrativoFiscalService = new GuiaDemonstrativoFiscalService();
+  const guiaDemonstrativoFiscalController =
+    new GuiaDemonstrativoFiscalController(guiaDemonstrativoFiscalService);
+
   // Prefixo de rotas da API
   app.use('/api', criarPlanoContasRouter(planoContasController));
   app.use('/api', criarLancamentoContabilRouter(lancamentoController));
@@ -491,6 +500,10 @@ export function criarApp(): {
     criarRetencaoCreditoParcelamentoRouter(
       retencaoCreditoParcelamentoController
     )
+  );
+  app.use(
+    '/api',
+    criarGuiaDemonstrativoFiscalRouter(guiaDemonstrativoFiscalController)
   );
 
   return {
@@ -553,6 +566,7 @@ export function criarApp(): {
     calculoTributarioService,
     retencaoCreditoParcelamentoRepo,
     retencaoCreditoParcelamentoService,
+    guiaDemonstrativoFiscalService,
   };
 }
 
