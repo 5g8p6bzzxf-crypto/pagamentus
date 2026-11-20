@@ -36,6 +36,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.6] Regimes tributários (PR #42, Matheus Sousa): Parametrização de regimes tributários e manutenção de histórico de opção, anexos/faixas, atividades, segregação de receitas e parâmetros com vigência temporal (RF-025, RF-026).
 - [SPEC-3.7] Cálculo e memória de cálculo (PR #43, Matheus Sousa): Motor de cálculo tributário parametrizado por esfera, regime, atividade, município/UF, período e operação com memória de cálculo detalhada e arredondamento HALF_UP (RF-020, RF-021, RF-027, RNF-012).
 - [SPEC-3.8] Retenções, créditos e parcelamentos (PR #44, Matheus Sousa): Controle de tributos retidos e sofridos, créditos tributários, compensações com controle de saldo, parcelamentos e vencimentos (RF-022).
+- [SPEC-3.9] Guias e demonstrativos (PR #45, Matheus Barbosa)
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 ### Alterado
