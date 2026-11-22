@@ -12,3 +12,5 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 ### Alterado
 
 ### Corrigido
+
+- SPEC-5.6: Especificação de API documentada para integrações autorizadas, com OpenAPI, autenticação, limites de uso e logs.
