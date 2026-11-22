@@ -12,3 +12,5 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 ### Alterado
 
 ### Corrigido
+
+- SPEC-5.9: Especificação de desempenho e carga, com meta inicial de resposta, perfil de carga, validação e feedback para operações demoradas.
