@@ -12,3 +12,5 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 ### Alterado
 
 ### Corrigido
+
+- SPEC-5.8: Especificação de observabilidade e monitoramento de métricas, logs, alertas, rastreamento e disponibilidade, com proteção de dados sensíveis.
