@@ -12,3 +12,5 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 ### Alterado
 
 ### Corrigido
+
+- SPEC-5.7: Especificação de importação e exportação validadas, com pré-visualização, relatório de erros, deduplicação e preservação dos arquivos originais.
