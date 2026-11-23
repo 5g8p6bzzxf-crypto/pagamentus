@@ -50,3 +50,10 @@ desktop.ini
 logs/
 *.log
 
+
+# Banco de dados local
+data/
+*.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
