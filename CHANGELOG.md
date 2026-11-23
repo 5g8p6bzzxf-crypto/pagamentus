@@ -43,6 +43,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-5.4] Exportação controlada e saída de dados (PR #48, Pablo Eduardo)
 - [SPEC-5.5] Relatórios de auditoria (PR #49, Pablo Eduardo)
 - [SPEC-5.6] API documentada (PR #50, Pablo Eduardo)
+- [SPEC-5.7] Importação e exportação validadas (PR #51, Pablo Eduardo)
 
 ### Alterado
 
