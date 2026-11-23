@@ -39,10 +39,10 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.8] Retenções, créditos e parcelamentos (PR #44, Matheus Sousa): Controle de tributos retidos e sofridos, créditos tributários, compensações com controle de saldo, parcelamentos e vencimentos (RF-022).
 - [SPEC-3.9] Guias e demonstrativos (PR #45, Matheus Barbosa)
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
-- [SPEC-5.5] Relatórios de auditoria (PR #49, Pablo Eduardo)
-
 - SPEC-5.3: Especificação de relatórios exportáveis em PDF, XLSX e CSV, com filtros por cliente, período, conta, centro de custo e status.
 - [SPEC-5.4] Exportação controlada e saída de dados (PR #48, Pablo Eduardo)
+- [SPEC-5.5] Relatórios de auditoria (PR #49, Pablo Eduardo)
+- [SPEC-5.6] API documentada (PR #50, Pablo Eduardo)
 
 ### Alterado
 
