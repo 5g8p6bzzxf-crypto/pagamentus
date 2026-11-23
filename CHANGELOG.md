@@ -3,6 +3,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 
 ## [Não lançado]
 ### Adicionado
+- SPEC-5.2: Especificação dos painéis de indicadores.
 - SPEC-1.1: Estrutura base de documentação, modelos de especificação e regras de proteção da branch main.
 - SPEC-1.2: Definição da stack tecnológica oficial, diretrizes de escalabilidade (ADR-001) e segregação de ambientes de teste e produção.
 - SPEC-1.3: Modelo de dados inicial com chaves, restrições e controle transacional atômico com rollback (RNF-013).
@@ -38,9 +39,11 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.8] Retenções, créditos e parcelamentos (PR #44, Matheus Sousa): Controle de tributos retidos e sofridos, créditos tributários, compensações com controle de saldo, parcelamentos e vencimentos (RF-022).
 - [SPEC-3.9] Guias e demonstrativos (PR #45, Matheus Barbosa)
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
+- SPEC-5.3: Especificação de relatórios exportáveis em PDF, XLSX e CSV, com filtros por cliente, período, conta, centro de custo e status.
+- [SPEC-5.4] Exportação controlada e saída de dados (PR #48, Pablo Eduardo)
+- [SPEC-5.5] Relatórios de auditoria (PR #49, Pablo Eduardo)
+- [SPEC-5.6] API documentada (PR #50, Pablo Eduardo)
 
 ### Alterado
 
 ### Corrigido
-
-- SPEC-5.6: Especificação de API documentada para integrações autorizadas, com OpenAPI, autenticação, limites de uso e logs.

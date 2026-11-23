@@ -85,8 +85,44 @@ Para mais detalhes sobre as regras de branches, mensagens de commit e PRs, leia 
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar o Módulo do Item 4 (SPEC-4.1)
 
-A definição da stack tecnológica oficial, dependências e comandos de execução local faz parte da **SPEC-1.2** (Decisão de arquitetura, stack e ambientes) a ser revisada e aprovada pelo 4º período.
-Após a aprovação, as instruções detalhadas de instalação e execução estarão disponíveis nesta seção.
+O módulo do Item 4 (Folha de Pagamento) foi migrado e implementado estritamente na stack da **SPEC-1.2**:
+- **Backend:** Node.js com TypeScript e Express
+- **Banco de Dados:** PostgreSQL 16+ com isolamento por esquemas (`pagamentus`) e multi-inquilino (`organization_id`)
+- **Ambientes:** `pagamentus_prod` (produção/desenvolvimento) e `pagamentus_test` (suíte de testes automatizados)
+- **Conteinerização:** `docker-compose.yml` e `Dockerfile`
+- **Frontend:** HTML5, Vanilla JS e Tailwind CSS via CDN
+
+### Opção A: Execução via Docker Compose (Recomendada para Produção)
+```bash
+docker compose up --build
+```
+A aplicação iniciará na porta `3000` (`http://localhost:3000`) com PostgreSQL provisionado e bancos inicializados automaticamente.
+
+### Opção B: Execução Local com Node.js e TypeScript
+
+1. **Instalar dependências:**
+   ```bash
+   npm install
+   ```
+
+2. **Compilar TypeScript:**
+   ```bash
+   npm run build
+   ```
+
+3. **Iniciar o servidor:**
+   ```bash
+   npm start        # Produção compilada
+   # ou
+   npm run dev      # Modo desenvolvimento via tsx
+   ```
+   Acesse no navegador: `http://localhost:3000`
+
+4. **Executar a suíte de testes automatizados:**
+   ```bash
+   npm test
+   ```
+   Executa 19 testes automatizados com banco isolado `pagamentus_test`.
 
