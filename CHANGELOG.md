@@ -40,6 +40,8 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.9] Guias e demonstrativos (PR #45, Matheus Barbosa)
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
+- SPEC-5.3: Especificação de relatórios exportáveis em PDF, XLSX e CSV, com filtros por cliente, período, conta, centro de custo e status.
+
 ### Alterado
 
 ### Corrigido
