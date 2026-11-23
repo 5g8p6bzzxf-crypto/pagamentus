@@ -5,7 +5,7 @@ Definir requisitos para importação e exportação de dados com validação, pr
 
 ## 2. Requisitos relacionados
 - RF-078 — Importar/exportar dados com validação, pré-visualização, relatório de erros e prevenção de duplicidade.
-- RNF-006 — Arquivos importados devem ser validados e deduplicados, preservando o original e o resultado do processamento.
+- RB-006 — Arquivos importados devem ser validados e deduplicados, preservando o original e o resultado do processamento.
 
 ## 3. Escopo
 ### Dentro do escopo
