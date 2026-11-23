@@ -41,6 +41,7 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
 
 - SPEC-5.3: Especificação de relatórios exportáveis em PDF, XLSX e CSV, com filtros por cliente, período, conta, centro de custo e status.
+- [SPEC-5.4] Exportação controlada e saída de dados (PR #48, Pablo Eduardo)
 
 ### Alterado
 
