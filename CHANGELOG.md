@@ -5,8 +5,8 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 ### Adicionado
 - SPEC-5.2: Especificação dos painéis de indicadores.
 - SPEC-1.1: Estrutura base de documentação, modelos de especificação e regras de proteção da branch main.
-- SPEC-1.2: Definição da stack tecnológica oficial, diretrizes de escalabilidade (ADR-001) e segregação de ambientes de teste e produção.
-- SPEC-1.3: Modelo de dados inicial com chaves, restrições e controle transacional atômico com rollback (RNF-013).
+- [SPEC-1.2] Arquitetura, stack e ambientes (PR #54, João Vitor): registra a stack adotada e valida a seleção dos bancos por ambiente.
+- [SPEC-1.3] Modelo de dados e integridade (PR #55, João Vitor): reimplementação SDD com validação das constraints do esquema inicial, rejeição de duplicidade e rollback transacional.
 - [SPEC-1.4] Autenticação, senhas e MFA (PR #14, João Vitor): Política de senhas fortes, MFA para perfis privilegiados, bloqueio de tentativas e encerramento de sessões (RF-075, RNF-003).
 - [SPEC-1.5] Perfis, permissões e isolamento entre clientes (PR #15, João Vitor): Segregação entre clientes com autorização expressa, menor privilégio, criptografia de dados sensíveis e TLS (RB-008, RNF-001).
 - [SPEC-1.6] Cadastro de pessoas e empresas (PR #17, João Vitor): Cadastro de PF/PJ com validação de CPF/CNPJ, inscrições, contatos, endereços, responsáveis e dados fiscais com vigência (RF-001, RF-002).
@@ -39,14 +39,10 @@ Uma linha por spec concluída, no estilo Keep a Changelog.
 - [SPEC-3.8] Retenções, créditos e parcelamentos (PR #44, Matheus Sousa): Controle de tributos retidos e sofridos, créditos tributários, compensações com controle de saldo, parcelamentos e vencimentos (RF-022).
 - [SPEC-3.9] Guias e demonstrativos (PR #45, Matheus Barbosa)
 - SPEC-5.1: Especificação em revisão de navegação, responsividade, acessibilidade, compatibilidade com navegadores, exportações em formatos abertos e documentação de requisitos de integração.
-- SPEC-5.3: Especificação de relatórios exportáveis em PDF, XLSX e CSV, com filtros por cliente, período, conta, centro de custo e status.
-- [SPEC-5.4] Exportação controlada e saída de dados (PR #48, Pablo Eduardo)
-- [SPEC-5.5] Relatórios de auditoria (PR #49, Pablo Eduardo)
-- [SPEC-5.6] API documentada (PR #50, Pablo Eduardo)
-- [SPEC-5.7] Importação e exportação validadas (PR #51, Pablo Eduardo)
-- [SPEC-5.8] Observabilidade e monitoramento (PR #52, Pablo Eduardo)
-- [SPEC-5.9] Desempenho e carga (PR #53, Pablo Eduardo)
+- SPEC-4.3: Portal de documentos do cliente com upload, filtros, checklist, confirmação de recebimento, correção e auditoria.
 
 ### Alterado
 
 ### Corrigido
+
+- [SPEC-5.9] Desempenho e carga: meta inicial de resposta, perfil de carga, validação e feedback para operações demoradas.
